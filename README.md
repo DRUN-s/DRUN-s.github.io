@@ -15,3 +15,6 @@ List of things todo :
 - [ ] Create a Help us Page
 - [ ] Reorder the footer with more relevant things
 - [ ] Create a section where we link our social media on the main page.
+- [ ] Cleanup the code from Valve's spaghetti.
+- [ ] Cleanup the code from DRUN's spaghetti.
+- [ ] Add all the language variables for all the text in `languages.js`
