@@ -10,10 +10,12 @@ const translations = {
     },
 
     "ES": {
-        "blurbText": "¡Bienvenido a mi sitio de cómics!",
+         "blurbText": "Valve never translated the TF2 comics, the community efforts to do so were numerous, but unorganised and sometimes lazy. Almost none led to any full translation. This project is a reunification of the best quality fanmade translations of the TF2 comics. The comics you will see were made with the TF2 comics translation toolkit made by DRUNs to look as much authentic as the original comics. Anyway enough reading unintersting text ! Go on now and read the comics in your favorite language or learn one by trying to do so !",
+        "WIPText": "⚠️ THIS WEBSITE IS UNDER CONSTRUCTION! ⚠️ CSS IS HARD PLEASE HELP ME"
     },
     
     "DE": {
-        "blurbText": "Willkommen auf meiner Comic-Website!",
+         "blurbText": "Valve never translated the TF2 comics, the community efforts to do so were numerous, but unorganised and sometimes lazy. Almost none led to any full translation. This project is a reunification of the best quality fanmade translations of the TF2 comics. The comics you will see were made with the TF2 comics translation toolkit made by DRUNs to look as much authentic as the original comics. Anyway enough reading unintersting text ! Go on now and read the comics in your favorite language or learn one by trying to do so !",
+        "WIPText": "⚠️ THIS WEBSITE IS UNDER CONSTRUCTION! ⚠️ CSS IS HARD PLEASE HELP ME"
     }
 };
