@@ -18,4 +18,9 @@ const translations = {
          "blurbText": "Valve never translated the TF2 comics, the community efforts to do so were numerous, but unorganised and sometimes lazy. Almost none led to any full translation. This project is a reunification of the best quality fanmade translations of the TF2 comics. The comics you will see were made with the TF2 comics translation toolkit made by DRUNs to look as much authentic as the original comics. Anyway enough reading unintersting text ! Go on now and read the comics in your favorite language or learn one by trying to do so !",
         "WIPText": "⚠️ THIS WEBSITE IS UNDER CONSTRUCTION! ⚠️ CSS IS HARD PLEASE HELP ME"
     }
+
+    "FI": {
+        "blurbText": "Valve ei koskaan kääntänyt TF2 sarjakuvia. Yhteisöllä oli useita yrityksiä kääntää, mutta yritykset olivat epäorganisoituja ja jopa laiskoja. Käytännössä kaikki projektit epäonnistuivat kääntämisessä; tämä projekti on parhaiden fanikäännösten jälleenyhdistyminen. Sarjakuvat jotka näette on tehty DRUNsin TF2 sarjakuvien käännöstyökalupakin avulla. Käännökset on tehty näyttämään mahdollisimman paljon alkuperäisiltä sarjakuvilta. Kuitenkin nyt riittää mielenkiinnottoman tekstin lukeminen! Menes nyt lukemaan lempikielellesi käännettyä sarjakuvaa tai opi yksi yrittäessäsi lukea!",
+       "WIPText": "⚠️ Tämä verkkosivu on keskeneräinen ⚠️  CSS ON VAIKEAA... TARVITAAN APUA!"
+   }
 };
