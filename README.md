@@ -18,3 +18,4 @@ List of things todo :
 - [ ] Cleanup the code from Valve's spaghetti.
 - [ ] Cleanup the code from DRUN's spaghetti.
 - [ ] Add all the language variables for all the text in `languages.js`
+- [ ] Fix the shadow hover effect on cover images only being triggered when hovering on the image instead of the whole comic box.
