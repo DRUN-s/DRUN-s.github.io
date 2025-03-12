@@ -19,3 +19,6 @@ List of things todo :
 - [ ] Cleanup the code from DRUN's spaghetti.
 - [ ] Add all the language variables for all the text in `languages.js`
 - [ ] Fix the shadow hover effect on cover images only being triggered when hovering on the image instead of the whole comic box.
+- [ ] Fix the reader's fullscreen mode adapting the image to the screen by stretching it.
+- [ ] Add the language switch system for the reader
+- [ ] Fix the comics not changing to the previous one when rolling back from the 1st page.
