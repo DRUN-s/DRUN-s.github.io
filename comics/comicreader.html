@@ -103,48 +103,32 @@
 	}
 	</style>
 
-	<script type="text/javascript" src="https://steamcdn-a.akamaihd.net/apps/tf2/common/javascript/jquery.min.js"></script>
-	<script type="text/javascript" src="https://steamcdn-a.akamaihd.net/apps/tf2/common/javascript/jquery-utils-0.8.5/jquery.utils.lite.min.js"></script>
-	<script type="text/javascript" src="https://steamcdn-a.akamaihd.net/apps/tf2/common/javascript/jquery.ba-bbq.min.js"></script>
-	<script type="text/javascript" src="https://steamcdn-a.akamaihd.net/apps/tf2/common/javascript/jquery.imagesloaded.min.js"></script>
-	<script type="text/javascript" src="https://steamcdn-a.akamaihd.net/apps/tf2/common/javascript/spin.min.js"></script>
-	<script type="text/javascript" src="https://steamcdn-a.akamaihd.net/apps/tf2/common/javascript/jquery.comicviewer.js?v=7"></script>
+	<script type="text/javascript" src="comics/jquery.min.js"></script>
+	<script type="text/javascript" src="comics/jquery-utils-0.8.5/jquery.utils.lite.min.js"></script>
+	<script type="text/javascript" src="comics/jquery.ba-bbq.min.js"></script>
+	<script type="text/javascript" src="comics/jquery.imagesloased.min.js"></script>
+	<script type="text/javascript" src="comics/spin.min.js"></script>
+	<script type="text/javascript" src="comics/jquery.comicviewer.js"></script>
 
 	<script type="text/javascript">
 
 		$(
 			function()
 			{
-				$( '#Comic' ).comicViewer(
-					{
-						'last_frame'		: 20,
-						'base_url'		: 'https://steamcdn-a.akamaihd.net/apps/tf2/catchup/images/comic/2048x1536/',
-						'enable_ga'		: true,
-						'ga_page_base'		: '/catchup/#',
-						'last_frame_link'	: 'https://www.teamfortress.com/tf01_ring_of_fired/',
-						'on_frame_set_callback'	: function( iFrame )
-												  {
-												  }
-					}
-				);
+				$('#Comic').comicViewer({
+					base_url: 'comics/tf_00_Catchup_Comic/FR/',
+					first_frame: 1,
+					last_frame: 4, // mets ici le nombre total de pages à afficher
+					extension: '.jpg',
+					fnFormat: function(n) {
+						return 'tf00_catchup_comic-' + n;
+					},
+					debugging_enabled: 1
+				});
 			}
 		);
 
 	</script>
-
-	<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-33822635-3']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
 
 </head>
 
@@ -155,7 +139,7 @@
 	</div>
 
 	<div id="content">
-		<div id="logo" onclick="window.location='https://www.teamfortress.com/'"></div>
+		<div id="logo" onclick="window.location='index.html'"></div>
 		<div id="title" onclick="window.location='https://www.teamfortress.com/catchup/'"></div>
 		<div id="Comic" class="cvComicContainer" style="display: block;">
 			<span id="FullScreenComic" class="fullScreenIcon"></span>
