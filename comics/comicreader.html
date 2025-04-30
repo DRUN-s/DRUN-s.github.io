@@ -1,157 +1,42 @@
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-
+<!DOCTYPE html>
+<html lang="fr">
 <head>
-
-    <link rel="shortcut icon" href="images/favicon.svg">
-
-	<title>Team Fortress Comics</title>
-
-	<link href="https://steamcdn-a.akamaihd.net/apps/tf2/common/css/comicviewer.css?v=3" rel="stylesheet" type="text/css" />
-	<link href="https://steamcdn-a.akamaihd.net/apps/tf2/catchup/css/main.css?v=4" rel="stylesheet" type="text/css" />
-
-	<style>
-	body {
-	-moz-user-select: none;
-	-khtml-user-select: none;
-	-webkit-user-select: none;
-	user-select: none;
+  <meta charset="UTF-8">
+  <title>Lecteur de Comics</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="comicviewer.js"></script>
+  <style>
+    body {
+      text-align: center;
+      font-family: sans-serif;
+      background: #111;
+      color: white;
+    }
+    img {
+      max-width: 90%;
+      height: auto;
+      margin-top: 20px;
+      border: 4px solid #444;
+    }
+    .nav-buttons {
+      margin-top: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 0 10px;
+      font-size: 16px;
+    }
+	.testBox {
+		background-color:rgba(255, 0, 0, 25%)
 	}
-
-	.cvComicContainer {
-		cursor: pointer;
-		display: none;	/* Fade in on load */
-	}
-
-	#Comic
-	{
-		background-color: #000;
-	}
-
-	#cvLoader {
-		display: none;
-	}
-
-	#cvOverlay {
-		position: relative;
-		width: 100%;
-		height: 100%;
-		background-color: #000000;
-		display: block;
-		margin: 0 auto;
-		opacity: 0;
-	}
-
-	#cvErrorOverlay {
-		position: absolute;
-		top: 0;
-		width: 100%;
-		height: 100%;
-		background-color: #000000;
-		display: none;
-		margin: 0 auto;
-		opacity: .5;
-		z-index: 2;
-	}
-
-	.cvImg {
-		width: 100%;
-		height: 100%;
-		position: absolute;
-		top: 0;
-	}
-
-	#Comic:-webkit-full-screen, #Comic.html5-fullscreen-api, #Comic.-moz-full-screen
-	{
-		margin-top: auto;
-		margin-bottom: auto;
-		display: block;
-		top: 0px;
-		left: 0px;
-		margin-left: auto;
-		margin-right: auto;
-	}
-
-	#FullScreenComic
-	{
-		display: none;
-		top: 0px;
-		position: absolute;
-		right: 0px;
-		width: 25px;
-		height: 25px;
-		margin: 10px;
-		background-image: url("https://steamcdn-a.akamaihd.net/apps/tf2/common/images/comicviewer/fullscreen.png");
-		background-size: contain;
-		z-index: 9999;
-	}
-
-	.html5-fullscreen-api #FullScreenComic
-	{
-		background-image: url("https://steamcdn-a.akamaihd.net/apps/tf2/common/images/comicviewer/nofullscreen.png");
-	}
-
-	#Comic:-webkit-full-screen #FullScreenComic
-	{
-		background-image: url("https://steamcdn-a.akamaihd.net/apps/tf2/common/images/comicviewer/nofullscreen.png");
-	}
-
-	#Comic:-moz-full-screen #FullScreenComic
-	{
-		background-image: url("https://steamcdn-a.akamaihd.net/apps/tf2/common/images/comicviewer/nofullscreen.png");
-	}
-	</style>
-
-	<script type="text/javascript" src="comics/jquery.min.js"></script>
-	<script type="text/javascript" src="comics/jquery-utils-0.8.5/jquery.utils.lite.min.js"></script>
-	<script type="text/javascript" src="comics/jquery.ba-bbq.min.js"></script>
-	<script type="text/javascript" src="comics/jquery.imagesloased.min.js"></script>
-	<script type="text/javascript" src="comics/spin.min.js"></script>
-	<script type="text/javascript" src="comics/jquery.comicviewer.js"></script>
-
-	<script type="text/javascript">
-
-		$(
-			function()
-			{
-				$('#Comic').comicViewer({
-					base_url: 'comics/tf_00_Catchup_Comic/FR/',
-					first_frame: 1,
-					last_frame: 4, // mets ici le nombre total de pages à afficher
-					extension: '.jpg',
-					fnFormat: function(n) {
-						return 'tf00_catchup_comic-' + n;
-					},
-					debugging_enabled: 1
-				});
-			}
-		);
-
-	</script>
-
+  </style>
 </head>
-
 <body>
-	<div id="loader">
-		<img src="https://steamcdn-a.akamaihd.net/apps/tf2/common/images/comicviewer/tf_logo_over.png"/>
-		<img src="https://steamcdn-a.akamaihd.net/apps/tf2/catchup/images/title_over.png"/>
-	</div>
-
-	<div id="content">
-		<div id="logo" onclick="window.location='index.html'"></div>
-		<div id="title" onclick="window.location='https://www.teamfortress.com/catchup/'"></div>
-		<div id="Comic" class="cvComicContainer" style="display: block;">
-			<span id="FullScreenComic" class="fullScreenIcon"></span>
-		</div>
-        <div id="infobar">
-			<div id="instructions">Click image or use space bar to advance</div>
-			<div id="links">
-				<a href="https://steamcdn-a.akamaihd.net/apps/tf2/catchup/download/catchupcomic.pdf?v=1">Download as PDF</a><br/>
-				<a href="https://steamcdn-a.akamaihd.net/apps/tf2/catchup/download/catchupcomic.cbr?v=1">Download as CBR</a>
-			</div>
-		</div>
-	</div>
+  <h1>Lecteur de Comics</h1>
+  <div>
+	<button id="prevPage" class="testBox">ici</button>
+	<button id="nextPage" class="testBox">là</button>
+    <img id="comicPage" src="" alt="Page de comic">
+  </div>
 </body>
-
 </html>
