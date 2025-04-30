@@ -22,3 +22,7 @@ List of things todo :
 - [ ] Fix the reader's fullscreen mode adapting the image to the screen by stretching it.
 - [ ] Add the language switch system for the reader
 - [ ] Fix the comics not changing to the previous one when rolling back from the 1st page.
+
+## High priority : 
+- [ ] Rework the laguage selector
+- [ ] Work on the comicsviewer
