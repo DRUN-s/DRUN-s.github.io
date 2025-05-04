@@ -1,29 +1,53 @@
 $(document).ready(function () {
-    const tomeData = {
-      tf00: {
-        folder: "tf_00_catchup-comic",
-        baseName: "tf00_catchup_comic"
+    
+    const tomeData = [
+      {
+        key: "tf00",
+        folder: "tf00_catchup-comic",
+        baseName: "tf00_catchup_comic",
+        pages: 20 
       },
-      // Ajoute d’autres tomes ici plus tard
-    };
+      {
+        key: "tf01",
+        folder: "tf_01_ring_of-fired",
+        baseName: "tf01_ring_of_fired",
+        pages: 6 
+      }
+      //  Add more tomes here
+    ];
+  
+    function findTome(key) {
+      return tomeData.find(t => t.key === key);
+    }
+  
+    function getNextTome(currentKey) {
+      const index = tomeData.findIndex(t => t.key === currentKey);
+      return tomeData[index + 1] || null;
+    }
   
     function parseHash() {
-      const hash = window.location.hash.slice(1); // retire le #
+      const hash = window.location.hash.slice(1);
       const parts = hash.split("-");
       if (parts.length !== 3) return null;
   
       const [lang, tomeKey, pageStr] = parts;
       const pageNum = parseInt(pageStr, 10);
-      if (!tomeData[tomeKey] || isNaN(pageNum)) return null;
+      if (!findTome(tomeKey) || isNaN(pageNum)) return null;
   
       return { lang, tomeKey, pageNum };
     }
   
     function buildPath({ lang, tomeKey, pageNum }) {
-        const tome = tomeData[tomeKey];
-        return `${tome.folder}/${lang}/${tome.baseName}-${pageNum}.jpg`;
+      const tome = findTome(tomeKey);
+      return `${tome.folder}/${lang}/${tome.baseName}-${pageNum}.jpg`;
+    }
+  
+    function updateHash(data) {
+      const newHash = `${data.lang}-${data.tomeKey}-${data.pageNum}`;
+      if (window.location.hash !== "#" + newHash) {
+        window.location.hash = newHash;
       }
-      
+    }
   
     function loadPage(data) {
       const imagePath = buildPath(data);
@@ -37,22 +61,35 @@ $(document).ready(function () {
         });
   
       $("#pageIndicator").text(`Langue : ${data.lang} | Tome : ${data.tomeKey.toUpperCase()} | Page ${data.pageNum}`);
-    }
-  
-    function updateHash(data) {
-      const newHash = `${data.lang}-${data.tomeKey}-${data.pageNum}`;
-      if (window.location.hash !== "#" + newHash) {
-        window.location.hash = newHash;
-      }
+      $("#langSelect").val(data.lang); // synchro menu langue
     }
   
     function changePage(delta) {
-      const data = parseHash();
+      let data = parseHash();
       if (!data) return;
-      data.pageNum += delta;
-      if (data.pageNum < 1) return;
+  
+      const tome = findTome(data.tomeKey);
+      const newPage = data.pageNum + delta;
+  
+      if (newPage > tome.pages) {
+        // passe au tome suivant
+        const nextTome = getNextTome(data.tomeKey);
+        if (nextTome) {
+          data = {
+            lang: data.lang,
+            tomeKey: nextTome.key,
+            pageNum: 1
+          };
+        } else {
+          return; // plus de tomes
+        }
+      } else if (newPage < 1) {
+        return;
+      } else {
+        data.pageNum = newPage;
+      }
+  
       updateHash(data);
-      loadPage(data);
     }
   
     $("#nextPage").click(() => changePage(1));
@@ -63,6 +100,15 @@ $(document).ready(function () {
       if (data) loadPage(data);
     });
   
+    $("#langSelect").on("change", function () {
+      const newLang = $(this).val();
+      const data = parseHash();
+      if (!data) return;
+      data.lang = newLang;
+      updateHash(data);
+    });
+  
+    // Premier chargement
     const initialData = parseHash();
     if (initialData) {
       loadPage(initialData);
