@@ -49,6 +49,19 @@ $(document).ready(function () {
       }
     }
   
+    function preloadImages({ lang, tomeKey, pageNum }) {
+        const tome = findTome(tomeKey);
+        const preloadRange = [-1, 1, 2, 3]; // page précédente + 3 suivantes
+      
+        preloadRange.forEach(offset => {
+          const targetPage = pageNum + offset;
+          if (targetPage < 1 || targetPage > tome.pages) return;
+          const img = new Image();
+          img.src = `${tome.folder}/${lang}/${tome.baseName}-${targetPage}.jpg`;
+        });
+      }
+      
+
     function loadPage(data) {
       const imagePath = buildPath(data);
       console.log("Chargement de :", imagePath);
@@ -62,6 +75,8 @@ $(document).ready(function () {
   
       $("#pageIndicator").text(`Langue : ${data.lang} | Tome : ${data.tomeKey.toUpperCase()} | Page ${data.pageNum}`);
       $("#langSelect").val(data.lang); // synchro menu langue
+
+      preloadImages(data);
     }
   
     function changePage(delta) {
