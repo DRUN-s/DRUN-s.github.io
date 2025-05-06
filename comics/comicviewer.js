@@ -9,9 +9,9 @@ $(document).ready(function () {
       },
       {
         key: "tf01",
-        folder: "tf_01_ring_of-fired",
+        folder: "tf01_ring-of-fired",
         baseName: "tf01_ring_of_fired",
-        pages: 6 
+        pages: 68 
       }
       //  Add more tomes here
     ];
@@ -65,31 +65,42 @@ $(document).ready(function () {
     }
   
     function changePage(delta) {
-      let data = parseHash();
-      if (!data) return;
-  
-      const tome = findTome(data.tomeKey);
-      const newPage = data.pageNum + delta;
-  
-      if (newPage > tome.pages) {
-        // passe au tome suivant
-        const nextTome = getNextTome(data.tomeKey);
-        if (nextTome) {
-          data = {
-            lang: data.lang,
-            tomeKey: nextTome.key,
-            pageNum: 1
-          };
+        let data = parseHash();
+        if (!data) return;
+      
+        const currentTome = findTome(data.tomeKey);
+        const newPage = data.pageNum + delta;
+      
+        if (newPage > currentTome.pages) {
+          // Aller au premier page du tome suivant
+          const nextTome = getNextTome(data.tomeKey);
+          if (nextTome) {
+            data = {
+              lang: data.lang,
+              tomeKey: nextTome.key,
+              pageNum: 1
+            };
+          } else {
+            return; // Pas de tome suivant
+          }
+        } else if (newPage < 1) {
+          // Aller à la dernière page du tome précédent
+          const index = tomeData.findIndex(t => t.key === data.tomeKey);
+          const prevTome = tomeData[index - 1];
+          if (prevTome) {
+            data = {
+              lang: data.lang,
+              tomeKey: prevTome.key,
+              pageNum: prevTome.pages
+            };
+          } else {
+            return; // Pas de tome précédent
+          }
         } else {
-          return; // plus de tomes
+          data.pageNum = newPage;
         }
-      } else if (newPage < 1) {
-        return;
-      } else {
-        data.pageNum = newPage;
-      }
-  
-      updateHash(data);
+      
+        updateHash(data);
     }
   
     $("#nextPage").click(() => changePage(1));
