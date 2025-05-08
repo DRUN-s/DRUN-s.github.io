@@ -2,11 +2,18 @@
 
 This is the website of the TF2 comics translation project or TF2CTP for short or TF2TP for shorter, or even... **Anyway**
 
-Heavily inspired by the https://tf2classic.com/artwork page.
+Heavily inspired by the [Artworks](https://tf2classic.com/artwork) page.
 
-List of things todo : 
+List of things todo :
 
-### Todo
+## Todo
+
+### High priority
+
+- [ ] Rework the laguage selector  
+- [ ] Work on the comicsviewer
+
+### Other tasks
 
 - [ ] Create an About page
 - [ ] Create a Team page
@@ -22,7 +29,3 @@ List of things todo :
 - [ ] Fix the reader's fullscreen mode adapting the image to the screen by stretching it.
 - [ ] Add the language switch system for the reader
 - [ ] Fix the comics not changing to the previous one when rolling back from the 1st page.
-
-## High priority : 
-- [ ] Rework the laguage selector
-- [ ] Work on the comicsviewer
