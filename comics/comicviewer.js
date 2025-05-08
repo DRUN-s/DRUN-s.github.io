@@ -142,4 +142,12 @@ $(document).ready(function () {
       window.location.hash = "FR-tf00-1";
     }
   });
+
+  $(document).on("keydown", function (e) {
+    if (e.key === "ArrowRight") {
+      $("#nextPage").click();
+    } else if (e.key === "ArrowLeft") {
+      $("#prevPage").click();
+    }
+  });
   
