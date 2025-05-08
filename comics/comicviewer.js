@@ -5,13 +5,81 @@ $(document).ready(function () {
         key: "tf00",
         folder: "tf00_catchup-comic",
         baseName: "tf00_catchup_comic",
+        title: {
+          EN: "Catchup Comic",
+          FR: "BD de rattrapage"
+        },
         pages: 20 
       },
       {
         key: "tf01",
         folder: "tf01_ring-of-fired",
         baseName: "tf01_ring_of_fired",
+        title: {
+          EN: "Ring of fired",
+          FR: "Marche ou crève"
+        },
         pages: 68 
+      },
+      {
+        key: "tf02",
+        folder: "tf01_ring-of-fired",
+        baseName: "tf01_ring_of_fired",
+        title: {
+          EN: "Ring of fired",
+          FR: "Marche ou crève"
+        },
+        pages: 70 
+      },
+      {
+        key: "tf03",
+        folder: "tf02_unhappy-returns",
+        baseName: "tf02_unhappy_returns",
+        title: {
+          EN: "Unhappy returns",
+          FR: "Retour malheureux"
+        },
+        pages: 75 
+      },
+      {
+        key: "tf04",
+        folder: "tf04_blood-in-the-water",
+        baseName: "tf04_blood_in_the_water",
+        title: {
+          EN: "Blood in the water",
+          FR: "Du sang dans les eaux"
+        },
+        pages: 113 
+      },
+      {
+        key: "tf05",
+        folder: "tf05_old-wounds",
+        baseName: "tf05_old_wounds",
+        title: {
+          EN: "Old wounds",
+          FR: "Vielles plaies"
+        },
+        pages: 79 
+      },
+      {
+        key: "tf06",
+        folder: "tf06_the-naked-and-the-dead",
+        baseName: "tf06_the_naked_and_the_dead",
+        title: {
+          EN: "The naked and the dead",
+          FR: "Le nu et le mort"
+        },
+        pages: 274 
+      },
+      {
+        key: "tf07",
+        folder: "tf07_the-days-have-worn-away",
+        baseName: "tf07_the_days_have_worn_away",
+        title: {
+          EN: "The days have worn away",
+          FR: "Les jours se sont usés"
+        },
+        pages: 330 
       }
       //  Add more tomes here
     ];
@@ -75,6 +143,11 @@ $(document).ready(function () {
   
       $("#pageIndicator").text(`Langue : ${data.lang} | Tome : ${data.tomeKey.toUpperCase()} | Page ${data.pageNum}`);
       $("#langSelect").val(data.lang); // synchro menu langue
+
+      //Changement du titre de la page selon le tome
+      const tome = findTome(data.tomeKey);
+      const localizedTitle = tome.title[data.lang] || tome.title["EN"];
+      document.title = `${localizedTitle}`; //TODO: Add  "– Page ${data.pageNum}" in the end of this but make sure that "page" is also translated.
 
       preloadImages(data);
     }
