@@ -3,33 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <title>Lecteur de Comics</title>
+  <link rel="stylesheet" href="comics.css">
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="comicviewer.js"></script>
-  <style>
-    body {
-      text-align: center;
-      font-family: sans-serif;
-      background: #111;
-      color: white;
-    }
-    img {
-      max-width: 70%;
-      height: auto;
-      margin-top: 20px;
-      border: 4px solid #444;
-    }
-    .nav-buttons {
-      margin-top: 20px;
-    }
-    button {
-      padding: 10px 20px;
-      margin: 0 10px;
-      font-size: 16px;
-    }
-	.testBox {
-		background-color:rgba(255, 0, 0, 25%)
-	}
-  </style>
+
 </head>
 <body>
   <div style="margin-top: 20px;">
@@ -41,10 +18,11 @@
 	</select>
   </div>
   
-  <div>
+  <div id="clickableArea">
+    <div id="leftZone"></div>
+    <div id="rightZone"></div>
     <img id="comicPage" src="" alt="Page de comic">
   </div>
-  <div><button id="prevPage" class="testBox">ici</button>
-	<button id="nextPage" class="testBox">là</button></div>
+
 </body>
 </html>

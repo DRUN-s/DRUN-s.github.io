@@ -81,7 +81,6 @@ $(document).ready(function () {
         },
         pages: 330 
       }
-      //  Add more tomes here
     ];
   
     function findTome(key) {
@@ -193,6 +192,10 @@ $(document).ready(function () {
   
     $("#nextPage").click(() => changePage(1));
     $("#prevPage").click(() => changePage(-1));
+
+    //Si la zone es cliqué la page change
+    $("#leftZone").on("click", () => changePage(-1));
+    $("#rightZone").on("click", () => changePage(1));
   
     $(window).on("hashchange", function () {
       const data = parseHash();
@@ -223,4 +226,3 @@ $(document).ready(function () {
       $("#prevPage").click();
     }
   });
-  
