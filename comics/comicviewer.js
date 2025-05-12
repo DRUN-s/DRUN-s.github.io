@@ -7,7 +7,8 @@ $(document).ready(function () {
         baseName: "tf00_catchup_comic",
         title: {
           EN: "Catchup Comic",
-          FR: "BD de rattrapage"
+          FR: "BD de rattrapage",
+          KR: "줄거리 요약편"
         },
         pages: 20 
       },
@@ -190,9 +191,6 @@ $(document).ready(function () {
         updateHash(data);
     }
   
-    $("#nextPage").click(() => changePage(1));
-    $("#prevPage").click(() => changePage(-1));
-
     //Si la zone es cliqué la page change
     $("#leftZone").on("click", () => changePage(-1));
     $("#rightZone").on("click", () => changePage(1));
@@ -217,12 +215,26 @@ $(document).ready(function () {
     } else {
       window.location.hash = "FR-tf00-1";
     }
+
+    $("#fullscreenToggle").on("click", function () {
+      const elem = document.getElementById("clickableArea");
+    
+      if (!document.fullscreenElement) {
+        elem.requestFullscreen().catch(err => {
+          alert(`Erreur lors de l'activation du plein écran : ${err.message}`);
+        });
+      } else {
+        document.exitFullscreen();
+      }
+    });
+    
+
   });
 
-  $(document).on("keydown", function (e) {
-    if (e.key === "ArrowRight") {
-      $("#nextPage").click();
-    } else if (e.key === "ArrowLeft") {
-      $("#prevPage").click();
-    }
-  });
+$(window).on("keydown", function (e) {
+  if (e.key === "ArrowRight") {
+    $("#rightZone").click();
+  } else if (e.key === "ArrowLeft") {
+    $("#leftZone").click();
+  }
+});
