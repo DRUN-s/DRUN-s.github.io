@@ -24,16 +24,6 @@ $(document).ready(function () {
       },
       {
         key: "tf02",
-        folder: "tf01_ring-of-fired",
-        baseName: "tf01_ring_of_fired",
-        title: {
-          EN: "Ring of fired",
-          FR: "Marche ou crève"
-        },
-        pages: 70 
-      },
-      {
-        key: "tf03",
         folder: "tf02_unhappy-returns",
         baseName: "tf02_unhappy_returns",
         title: {
@@ -41,6 +31,16 @@ $(document).ready(function () {
           FR: "Retour malheureux"
         },
         pages: 75 
+      },
+      {
+        key: "tf03",
+        folder: "tf03_a_cold_day_in_hell",
+        baseName: "tf03_a_cold_day_in_hell",
+        title: {
+          EN: "A cold day in hell",
+          FR: "Un jour froid en enfer"
+        },
+        pages: 70 
       },
       {
         key: "tf04",

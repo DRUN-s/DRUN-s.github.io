@@ -279,9 +279,6 @@ margin-left: 15px;
 }
 
 
-
-
-
 .caption_main, .caption_date{
 	display: block;
 	margin: 0 5px;
@@ -367,13 +364,29 @@ margin-left: 15px;
 
 /*====================================================================================*/
 
+#language-container {
+	position: relative;
+	transition: all 0.3s ease;
+	z-index: 999;
+	top: 50px;
+	left: 20px;
+  }
+  
+  #language-container.sticky {
+	position: fixed;
+	top: 20px;
+	left: 20px;
+  }
+  
+
 .dropdown {
 	position: relative;
 	display: inline-block;
+	z-index: 100;
   }
   
   .dropdown button {
-	background-color: #253849;
+	background-color: #231f20;
 	min-width: 130px;
 	width: max-content;
 	height: 40px;
@@ -493,6 +506,7 @@ margin-left: 15px;
 	position: absolute;
 	display: none;
 	opacity: 0;
+	z-index: 999;
   }
   [tooltip]::before {
 	content: '';

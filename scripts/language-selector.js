@@ -50,14 +50,34 @@ document.addEventListener("DOMContentLoaded", function () {
         updateText(langCode); // Mettre à jour les textes !
     }
 
+    const defaultTexts = {}; // Stockage des textes par défaut au premier passage
+
     function updateText(lang) {
-        if (typeof translations !== "undefined" && translations[lang]) {
-            document.getElementById('blurbText').textContent = translations[lang]["blurbText"];
-            document.getElementById('WIPText').textContent = translations[lang]["WIPText"];
-        } else {
+        if (!translations?.[lang]) {
             console.warn("Aucune traduction trouvée pour la langue :", lang);
+            return;
+        }
+    
+        for (const [key, value] of Object.entries(translations[lang])) {
+            const el = document.getElementById(key);
+            if (!el) continue;
+    
+            // Sauvegarde du texte original une seule fois
+            if (!(key in defaultTexts)) {
+                defaultTexts[key] = el.textContent;
+            }
+    
+            // Si la valeur est non vide, on applique la traduction
+            if (typeof value === "string" && value.trim() !== "") {
+                el.textContent = value;
+            } else {
+                // Sinon on restaure le texte par défaut
+                el.textContent = defaultTexts[key];
+            }
         }
     }
+    
+    
 
     function unwrapSelector() {
         container.style.pointerEvents = "none";
