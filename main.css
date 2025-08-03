@@ -296,6 +296,7 @@ margin-left: 15px;
 }
 
 .caption_main a{
+	font-size: 1.5em;
 	text-decoration: none;
 	color: #3b3632;
 }
@@ -323,7 +324,7 @@ margin-left: 15px;
 	width: 100%;
 	height: auto;
 }
-
+/*Saxton covers*/
 #covers{
 	display: flex;
 	flex-direction: row;
@@ -345,22 +346,68 @@ margin-left: 15px;
 	width: 100%;
 	border-radius: 5px;
 }
-
-.comic_box, #covers a {
-    transition: transform 0.2s ease-in-out, filter 0.2s ease-in-out;
+#covers a {
+    transition: all 0.2s ease-in-out;
 }
-
 #covers a:hover {
     transform: translateY(-2px);
-    filter: drop-shadow(0px 5px 5px rgba(0, 0, 0, 0.5));
+}
+
+.comic_box {
+    transition: all 0.2s ease-in-out;
 }
 
 .comic_box:hover {
     transform: translate(0, -2px);
 }
-.comic_box img:hover {
-	filter: drop-shadow(0px 5px 5px rgba(0, 0, 0, 0.5));
-}
+
+.comic_box {
+	display: inline-block;
+  }
+  
+
+  .image_wrapper {
+	position: relative;
+	display: inline-block;
+	border-radius: 5px;
+	transition: transform 0.2s ease-in-out;
+  }
+  
+  .comic_box:hover .image_wrapper {
+	transform: translateY(-2px);
+  }
+  
+  .image_wrapper::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	border-radius: 5px;
+	box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.5);
+	opacity: 0;
+	transition: opacity 0.3s ease-in-out;
+	pointer-events: none;
+	z-index: 0;
+  }
+  
+  .image_wrapper img {
+	display: block;
+	border-radius: 5px;
+	position: relative;
+	z-index: 1;
+  }
+  
+  .comic_box:hover .image_wrapper::after {
+	opacity: 1;
+  }
+  
+  /* Caption styles inchangés */
+  .comic_caption {
+	margin-top: 5px;
+	text-align: center;
+  }
+  
+  
+
 
 /*====================================================================================*/
 
