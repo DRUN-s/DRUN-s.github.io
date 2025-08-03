@@ -452,6 +452,7 @@ margin-left: 15px;
   .dropdown button img {
 	width: 28px;
 	margin-right: 5px;
+	border-radius: 3px;
   }
   
   .arrow-down {
@@ -498,6 +499,7 @@ margin-left: 15px;
   .dropdown-content li img {
 	width: 28px;
 	margin-right: 10px;
+	border-radius: 3px;
   }
   
   .dropdown-content li:hover {
