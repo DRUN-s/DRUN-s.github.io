@@ -59,7 +59,7 @@ p{
 }
 
 #main {
-	width: calc(100% - 450px);
+	width: calc(100% - 330px);
 	max-width: 1400px;
 	margin: auto;
 	box-shadow: 0px 0px 10px #000000;
