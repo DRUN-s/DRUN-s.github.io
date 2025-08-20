@@ -96,12 +96,19 @@ $(document).ready(function () {
     function parseHash() {
       const hash = window.location.hash.slice(1);
       const parts = hash.split("-");
-      if (parts.length !== 3) return null;
-  
+      if (parts.length !== 3) {
+        // No hash found for language → the hash in localStorage is then loaded
+        const savedLang = localStorage.getItem("selectedLanguage") || "EN";
+        return { lang: savedLang, tomeKey: "tf00", pageNum: 1 }; 
+      }
+    
       const [lang, tomeKey, pageStr] = parts;
       const pageNum = parseInt(pageStr, 10);
       if (!findTome(tomeKey) || isNaN(pageNum)) return null;
-  
+    
+      // Saves the language to localStorage in the reader as well
+      localStorage.setItem("selectedLanguage", lang);
+    
       return { lang, tomeKey, pageNum };
     }
   
@@ -230,6 +237,19 @@ $(document).ready(function () {
     
 
   });
+
+//Changes the language stored in localStorage if another language is selected
+  $("#langSelect").on("change", function () {
+    const newLang = $(this).val();
+    localStorage.setItem("selectedLanguage", newLang);
+
+    const data = parseHash();
+    if (data) {
+        data.lang = newLang;
+        updateHash(data);
+        loadPage(data);
+    }
+});
 
 $(window).on("keydown", function (e) {
   if (e.key === "ArrowRight") {

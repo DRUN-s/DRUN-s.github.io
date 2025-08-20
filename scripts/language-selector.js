@@ -10,6 +10,23 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
     }
 
+    //Checks the local storage for the preffered language (the one that has been set on the previous page)
+    let savedLang = localStorage.getItem("selectedLanguage");
+    if (savedLang) {
+        updateText(savedLang);
+        selectedItem.setAttribute("lang-selection", savedLang);
+
+        // Updates the language selection button
+        for (let i = 0; i < items.length; i++) {
+            if (items[i].getAttribute('lang-selection') === savedLang) {
+                selectedItem.innerHTML = items[i].innerHTML + '<span class="arrow-down"></span>';
+                hideSelected();
+                break;
+            }
+        }
+    }
+
+
     // Init visuelle : cache l'élément de la langue active dans la liste
     let activeLangCode = selectedItem.getAttribute('lang-selection');
     for (let i = 0; i < items.length; i++) {
@@ -36,9 +53,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function onSelect(item) {
         let langCode = item.getAttribute('lang-selection');
-
+    
         console.log("Langue sélectionnée :", langCode);
-
+    
+        // Sauvegarde dans le localStorage
+        localStorage.setItem("selectedLanguage", langCode);
+    
         showUnselected();
         selectedItem.innerHTML = item.innerHTML + '<span class="arrow-down"></span>';
         selectedItem.setAttribute('lang-selection', langCode);
@@ -46,9 +66,10 @@ document.addEventListener("DOMContentLoaded", function () {
         hideSelected();
         unwrapSelector();
         dropdown.classList.remove("open");
-
+    
         updateText(langCode); // Mettre à jour les textes !
     }
+    
 
     const defaultTexts = {}; // Stockage des textes par défaut au premier passage
 
