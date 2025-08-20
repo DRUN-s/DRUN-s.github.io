@@ -5,6 +5,8 @@ document.addEventListener("DOMContentLoaded", function () {
     let items = list.getElementsByTagName('li');
     let selectedItem = document.getElementById('selectedItem');
 
+    const defaultTexts = {}; // Stockage des textes par défaut au premier passage
+
     if (items.length === 0) {
         console.error("Aucun élément de langue trouvé !");
         return;
@@ -69,9 +71,6 @@ document.addEventListener("DOMContentLoaded", function () {
     
         updateText(langCode); // Mettre à jour les textes !
     }
-    
-
-    const defaultTexts = {}; // Stockage des textes par défaut au premier passage
 
     function updateText(lang) {
         if (!translations?.[lang]) {
