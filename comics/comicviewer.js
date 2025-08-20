@@ -235,6 +235,56 @@ $(document).ready(function () {
       }
     });
     
+    $(document).ready(function () {
+
+      const selectedItem = $("#selectedItem");
+      const dropdownContent = $("#select-container li");
+    
+      // Initialise le bouton avec la langue stockée
+      const savedLang = localStorage.getItem("selectedLanguage") || "EN";
+      setLanguage(savedLang);
+    
+      // Fonction pour mettre à jour le bouton et le hash
+      function setLanguage(lang) {
+        const item = dropdownContent.filter(`[lang-selection='${lang}']`);
+        if (!item.length) return;
+    
+        // Met à jour le bouton visible
+        const imgSrc = item.find("img").attr("src");
+        const text = item.text().trim();
+        selectedItem.attr("lang-selection", lang);
+        selectedItem.html(`<img src="${imgSrc}" /> ${text} <span class="arrow-down"></span>`);
+    
+        // Sauvegarde la langue
+        localStorage.setItem("selectedLanguage", lang);
+    
+        // Change la langue de la page
+        const data = parseHash();
+        if (!data) return;
+        data.lang = lang;
+        updateHash(data);
+      }
+    
+      // Ouvre/ferme le dropdown
+      $("#language-dropdown button").on("click", function () {
+        $("#select-container").toggle();
+      });
+    
+      // Sélection d'une langue
+      dropdownContent.on("click", function () {
+        const lang = $(this).attr("lang-selection");
+        setLanguage(lang);
+        $("#select-container").hide();
+      });
+    
+      // Fermer si clic en dehors
+      $(document).on("click", function (e) {
+        if (!$(e.target).closest("#language-dropdown").length) {
+          $("#select-container").hide();
+        }
+      });
+    });
+    
 
   });
 
@@ -256,5 +306,34 @@ $(window).on("keydown", function (e) {
     $("#rightZone").click();
   } else if (e.key === "ArrowLeft") {
     $("#leftZone").click();
+  }
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  function unwrapSelector() {
+    container.style.pointerEvents = "none";
+    setTimeout(() => container.style.pointerEvents = "auto", 200);
+  }
+
+  function showUnselected() {
+    let selectedLangCode = selectedItem.getAttribute('lang-selection');
+    for (let i = 0; i < items.length; i++) {
+        if (items[i].getAttribute('lang-selection') === selectedLangCode) {
+            items[i].style.opacity = '1';
+            items[i].style.display = '';
+            break;
+        }
+    }
+  }
+
+  function hideSelected() {
+    let selectedLangCode = selectedItem.getAttribute('lang-selection');
+    for (let i = 0; i < items.length; i++) {
+        if (items[i].getAttribute('lang-selection') === selectedLangCode) {
+            items[i].style.opacity = '0';
+            setTimeout(() => items[i].style.display = 'none', 200);
+            break;
+        }
+    }
   }
 });

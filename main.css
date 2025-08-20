@@ -536,9 +536,9 @@ margin-left: 15px;
 
 /*====================================================================================*/
   
+ 
   
-  
-  /* TOOLTIP STYLES FROM THIS PEN https://codepen.io/tutsplus/pen/WROvdG */
+  /*TOOLTIP STYLES FROM THIS PEN https://codepen.io/tutsplus/pen/WROvdG*/
   [tooltip] {
 	position: relative; /* opinion 1 */
 	font-weight: bold;

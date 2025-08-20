@@ -14,23 +14,64 @@
 
 
   <meta charset="UTF-8">
-  <link rel="shortcut icon" href="images/favicon.svg">
+  <link rel="shortcut icon" href="/images/favicon.svg">
   <title>Lecteur de Comics</title>
   <link rel="stylesheet" href="comics.css">
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-  <script src="comicviewer.js"></script>
+  <script src="comicviewer.js" defer></script>
 
 </head>
 <body>
   <a href="/index.html">Menu</a>
-  <div style="margin-top: 20px;">
-	<label for="langSelect">Langue : </label>
-	<select id="langSelect">
-	  <option value="FR">FR</option>
-	  <option value="EN">EN</option>
-    <option value="KR">KR</option>
-	  <!-- add more languages here -->
-	</select>
+  <div id="language-container">
+    <div class="dropdown" id="language-dropdown">
+      <button id="selectedItem" lang-selection="EN">
+        <img src="https://cdn.countryflags.com/thumbs/united-kingdom/flag-800.png" />
+        English
+        <span class="arrow-down"></span>
+      </button>
+    
+      <div class="dropdown-content" id="select-container">
+        <ul>
+          <li lang-selection="EN">
+            <img src="https://cdn.countryflags.com/thumbs/united-kingdom/flag-800.png" />
+            English
+          </li>
+          <li lang-selection="FR">
+            <img src="https://cdn.countryflags.com/thumbs/france/flag-800.png" />
+            Français
+          </li>
+          <li lang-selection="FI">
+            <img src="https://cdn.countryflags.com/thumbs/finland/flag-800.png" />
+            Suomi
+          </li>
+          <li lang-selection="ES">
+            <img src="https://cdn.countryflags.com/thumbs/spain/flag-800.png" />
+            Español
+          </li>
+          <li lang-selection="KR">
+            <img src="https://cdn.countryflags.com/thumbs/south-korea/flag-800.png" />
+            한국어
+          </li>
+          <li lang-selection="DE">
+            <img src="https://cdn.countryflags.com/thumbs/germany/flag-800.png" />
+            Deutsch
+          </li>
+          <li lang-selection="PL">
+            <img src="https://cdn.countryflags.com/thumbs/poland/flag-800.png" />
+            Polski
+          </li>
+          <li lang-selection="TR">
+            <img src="https://cdn.countryflags.com/thumbs/turkey/flag-800.png" />
+            Türkçe
+          </li>
+          <li lang-selection="CS">
+            <img src="https://cdn.countryflags.com/thumbs/czech-republic/flag-800.png" />
+            Čeština
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
   
   <div id="clickableArea">
