@@ -4,6 +4,20 @@ body {
     color: white;
   }
 
+  .mainArea {
+    display: flex;
+    justify-content: center;   
+  }
+
+.leftSide{
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  z-index: 1000;
+}
 
 #menuButton {
   position: relative;
@@ -15,11 +29,12 @@ body {
 }
 
 #clickableArea {
+  position: relative;
   width: 70%;
   margin: 20px auto;
-  display: flex;
   justify-content: center;
   align-items: center;
+  display: block;
 }
 
 #clickableArea:fullscreen {
@@ -38,7 +53,7 @@ body {
     max-width: 100%;
     max-height: 100%;
     width: auto;
-    height: 95%;
+    height: 100%;
     display: block;
     z-index: 1;
     margin: auto;
@@ -49,7 +64,7 @@ body {
   position: absolute;
   top: 0;
   bottom: 0;
-  z-index: 2; /* AU-DESSUS de l’image */
+  z-index: 2;
   cursor: pointer;
 }
 
@@ -64,20 +79,18 @@ body {
   }
   
 #fullscreenToggle {
-    position: relative;
+    position: absolute;
     right: 0;
     top: 0;
     z-index: 10;
     }
 
-/* TEST the buttons
 #leftZone {
     background-color: rgba(255, 0, 0, 0.25);
   }
   #rightZone {
     background-color: rgba(0, 255, 0, 0.25);
  }
-*/
 
 
 /*LANGUAGE CONTAINER STUFF*/

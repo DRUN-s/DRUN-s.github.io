@@ -223,17 +223,34 @@ $(document).ready(function () {
       window.location.hash = "FR-tf00-1";
     }
 
-    $("#fullscreenToggle").on("click", function () {
-      const elem = document.getElementById("clickableArea");
+    const fullscreenToggle = document.getElementById('fullscreenToggle');
+    const img = fullscreenToggle.querySelector('img');
     
-      if (!document.fullscreenElement) {
-        elem.requestFullscreen().catch(err => {
-          alert(`Erreur lors de l'activation du plein écran : ${err.message}`);
-        });
-      } else {
-        document.exitFullscreen();
-      }
+    fullscreenToggle.addEventListener('click', () => {
+        if (!document.fullscreenElement) {
+            // Activer le fullscreen
+            document.documentElement.requestFullscreen().then(() => {
+                img.src = '/images/fullscreenOut.png'; // changer l'image
+            }).catch(err => {
+                console.error(`Erreur lors du fullscreen : ${err}`);
+            });
+        } else {
+            // Quitter le fullscreen
+            document.exitFullscreen().then(() => {
+                img.src = '/images/fullscreenIn.png'; // remettre l'image initiale
+            }).catch(err => {
+                console.error(`Erreur lors de la sortie du fullscreen : ${err}`);
+            });
+        }
     });
+    
+    // Pour gérer le retour sur la page via ESC ou autre méthode
+    document.addEventListener('fullscreenchange', () => {
+        if (!document.fullscreenElement) {
+            img.src = '/images/fullscreenIn.png';
+        }
+    });
+    
     
     $(document).ready(function () {
 
@@ -300,6 +317,7 @@ $(document).ready(function () {
         loadPage(data);
     }
 });
+
 
 $(window).on("keydown", function (e) {
   if (e.key === "ArrowRight") {
