@@ -225,31 +225,38 @@ $(document).ready(function () {
 
     const fullscreenToggle = document.getElementById('fullscreenToggle');
     const img = fullscreenToggle.querySelector('img');
+    const clickableArea = document.getElementById('clickableArea');
+    const body = document.body;
     
     fullscreenToggle.addEventListener('click', () => {
         if (!document.fullscreenElement) {
-            // Activer le fullscreen
-            document.documentElement.requestFullscreen().then(() => {
-                img.src = '/images/fullscreenOut.png'; // changer l'image
+            // Activer le fullscreen sur clickableArea
+            clickableArea.requestFullscreen().then(() => {
+                img.src = '/images/fullscreenOut.png';
+                body.classList.add('fullscreen-active');
             }).catch(err => {
                 console.error(`Erreur lors du fullscreen : ${err}`);
             });
         } else {
             // Quitter le fullscreen
             document.exitFullscreen().then(() => {
-                img.src = '/images/fullscreenIn.png'; // remettre l'image initiale
+                img.src = '/images/fullscreenIn.png';
+                body.classList.remove('fullscreen-active');
             }).catch(err => {
                 console.error(`Erreur lors de la sortie du fullscreen : ${err}`);
             });
         }
     });
     
-    // Pour gérer le retour sur la page via ESC ou autre méthode
+    // Gestion du ESC ou sortie fullscreen
     document.addEventListener('fullscreenchange', () => {
         if (!document.fullscreenElement) {
             img.src = '/images/fullscreenIn.png';
+            body.classList.remove('fullscreen-active');
         }
     });
+    
+    
     
     
     $(document).ready(function () {
