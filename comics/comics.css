@@ -5,7 +5,7 @@ body {
 	margin: 0;
 	padding-top: 5vh;
 	display: grid;
-	grid-template-columns: 1fr 2fr 1fr; /* 3 colonnes */
+	grid-template-columns: 1fr 2fr 1fr; /* 3 col */
 	grid-template-rows: 100%;
   }
   
@@ -32,16 +32,14 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background: #111; /* pour remplir l’écran derrière l’image */
+	background: #111; 
   }
   
-  /* Cache les zones extérieures en fullscreen */
   #clickableArea:fullscreen ~ .leftArea,
   #clickableArea:fullscreen ~ .rightArea {
 	display: none;
   }
   
-  /* L’image prend toute la hauteur dispo */
   #clickableArea:fullscreen #comicPage {
 	max-height: 100vh;
 	max-width: 100%;
@@ -52,7 +50,6 @@ body {
 	transition: all 0.3s ease;
   }
   
-  /* Quand le fullscreen est actif */
   .fullscreen-active .leftArea {
 	transform: translateX(-100%);
 	opacity: 0;
@@ -65,7 +62,6 @@ body {
 	pointer-events: none;
   }
   
-  /* Assure que clickableArea prend toute la place */
   .fullscreen-active #clickableArea {
 	width: auto;
 	height: 100%;
