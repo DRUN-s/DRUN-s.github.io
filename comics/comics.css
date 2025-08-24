@@ -82,10 +82,21 @@ body {
 
   #fullscreenToggle {
 	position: absolute;
-	top: 10px;
-	right: 10px;
+	display: inline-flex;
+	top: 5px;
+	right: 5px;
+	width: 4%;
+	height: 5%;
 	cursor: pointer;
 	z-index: 10;
+  }
+
+  #fullscreenToggle img {
+    width: 100%;           /* 20% de la largeur de #clickableArea */
+    height: auto;         /* garde le ratio */
+    object-fit: contain;
+	display: block;
+	margin-left: auto; 
   }
   
   #leftZone, #rightZone {
@@ -97,14 +108,17 @@ body {
   #leftZone { 
 	width: 15%;
 	left: 0; 
-	background-color: rgba(255, 0, 0, 0.25); 
 }
   #rightZone { 
 	width: 70%;
 	right: 0; 
-	background-color: rgba(0, 255, 0, 0.25); 
 }
-  
+
+/* ~~~~ TEST ~~~~
+#leftZone {background-color: rgba(255, 0, 0, 0.25);}
+#rightZone {background-color: rgba(0, 255, 0, 0.25);}
+*/
+
   #comicPage {
 	height: 90vh;
 	width: auto;

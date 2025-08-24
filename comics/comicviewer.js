@@ -327,9 +327,9 @@ $(document).ready(function () {
 
 
 $(window).on("keydown", function (e) {
-  if (e.key === "ArrowRight") {
+  if (e.key === "ArrowRight" || e.key === "SpaceBar" || e.key === " ") {
     $("#rightZone").click();
-  } else if (e.key === "ArrowLeft") {
+  } else if (e.key === "ArrowLeft" || e.key === "Backspace" || e.key === "Delete") {
     $("#leftZone").click();
   }
 });
