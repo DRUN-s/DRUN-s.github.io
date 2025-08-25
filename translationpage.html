@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>TF2 – Éditeur de translations (avec diff & côté-à-côté)</title>
+  <style>
+    :root{ --bg:#0e1020; --panel:#151726; --muted:#2b2f3f; --text:#e7eef8; --sub:#9fb0c6; --accent:#7cc7ff; --warn:#ffb454; --good:#42d392; --card:#0f1220 }
+    html,body{height:100%;margin:0;font-family:Inter, Roboto, system-ui, -apple-system, 'Segoe UI', Arial; background: radial-gradient(800px 400px at 10% -10%, #171827 0, transparent 40%), var(--bg); color:var(--text)}
+    .container{max-width:1200px;margin:24px auto;padding:18px}
+    h1{margin:0 0 6px;font-size:20px}
+    .subtitle{color:var(--sub);margin-bottom:14px}
+
+    .layout{display:grid;grid-template-columns:320px 1fr;gap:16px}
+    @media(max-width:980px){ .layout{grid-template-columns:1fr} }
+
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border:1px solid var(--muted); border-radius:12px; box-shadow:0 8px 24px rgba(0,0,0,.35)}
+    .card .body{padding:14px}
+    .row{display:flex;gap:8px;align-items:center}
+    .input, textarea, select{width:100%;padding:10px 12px;border-radius:10px;border:1px solid var(--muted);background:#0d111a;color:var(--text);box-sizing:border-box;font-size:14px}
+    textarea{min-height:90px;resize:vertical}
+    .btn{appearance:none;border:none;padding:10px 12px;border-radius:12px;background:#17243b;color:var(--text);cursor:pointer;font-weight:600}
+    .btn.primary{background:linear-gradient(180deg,#2a6fb4,#1f4b85)}
+    .pill{display:inline-flex;align-items:center;padding:6px 10px;border-radius:999px;border:1px solid var(--muted);color:var(--sub);background:#0e1220}
+
+    /* Editor grid */
+    .editor-grid{display:grid;grid-template-columns: 1fr; gap:10px}
+    @media(min-width:980px){ .editor-grid{grid-template-columns: 1fr} }
+
+    .kv-row{display:grid;grid-template-columns: 180px 1fr;gap:10px;align-items:start}
+    @media(max-width:760px){ .kv-row{grid-template-columns:1fr} }
+    .kv-row label{color:var(--sub);padding-top:6px}
+
+    /* Two-column bilingual */
+    .bilingual{display:grid;grid-template-columns: 1fr 1fr; gap:8px}
+    .col{display:flex;flex-direction:column;gap:6px}
+
+    textarea.common, input.common{background:#0a0d16;border-radius:12px;border:1px solid rgba(255,255,255,0.03);color:var(--text);padding:12px;font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace;font-size:13px;box-sizing:border-box}
+    textarea.common[readonly]{opacity:0.9}
+    .missing{box-shadow: inset 0 0 0 2px var(--warn) !important; border-color: var(--warn) !important}
+    .key-label{font-weight:700;color:var(--accent);margin-bottom:6px}
+    .small-note{font-size:12px;color:var(--sub)}
+
+    .footer{color:var(--sub);font-size:13px;margin-top:10px}
+
+    /* Diff viewer */
+    .diffBox{white-space:pre-wrap;background:#071018;border:1px solid #234; padding:12px;border-radius:10px;margin-top:12px;color:var(--text);overflow:auto;max-height:360px}
+    .diffBox ins{background:#063b1a;color:#bff7c9;text-decoration:none}
+    .diffBox del{background:#3e0b0b;color:#ffbdbd;text-decoration:none}
+
+    /* key tags */
+    .keysbar{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+    .tag{padding:6px 10px;border-radius:999px;border:1px solid var(--muted);color:var(--sub);font-size:13px}
+
+    #emptyBox {
+        position: fixed;   /* reste fixé dans la fenêtre */
+        top: 20px;         /* distance du haut */
+        right: 20px;       /* distance du bord droit */
+        width: 200px;      /* largeur fixe (ajuste si tu veux) */
+        padding: 10px;
+        background: #2b2b2b;   /* adapté à ton thème sombre */
+        color: #ddd;
+        border: 1px solid #555;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        z-index: 999;      /* passe devant tout */
+      }
+      
+      
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Éditeur de translations.js</h1>
+    <div class="subtitle">Charge ton fichier, édite par langue (affiche EN à gauche), puis exporte / copie / ouvre l'éditeur GitHub.</div>
+
+    <div class="layout">
+      <!-- left panel -->
+      <section class="card">
+        <div class="body">
+          <h3>1) Charger / Parser</h3>
+          <div class="row" style="margin-bottom:8px">
+            <input id="fileInput" class="input" type="file" accept=".js,.json">
+            <button id="btnLoadSample" class="btn">Charger depuis GitHub</button>
+          </div>
+          <textarea id="rawArea" placeholder="Ou colle ici ton contenu (const translations = {...};)"></textarea>
+          <div class="row" style="margin-top:8px">
+            <button id="btnParse" class="btn primary">Analyser</button>
+            <span id="statusParsed" class="pill">Non analysé</span>
+          </div>
+
+          <hr style="border:none;border-top:1px solid var(--muted);margin:12px 0">
+          <h3>2) Options d'édition</h3>
+          <div style="margin-bottom:8px">
+            <label for="langSelect" class="small-note">Langue à éditer</label>
+            <select id="langSelect" class="input"></select>
+          </div>
+          <div style="margin-bottom:8px" class="row">
+            <input id="filterInput" class="input" placeholder="Filtrer par clé (ex: tf01Title)">
+            <label style="display:flex;align-items:center;gap:8px"><input id="toggleShowEN" type="checkbox" checked> Afficher EN à gauche</label>
+          </div>
+            <!-- Filtre "vides" -->
+            <div class="row" style="margin-bottom:8px; flex-wrap:wrap">
+                <label style="display:flex;align-items:center;gap:8px">
+                <input id="toggleOnlyEmpty" type="checkbox"> Afficher uniquement les entrées vides
+                </label>
+            </div>
+          <div class="keysbar" id="keysBar"></div>
+
+          <div style="margin-top:10px" class="row">
+            <button id="btnSaveMem" class="btn">Sauvegarder (local)</button>
+            <button id="btnLoadMem" class="btn">Charger local</button>
+          </div>
+
+          <div class="footer">Aucun secret n'est envoyé. L'outil fonctionne entièrement côté client. Pour PR, le contenu est copié dans le presse-papiers et l'éditeur GitHub s'ouvre pour que tu colles et proposes la PR.</div>
+        </div>
+      </section>
+
+      <!-- right panel -->
+      <section class="card">
+        <div class="body">
+          <h3>3) Édition (version originale EN à gauche, traduction à droite)</h3>
+
+          <div id="editor" class="editor-grid"></div>
+
+          <div style="margin-top:10px" class="row">
+            <button id="btnSave" class="btn">Mettre à jour le modèle</button>
+            <button id="btnCopy" class="btn">Copier translations.js</button>
+            <button id="btnDownload" class="btn">Télécharger .js</button>
+            <button id="btnDownloadJSON" class="btn">Exporter JSON</button>
+            <button id="btnShowDiffFile" class="btn">Voir diff fichier</button>
+          </div>
+
+          <div id="fileDiff" class="diffBox" style="display:none"></div>
+
+          <hr style="border:none;border-top:1px solid var(--muted);margin:12px 0">
+            <h3>4) PR GitHub</h3>
+
+            <!-- Section par défaut -->
+            <div class="row" id="defaultGhSection">
+            <button id="btnOpenPRDefault" class="btn primary">📤 Envoyer vers DRUN-s/translations.js</button>
+            <span class="pill">Copie + ouverture directe de l’éditeur GitHub</span>
+            </div>
+
+            <!-- Section avancée (masquée au départ) -->
+            <div id="advancedGhSection" style="display:none; margin-top:12px">
+            <h4>Envoyer vers une autre destination</h4>
+            <div class="row">
+                <input id="ghOwner" class="input" placeholder="Propriétaire (ex: druns)">
+                <input id="ghRepo" class="input" placeholder="Repo (ex: tf2-comics-site)">
+            </div>
+            <div class="row" style="margin-top:8px">
+                <input id="ghBranch" class="input" placeholder="Branche (ex: main)">
+                <input id="ghPath" class="input" placeholder="Chemin (ex: src/data/translations.js)">
+            </div>
+            <div style="margin-top:8px" class="row">
+                <button id="btnOpenPRCustom" class="btn">📤 Ouvrir éditeur GitHub personnalisé</button>
+            </div>
+            </div>
+
+            <!-- Bouton pour afficher l’avancé -->
+            <div style="margin-top:8px">
+            <button id="toggleAdvanced" class="btn">⚙️ Envoyer vers une autre destination</button>
+            </div>
+
+        </div>
+      </section>
+    </div>
+
+    <div style="margin-top:12px;color:var(--sub);font-size:13px">Besoin d'un mode 'accepter/rejeter' sur le diff ? Je peux l'ajouter.</div>
+  </div>
+
+  <div id="toast" style="position:fixed;right:18px;bottom:18px;background:#081220;padding:10px 12px;border-radius:8px;border:1px solid #234;color:var(--text);opacity:0;transform:translateY(10px);transition:.25s"></div>
+
+  <!-- Boîte flottante sticky : compteur + navigation -->
+  <div id="emptyBox">
+    <span id="emptyCounter">Vides : 0 / 0 — Progrès : 0%</span>
+    <div style="display:flex; gap:6px; margin-top:6px">
+        <button id="btnPrevEmpty" class="btn" title="Précédent vide">⬆️</button>
+        <button id="btnNextEmpty" class="btn" title="Suivant vide">⬇️</button>
+    </div>
+</div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/diff/5.1.0/diff.min.js"></script>
+  <script>
+    // ---------- Etat ------------------------------------------------------
+    const state = { translations: null, originalSnapshot: null, langs: [], keys: [], activeLang: null, baseLang: 'EN' };
+
+    const $ = s => document.querySelector(s);
+    const $$ = s => Array.from(document.querySelectorAll(s));
+    function toast(msg){ const t = $('#toast'); t.textContent = msg; t.style.opacity = 1; t.style.transform = 'translateY(0)'; setTimeout(()=>{ t.style.opacity=0; t.style.transform='translateY(10px)'; }, 1800); }
+
+    
+    // ---------- Parsing helpers ------------------------------------------
+    function stripJsComments(src){
+      return src.replace(/\/\*[\s\S]*?\*\//g, '').replace(/(^|[^:\\])\/\/.*$/gm, '$1');
+    }
+
+    function safeParseTranslations(src){
+      const cleaned = stripJsComments(src);
+      function grabBalancedObject(str, startIndex){
+        let i = startIndex, depth = 0, inString = false, quote = '', escaped = false;
+        for (; i < str.length; i++){
+          const ch = str[i];
+          if (inString){
+            if (escaped){ escaped = false; continue; }
+            if (ch === '\\'){ escaped = true; continue; }
+            if (ch === quote){ inString = false; continue; }
+            continue;
+          }
+          if (ch === '"' || ch === "'" || ch === '`'){ inString = true; quote = ch; continue; }
+          if (ch === '{'){ depth++; }
+          else if (ch === '}'){ depth--; if (depth === 0) return str.slice(startIndex, i+1); }
+        }
+        throw new Error('Impossible de trouver la fin de l\'objet translations.');
+      }
+      let body = null;
+      const tIdx = cleaned.indexOf('translations');
+      if (tIdx !== -1){
+        const eqIdx = cleaned.indexOf('=', tIdx);
+        const braceIdx = eqIdx === -1 ? -1 : cleaned.indexOf('{', eqIdx);
+        if (braceIdx !== -1) body = grabBalancedObject(cleaned, braceIdx);
+      }
+      if (!body){
+        const firstBrace = cleaned.indexOf('{');
+        if (firstBrace !== -1) body = grabBalancedObject(cleaned, firstBrace);
+      }
+      if (!body) throw new Error('Aucun objet trouvé. Assure-toi que le code contient `const translations = { ... }`.');
+      const fn = new Function('"use strict"; return (' + body + ');');
+      const obj = fn();
+      if (!obj || typeof obj !== 'object') throw new Error('Le contenu évalué ne retourne pas un objet.');
+      return obj;
+    }
+
+    function deriveKeysAndLangs(obj){
+      const langs = Object.keys(obj || {});
+      const keys = Array.from(new Set(langs.flatMap(l => Object.keys(obj[l] || {})))).sort();
+      return { langs, keys };
+    }
+
+    // --- Focus suivi pour la navigation entre vides ---
+    let lastEditorFocus = null;
+    document.addEventListener('focusin', (e)=>{
+    if (e.target.matches('#editor .common:not([readonly])')) {
+        lastEditorFocus = e.target;
+    }
+    });
+
+    // ---------- Renderers ------------------------------------------------
+    function updateParsedStatus(ok){ const pill = $('#statusParsed'); pill.textContent = ok? 'Analysé' : 'Non analysé'; pill.style.borderColor = ok? 'transparent' : ''; }
+
+    function renderLangs(){ const sel = $('#langSelect'); sel.innerHTML = state.langs.map(l=>`<option value="${l}">${l}</option>`).join(''); if (!state.activeLang) state.activeLang = sel.value || state.langs[0]; sel.value = state.activeLang; }
+    function renderKeysBar(){ const kb = $('#keysBar'); kb.innerHTML = state.keys.map(k=>`<span class="tag">${k}</span>`).join(''); }
+
+    function renderEditor(){
+        const ed = $('#editor'); ed.innerHTML = '';
+        if (!state.translations) return;
+        const showEN = $('#toggleShowEN').checked;
+        const L = state.activeLang || state.langs[0];
+        const base = state.baseLang;
+        const filter = $('#filterInput').value.trim().toLowerCase();
+        const onlyEmpty = $('#toggleOnlyEmpty') ? $('#toggleOnlyEmpty').checked : false;
+      
+        state.keys.forEach(k => {
+          // filtre par clé
+          if (filter && !k.toLowerCase().includes(filter)) return;
+      
+          const currentVal = (state.translations[L] && state.translations[L][k]) || '';
+          const isEmpty = (currentVal === undefined || currentVal === null || String(currentVal).trim() === '');
+      
+          // filtre "uniquement vides"
+          if (onlyEmpty && !isEmpty) return;
+      
+          const container = document.createElement('div');
+          container.className = 'kv-row';
+      
+          const labelWrap = document.createElement('div');
+          const label = document.createElement('div'); label.className='key-label'; label.textContent = k; labelWrap.appendChild(label);
+          const inlineNote = document.createElement('div'); inlineNote.className='small-note'; inlineNote.textContent = '';
+          labelWrap.appendChild(inlineNote);
+          container.appendChild(labelWrap);
+      
+          // bilingual or single column
+          const content = document.createElement('div');
+          if (showEN && L !== base){
+            content.className = 'bilingual';
+            // original (EN) readonly
+            const colOrig = document.createElement('div'); colOrig.className='col';
+            const origTA = document.createElement('textarea'); origTA.className='common'; origTA.readOnly = true; origTA.value = (state.translations[base] && state.translations[base][k]) || '';
+            colOrig.appendChild(origTA);
+      
+            // translation
+            const colTrans = document.createElement('div'); colTrans.className='col';
+            const isLong = /Text$/.test(k) || (String(currentVal).length > 120);
+            const transField = document.createElement(isLong? 'textarea':'input'); transField.className = 'common'; if (!isLong) transField.type='text';
+            transField.value = currentVal || '';
+            transField.dataset.key = k;
+            setMissingClass(transField);
+            transField.addEventListener('input', (e)=>{
+              if (!state.translations[L]) state.translations[L] = {};
+              state.translations[L][k] = e.target.value;
+              setMissingClass(e.target);
+              updateCounter(); // <-- MAJ compteur à chaque frappe
+            });
+            colTrans.appendChild(transField);
+      
+            // per-key diff small viewer
+            const diffMini = document.createElement('div'); diffMini.className='small-note'; diffMini.style.marginTop='6px';
+            colTrans.appendChild(diffMini);
+            let tmr = null;
+            const computeMini = ()=>{
+              try{
+                const a = origTA.value || '';
+                const b = transField.value || '';
+                const diff = Diff.diffWords(a,b);
+                diffMini.innerHTML = diff.map(p=> p.added? `<ins>+${escapeHtml(truncate(p.value,40))}</ins>` : p.removed? `<del>-${escapeHtml(truncate(p.value,40))}</del>` : escapeHtml(truncate(p.value,40)) ).join('');
+              }catch(e){ diffMini.textContent = ''; }
+            };
+            transField.addEventListener('input', ()=>{ clearTimeout(tmr); tmr = setTimeout(computeMini, 250); });
+            computeMini();
+      
+            content.appendChild(colOrig); content.appendChild(colTrans);
+          } else {
+            // single column (for EN or when user hides EN)
+            const col = document.createElement('div'); col.className='col';
+            const isLong = /Text$/.test(k) || (String(currentVal).length > 120);
+            const field = document.createElement(isLong? 'textarea':'input'); field.className='common'; if (!isLong) field.type='text';
+            field.value = currentVal || '';
+            field.dataset.key = k;
+            setMissingClass(field);
+            field.addEventListener('input', (e)=>{
+              if (!state.translations[L]) state.translations[L] = {};
+              state.translations[L][k] = e.target.value;
+              setMissingClass(e.target);
+              updateCounter(); // <-- MAJ compteur à chaque frappe
+            });
+            col.appendChild(field);
+            content.appendChild(col);
+          }
+      
+          container.appendChild(content);
+          ed.appendChild(container);
+        });
+      
+        // MAJ compteur après (re)rendu
+        updateCounter();
+      }
+      
+
+      function setMissingClass(el){
+        if (!el) return;
+        const v = (el.value ?? '').trim();
+        if (v === '') el.classList.add('missing');
+        else el.classList.remove('missing');
+      }      
+
+    function escapeHtml(s){ return s.replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])); }
+    function truncate(s,n){ return s.length>n? s.slice(0,n-1)+'…' : s; }
+
+    function updateCounter(){
+        const el = $('#emptyCounter');
+        if (!el || !state.translations || !state.keys || !state.keys.length) return;
+        const L = state.activeLang || state.langs[0];
+        const total = state.keys.length;
+        let empty = 0;
+        for (const k of state.keys){
+          const v = (state.translations[L] && state.translations[L][k]) || '';
+          if (String(v).trim() === '') empty++;
+        }
+        const filled = total - empty;
+        const progress = total ? Math.round((filled / total) * 100) : 0;
+        el.textContent = `Vides : ${empty} / ${total} — Progrès : ${progress}%`;
+      }
+      
+      function navigateEmpty(direction){
+        // Liste des champs vides éditables
+        const empties = Array.from(document.querySelectorAll('#editor .common.missing:not([readonly])'));
+        if (!empties.length) return;
+      
+        // Normalise la direction -> step = -1 (prev) ou +1 (next)
+        let step = 1;
+        if (typeof direction === 'number') {
+          step = direction >= 0 ? 1 : -1;
+        } else if (typeof direction === 'string') {
+          step = direction.toLowerCase().startsWith('n') ? 1 : -1; // 'next' -> +1, 'prev' -> -1
+        }
+      
+        // Point de départ : prioriser le dernier champ de l'éditeur qui a eu le focus
+        let idx = -1;
+        if (lastEditorFocus && empties.includes(lastEditorFocus)) {
+          idx = empties.indexOf(lastEditorFocus);
+        } else if (empties.includes(document.activeElement)) {
+          // fallback si, par hasard, l'activeElement est bien un champ vide
+          idx = empties.indexOf(document.activeElement);
+        } else {
+          // aucun champ vide actuellement focus -> démarrer avant le premier (si next)
+          // ou sur le premier (si prev, l'offset -1 enverra à la fin)
+          idx = step > 0 ? -1 : 0;
+        }
+      
+        // Avance/recul immédiat pour ne pas retomber sur soi-même
+        idx = (idx + step + empties.length) % empties.length;
+      
+        const target = empties[idx];
+        lastEditorFocus = target; // mémorise tout de suite
+        target.focus({ preventScroll: true });
+        if (target.scrollIntoView) target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      
+      
+  
+      
+      
+
+    // ---------- Events ---------------------------------------------------
+    
+    $('#toggleOnlyEmpty')?.addEventListener('change', ()=> renderEditor());
+    const prevBtn = $('#btnPrevEmpty');
+    const nextBtn = $('#btnNextEmpty');
+    
+    if (prevBtn) {
+      prevBtn.addEventListener('mousedown', (e)=>{ e.preventDefault(); navigateEmpty(-1); });
+      prevBtn.addEventListener('click', (e)=> e.preventDefault()); // évite de voler le focus
+    }
+    if (nextBtn) {
+      nextBtn.addEventListener('mousedown', (e)=>{ e.preventDefault(); navigateEmpty(1); });
+      nextBtn.addEventListener('click', (e)=> e.preventDefault());
+    }
+    
+
+
+    $('#btnParse').addEventListener('click', ()=>{
+      try{
+        const obj = safeParseTranslations($('#rawArea').value);
+        state.translations = obj;
+        state.originalSnapshot = JSON.parse(JSON.stringify(obj));
+        const meta = deriveKeysAndLangs(obj);
+        state.langs = meta.langs; state.keys = meta.keys; state.activeLang = state.langs.includes('FR')? 'FR' : state.langs[0];
+        renderLangs(); renderKeysBar(); renderEditor(); updateParsedStatus(true); toast('Fichier analysé');
+      }catch(err){ updateParsedStatus(false); alert('Erreur d\'analyse : '+err.message); console.error(err); }
+    });
+
+    $('#fileInput').addEventListener('change', async (e)=>{ const f = e.target.files[0]; if (!f) return; const txt = await f.text(); $('#rawArea').value = txt; $('#btnParse').click(); });
+    $('#btnLoadSample').addEventListener('click', async ()=>{
+      try{
+        const url = 'https://raw.githubusercontent.com/DRUN-s/DRUN-s.github.io/main/scripts/translations.js';
+        const res = await fetch(url);
+        if (!res.ok) throw new Error(res.status + ' ' + res.statusText);
+        const txt = await res.text();
+        $('#rawArea').value = txt;
+        $('#btnParse').click();
+        toast('Fichier chargé depuis GitHub');
+      } catch(err){
+        alert('Échec du chargement depuis GitHub : ' + err.message + "\n\nLe bouton d'exemple a été remplacé, mais tu peux toujours coller manuellement le contenu ou charger un fichier via le sélecteur.");
+      }
+    });
+    $('#btnLoadSample').addEventListener('click', ()=>{ /* fallback kept for older browsers that don't support fetch in some contexts */ });
+    $('#btnLoadSample').addEventListener('click', ()=>{});
+    $('#btnLoadSample').addEventListener('click', ()=>{});
+
+    $('#langSelect').addEventListener('change', (e)=>{ state.activeLang = e.target.value; renderEditor(); });
+    $('#filterInput').addEventListener('input', ()=> renderEditor());
+    $('#toggleShowEN').addEventListener('change', ()=> renderEditor());
+
+    $('#btnSave').addEventListener('click', ()=>{ toast('Modèle mis à jour en mémoire'); });
+
+    $('#btnCopy').addEventListener('click', async ()=>{
+      if (!state.translations) { alert('Charge un fichier d\'abord.'); return; }
+      const content = buildJsFile(); try{ await navigator.clipboard.writeText(content); toast('Copié dans le presse-papiers ✅'); }catch{ alert('Impossible de copier automatiquement — sélectionne et copie manuellement.'); }
+    });
+
+    $('#btnDownload').addEventListener('click', ()=>{ if (!state.translations) { alert('Charge un fichier d\'abord.'); return; } download('translations.js', buildJsFile()); });
+    $('#btnDownloadJSON').addEventListener('click', ()=>{ if (!state.translations) { alert('Charge un fichier d\'abord.'); return; } download('translations.json', JSON.stringify(state.translations, null, 2)); });
+
+    $('#btnSaveMem').addEventListener('click', ()=>{ try{ localStorage.setItem('tf2.translations', JSON.stringify(state.translations)); toast('Sauvegardé localement'); }catch{ toast('Échec sauvegarde locale'); } });
+    $('#btnLoadMem').addEventListener('click', ()=>{ try{ const raw = localStorage.getItem('tf2.translations'); if (!raw) { toast('Aucune sauvegarde locale'); return; } state.translations = JSON.parse(raw); state.originalSnapshot = JSON.parse(JSON.stringify(state.translations)); const meta = deriveKeysAndLangs(state.translations); state.langs = meta.langs; state.keys = meta.keys; state.activeLang = state.langs.includes('FR')? 'FR': state.langs[0]; renderLangs(); renderKeysBar(); renderEditor(); updateParsedStatus(true); toast('Chargé depuis le navigateur'); }catch(e){ toast('Erreur chargement local'); } });
+
+    $('#btnShowDiffFile').addEventListener('click', ()=>{
+      if (!state.originalSnapshot || !state.translations){ alert('Charge et analyse d\'abord un fichier.'); return; }
+      const left = JSON.stringify(state.originalSnapshot, null, 2);
+      const right = JSON.stringify(state.translations, null, 2);
+      const diff = Diff.diffWords(left,right);
+      const html = diff.map(part=> part.added? `<ins>${escapeHtml(part.value)}</ins>`: part.removed? `<del>${escapeHtml(part.value)}</del>`: escapeHtml(part.value) ).join('');
+      const box = $('#fileDiff'); box.innerHTML = html; box.style.display = 'block'; box.scrollIntoView({behavior:'smooth'});
+    });
+
+    $('#btnOpenPR').addEventListener('click', async ()=>{
+      if (!state.translations) { alert('Charge et analyse d\'abord un fichier.'); return; }
+      const owner = $('#ghOwner').value.trim(); const repo = $('#ghRepo').value.trim(); const branch = $('#ghBranch').value.trim() || 'main'; const path = $('#ghPath').value.trim();
+      if (!owner || !repo || !path){ alert('Renseigne owner, repo et chemin de fichier.'); return; }
+      const content = buildJsFile(); try{ await navigator.clipboard.writeText(content); toast('Fichier copié – ouverture de GitHub…'); }catch{};
+      const url = `https://github.com/${encodeURIComponent(owner)}/${encodeURIComponent(repo)}/edit/${encodeURIComponent(branch)}/${encodeURIComponent(path)}`;
+      window.open(url, '_blank');
+    });
+
+    // ---------- Utilities ------------------------------------------------
+    function buildJsFile(){ return 'const translations = ' + JSON.stringify(state.translations, null, 2) + ';\n\nexport default translations;\n'; }
+    function download(filename, content){ const blob = new Blob([content], {type:'text/plain;charset=utf-8'}); const url = URL.createObjectURL(blob); const a = document.createElement('a'); a.href = url; a.download = filename; a.click(); URL.revokeObjectURL(url); }
+
+    // ---------- Init: try load from local -------------------------------
+    window.addEventListener('DOMContentLoaded', ()=>{ try{ const raw = localStorage.getItem('tf2.translations'); if (raw){ state.translations = JSON.parse(raw); state.originalSnapshot = JSON.parse(JSON.stringify(state.translations)); const meta = deriveKeysAndLangs(state.translations); state.langs = meta.langs; state.keys = meta.keys; state.activeLang = state.langs[0]; renderLangs(); renderKeysBar(); renderEditor(); updateParsedStatus(true); } }catch(e){} });
+
+    // --- Bouton par défaut ---
+    $('#btnOpenPRDefault').addEventListener('click', async ()=>{
+    if (!state.translations) { alert('Charge et analyse d\'abord un fichier.'); return; }
+    const content = buildJsFile();
+    try { await navigator.clipboard.writeText(content); toast('Fichier copié – ouverture de GitHub…'); } catch {}
+    const url = "https://github.com/DRUN-s/DRUN-s.github.io/edit/main/scripts/translations.js";
+    window.open(url, '_blank');
+     });
+  
+  // --- Bouton custom ---
+  $('#btnOpenPRCustom').addEventListener('click', async ()=>{
+    if (!state.translations) { alert('Charge et analyse d\'abord un fichier.'); return; }
+    const owner = $('#ghOwner').value.trim();
+    const repo = $('#ghRepo').value.trim();
+    const branch = $('#ghBranch').value.trim() || 'main';
+    const path = $('#ghPath').value.trim();
+    if (!owner || !repo || !path){ alert('Renseigne owner, repo et chemin de fichier.'); return; }
+    const content = buildJsFile();
+    try { await navigator.clipboard.writeText(content); toast('Fichier copié – ouverture de GitHub…'); } catch {}
+    const url = `https://github.com/${encodeURIComponent(owner)}/${encodeURIComponent(repo)}/edit/${encodeURIComponent(branch)}/${encodeURIComponent(path)}`;
+    window.open(url, '_blank');
+  });
+  
+  // --- Toggle avancé ---
+  $('#toggleAdvanced').addEventListener('click', ()=>{
+    const adv = $('#advancedGhSection');
+    adv.style.display = adv.style.display === 'none' ? 'block' : 'none';
+  });
+  
+  </script>
+  
+</body>
+</html>
