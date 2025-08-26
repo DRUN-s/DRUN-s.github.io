@@ -131,6 +131,7 @@
             <button id="btnCopy" class="btn">Copy translations.js</button>
             <button id="btnDownload" class="btn">Download translations.js</button>
             <button id="btnDownloadJSON" class="btn">Export as JSON</button>
+            <button id="btnShowDiffFile" class="btn">See diff</button>
           </div>
 
 
@@ -453,7 +454,7 @@
         $('#btnParse').click();
         toast('File loaded from GitHub');
       } catch(err){
-        alert('Couldn\'t load from GitHub : ' + err.message");
+        alert('Couldn\'t load from GitHub : ' + err.message);
       }
     });
     $('#btnLoadSample').addEventListener('click', ()=>{ /* fallback kept for older browsers that don't support fetch in some contexts */ });
