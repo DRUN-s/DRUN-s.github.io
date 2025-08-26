@@ -487,14 +487,6 @@
       const box = $('#fileDiff'); box.innerHTML = html; box.style.display = 'block'; box.scrollIntoView({behavior:'smooth'});
     });
 
-    $('#btnOpenPR').addEventListener('click', async ()=>{
-      if (!state.translations) { alert('Charge et analyse d\'abord un fichier.'); return; }
-      const owner = $('#ghOwner').value.trim(); const repo = $('#ghRepo').value.trim(); const branch = $('#ghBranch').value.trim() || 'main'; const path = $('#ghPath').value.trim();
-      if (!owner || !repo || !path){ alert('Renseigne owner, repo et chemin de fichier.'); return; }
-      const content = buildJsFile(); try{ await navigator.clipboard.writeText(content); toast('Fichier copié – ouverture de GitHub…'); }catch{};
-      const url = `https://github.com/${encodeURIComponent(owner)}/${encodeURIComponent(repo)}/edit/${encodeURIComponent(branch)}/${encodeURIComponent(path)}`;
-      window.open(url, '_blank');
-    });
 
     // ---------- Utilities ------------------------------------------------
     function buildJsFile(){ return 'const translations = ' + JSON.stringify(state.translations, null, 2) + ';\n\nexport default translations;\n'; }
