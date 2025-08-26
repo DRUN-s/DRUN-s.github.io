@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>TF2 – Éditeur de translations (avec diff & côté-à-côté)</title>
+  <title>TF2TP Translation tool</title>
   <style>
     :root{ --bg:#0e1020; --panel:#151726; --muted:#2b2f3f; --text:#e7eef8; --sub:#9fb0c6; --accent:#7cc7ff; --warn:#ffb454; --good:#42d392; --card:#0f1220 }
     html,body{height:100%;margin:0;font-family:Inter, Roboto, system-ui, -apple-system, 'Segoe UI', Arial; background: radial-gradient(800px 400px at 10% -10%, #171827 0, transparent 40%), var(--bg); color:var(--text)}
@@ -74,80 +74,79 @@
 </head>
 <body>
   <div class="container">
-    <h1>Éditeur de translations.js</h1>
-    <div class="subtitle">Charge ton fichier, édite par langue (affiche EN à gauche), puis exporte / copie / ouvre l'éditeur GitHub.</div>
+    <h1>Edit translations.js easily</h1>
+    <div class="subtitle">Load up a file (preferably from github), edit it, and then you can either export to github and do a pull request, or paste it into the discord's translation ressources.</div>
 
     <div class="layout">
       <!-- left panel -->
       <section class="card">
         <div class="body">
-          <h3>1) Charger / Parser</h3>
+          <h3>1) Loadin' n' parsin'</h3>
           <div class="row" style="margin-bottom:8px">
             <input id="fileInput" class="input" type="file" accept=".js,.json">
-            <button id="btnLoadSample" class="btn">Charger depuis GitHub</button>
+            <button id="btnLoadSample" class="btn">Load from GitHub</button>
           </div>
           <textarea id="rawArea" placeholder="Ou colle ici ton contenu (const translations = {...};)"></textarea>
           <div class="row" style="margin-top:8px">
-            <button id="btnParse" class="btn primary">Analyser</button>
-            <span id="statusParsed" class="pill">Non analysé</span>
+            <button id="btnParse" class="btn primary">Analyse</button>
+            <span id="statusParsed" class="pill">Not analysed</span>
           </div>
 
           <hr style="border:none;border-top:1px solid var(--muted);margin:12px 0">
-          <h3>2) Options d'édition</h3>
+          <h3>2) Editing options</h3>
           <div style="margin-bottom:8px">
-            <label for="langSelect" class="small-note">Langue à éditer</label>
+            <label for="langSelect" class="small-note">Language to edit</label>
             <select id="langSelect" class="input"></select>
           </div>
           <div style="margin-bottom:8px" class="row">
             <input id="filterInput" class="input" placeholder="Filtrer par clé (ex: tf01Title)">
-            <label style="display:flex;align-items:center;gap:8px"><input id="toggleShowEN" type="checkbox" checked> Afficher EN à gauche</label>
+            <label style="display:flex;align-items:center;gap:8px"><input id="toggleShowEN" type="checkbox" checked>Show original</label>
           </div>
             <!-- Filtre "vides" -->
             <div class="row" style="margin-bottom:8px; flex-wrap:wrap">
                 <label style="display:flex;align-items:center;gap:8px">
-                <input id="toggleOnlyEmpty" type="checkbox"> Afficher uniquement les entrées vides
+                <input id="toggleOnlyEmpty" type="checkbox"> Only show empty
                 </label>
             </div>
           <div class="keysbar" id="keysBar"></div>
 
           <div style="margin-top:10px" class="row">
-            <button id="btnSaveMem" class="btn">Sauvegarder (local)</button>
-            <button id="btnLoadMem" class="btn">Charger local</button>
+            <button id="btnSaveMem" class="btn">Save (local)</button>
+            <button id="btnLoadMem" class="btn">Load local</button>
           </div>
 
-          <div class="footer">Aucun secret n'est envoyé. L'outil fonctionne entièrement côté client. Pour PR, le contenu est copié dans le presse-papiers et l'éditeur GitHub s'ouvre pour que tu colles et proposes la PR.</div>
+          <div class="footer">Everything works on clientside. On export, your work is copied to your clipboard and the github editor opens up and you can replace everything here (ctrl+a and ctrl+v). Then click the pull request button (the green one)</div>
         </div>
       </section>
 
       <!-- right panel -->
       <section class="card">
         <div class="body">
-          <h3>3) Édition (version originale EN à gauche, traduction à droite)</h3>
+          <h3>3) Éditing (Original on the left, your translation)</h3>
 
           <div id="editor" class="editor-grid"></div>
 
           <div style="margin-top:10px" class="row">
-            <button id="btnSave" class="btn">Mettre à jour le modèle</button>
-            <button id="btnCopy" class="btn">Copier translations.js</button>
-            <button id="btnDownload" class="btn">Télécharger .js</button>
-            <button id="btnDownloadJSON" class="btn">Exporter JSON</button>
-            <button id="btnShowDiffFile" class="btn">Voir diff fichier</button>
+            <button id="btnSave" class="btn">Update the model</button>
+            <button id="btnCopy" class="btn">Copy translations.js</button>
+            <button id="btnDownload" class="btn">Download translations.js</button>
+            <button id="btnDownloadJSON" class="btn">Export as JSON</button>
           </div>
 
-          <div id="fileDiff" class="diffBox" style="display:none"></div>
+
 
           <hr style="border:none;border-top:1px solid var(--muted);margin:12px 0">
-            <h3>4) PR GitHub</h3>
+            <h3>4) Send to GitHub</h3>
 
             <!-- Section par défaut -->
             <div class="row" id="defaultGhSection">
-            <button id="btnOpenPRDefault" class="btn primary">📤 Envoyer vers DRUN-s/translations.js</button>
+            <button id="btnOpenPRDefault" class="btn primary">📤 Send to DRUN-s/translations.js</button>
             <span class="pill">Copie + ouverture directe de l’éditeur GitHub</span>
             </div>
 
             <!-- Section avancée (masquée au départ) -->
             <div id="advancedGhSection" style="display:none; margin-top:12px">
-            <h4>Envoyer vers une autre destination</h4>
+            <h4>Send somewhere else</h4>
             <div class="row">
                 <input id="ghOwner" class="input" placeholder="Propriétaire (ex: druns)">
                 <input id="ghRepo" class="input" placeholder="Repo (ex: tf2-comics-site)">
@@ -163,21 +162,21 @@
 
             <!-- Bouton pour afficher l’avancé -->
             <div style="margin-top:8px">
-            <button id="toggleAdvanced" class="btn">⚙️ Envoyer vers une autre destination</button>
+            <button id="toggleAdvanced" class="btn">⚙️ Send to another destination</button>
             </div>
 
         </div>
       </section>
     </div>
 
-    <div style="margin-top:12px;color:var(--sub);font-size:13px">Besoin d'un mode 'accepter/rejeter' sur le diff ? Je peux l'ajouter.</div>
+    <div style="margin-top:12px;color:var(--sub);font-size:13px">This small tool was made with love (but also a lot with chatGPT) by DRUNs 🇫🇷 <img src="/images/GIFs/spyKazotsky.gif"> for the TF2 Comics translation project. Dear translator I wish you a good luck ! <img src="/images/GIFs/demoDance.gif"></div>
   </div>
 
   <div id="toast" style="position:fixed;right:18px;bottom:18px;background:#081220;padding:10px 12px;border-radius:8px;border:1px solid #234;color:var(--text);opacity:0;transform:translateY(10px);transition:.25s"></div>
 
   <!-- Boîte flottante sticky : compteur + navigation -->
   <div id="emptyBox">
-    <span id="emptyCounter">Vides : 0 / 0 — Progrès : 0%</span>
+    <span id="emptyCounter">Empty : 0 / 0 — Progress : 0%</span>
     <div style="display:flex; gap:6px; margin-top:6px">
         <button id="btnPrevEmpty" class="btn" title="Précédent vide">⬆️</button>
         <button id="btnNextEmpty" class="btn" title="Suivant vide">⬇️</button>
@@ -215,7 +214,7 @@
           if (ch === '{'){ depth++; }
           else if (ch === '}'){ depth--; if (depth === 0) return str.slice(startIndex, i+1); }
         }
-        throw new Error('Impossible de trouver la fin de l\'objet translations.');
+        throw new Error('Unable to find the end of the object translations.');
       }
       let body = null;
       const tIdx = cleaned.indexOf('translations');
@@ -228,10 +227,10 @@
         const firstBrace = cleaned.indexOf('{');
         if (firstBrace !== -1) body = grabBalancedObject(cleaned, firstBrace);
       }
-      if (!body) throw new Error('Aucun objet trouvé. Assure-toi que le code contient `const translations = { ... }`.');
+      if (!body) throw new Error('No object found, check if the code contain something like `const translations = { ... }`.');
       const fn = new Function('"use strict"; return (' + body + ');');
       const obj = fn();
-      if (!obj || typeof obj !== 'object') throw new Error('Le contenu évalué ne retourne pas un objet.');
+      if (!obj || typeof obj !== 'object') throw new Error('Whatever you loaded does not countain any object.');
       return obj;
     }
 
@@ -372,7 +371,7 @@
         }
         const filled = total - empty;
         const progress = total ? Math.round((filled / total) * 100) : 0;
-        el.textContent = `Vides : ${empty} / ${total} — Progrès : ${progress}%`;
+        el.textContent = `Empty : ${empty} / ${total} — Progress : ${progress}%`;
       }
       
       function navigateEmpty(direction){
@@ -452,9 +451,9 @@
         const txt = await res.text();
         $('#rawArea').value = txt;
         $('#btnParse').click();
-        toast('Fichier chargé depuis GitHub');
+        toast('File loaded from GitHub');
       } catch(err){
-        alert('Échec du chargement depuis GitHub : ' + err.message + "\n\nLe bouton d'exemple a été remplacé, mais tu peux toujours coller manuellement le contenu ou charger un fichier via le sélecteur.");
+        alert('Couldn\'t load from GitHub : ' + err.message");
       }
     });
     $('#btnLoadSample').addEventListener('click', ()=>{ /* fallback kept for older browsers that don't support fetch in some contexts */ });
@@ -465,21 +464,21 @@
     $('#filterInput').addEventListener('input', ()=> renderEditor());
     $('#toggleShowEN').addEventListener('change', ()=> renderEditor());
 
-    $('#btnSave').addEventListener('click', ()=>{ toast('Modèle mis à jour en mémoire'); });
+    $('#btnSave').addEventListener('click', ()=>{ toast('Updated the model in memory'); });
 
     $('#btnCopy').addEventListener('click', async ()=>{
-      if (!state.translations) { alert('Charge un fichier d\'abord.'); return; }
-      const content = buildJsFile(); try{ await navigator.clipboard.writeText(content); toast('Copié dans le presse-papiers ✅'); }catch{ alert('Impossible de copier automatiquement — sélectionne et copie manuellement.'); }
+      if (!state.translations) { alert('Load a file first !'); return; }
+      const content = buildJsFile(); try{ await navigator.clipboard.writeText(content); toast('Copied to your clipboard ! ✅'); }catch{ alert('Unable to copy for you\'ll have to export as JS and copy the content of the dowloaded file.'); }
     });
 
-    $('#btnDownload').addEventListener('click', ()=>{ if (!state.translations) { alert('Charge un fichier d\'abord.'); return; } download('translations.js', buildJsFile()); });
-    $('#btnDownloadJSON').addEventListener('click', ()=>{ if (!state.translations) { alert('Charge un fichier d\'abord.'); return; } download('translations.json', JSON.stringify(state.translations, null, 2)); });
+    $('#btnDownload').addEventListener('click', ()=>{ if (!state.translations) { alert('Load a file first !'); return; } download('translations.js', buildJsFile()); });
+    $('#btnDownloadJSON').addEventListener('click', ()=>{ if (!state.translations) { alert('Load a file first !'); return; } download('translations.json', JSON.stringify(state.translations, null, 2)); });
 
-    $('#btnSaveMem').addEventListener('click', ()=>{ try{ localStorage.setItem('tf2.translations', JSON.stringify(state.translations)); toast('Sauvegardé localement'); }catch{ toast('Échec sauvegarde locale'); } });
-    $('#btnLoadMem').addEventListener('click', ()=>{ try{ const raw = localStorage.getItem('tf2.translations'); if (!raw) { toast('Aucune sauvegarde locale'); return; } state.translations = JSON.parse(raw); state.originalSnapshot = JSON.parse(JSON.stringify(state.translations)); const meta = deriveKeysAndLangs(state.translations); state.langs = meta.langs; state.keys = meta.keys; state.activeLang = state.langs.includes('FR')? 'FR': state.langs[0]; renderLangs(); renderKeysBar(); renderEditor(); updateParsedStatus(true); toast('Chargé depuis le navigateur'); }catch(e){ toast('Erreur chargement local'); } });
+    $('#btnSaveMem').addEventListener('click', ()=>{ try{ localStorage.setItem('tf2.translations', JSON.stringify(state.translations)); toast('Locally saved'); }catch{ toast('Failed to save locally'); } });
+    $('#btnLoadMem').addEventListener('click', ()=>{ try{ const raw = localStorage.getItem('tf2.translations'); if (!raw) { toast('No local save'); return; } state.translations = JSON.parse(raw); state.originalSnapshot = JSON.parse(JSON.stringify(state.translations)); const meta = deriveKeysAndLangs(state.translations); state.langs = meta.langs; state.keys = meta.keys; state.activeLang = state.langs.includes('FR')? 'FR': state.langs[0]; renderLangs(); renderKeysBar(); renderEditor(); updateParsedStatus(true); toast('loaded from browser'); }catch(e){ toast('Error in local loading'); } });
 
     $('#btnShowDiffFile').addEventListener('click', ()=>{
-      if (!state.originalSnapshot || !state.translations){ alert('Charge et analyse d\'abord un fichier.'); return; }
+      if (!state.originalSnapshot || !state.translations){ alert('Slow down lad ! Load up a file and analyse it first !'); return; }
       const left = JSON.stringify(state.originalSnapshot, null, 2);
       const right = JSON.stringify(state.translations, null, 2);
       const diff = Diff.diffWords(left,right);
@@ -497,7 +496,7 @@
 
     // --- Bouton par défaut ---
     $('#btnOpenPRDefault').addEventListener('click', async ()=>{
-    if (!state.translations) { alert('Charge et analyse d\'abord un fichier.'); return; }
+    if (!state.translations) { alert('Slow down lad ! Load up a file and analyse it first !'); return; }
     const content = buildJsFile();
     try { await navigator.clipboard.writeText(content); toast('Fichier copié – ouverture de GitHub…'); } catch {}
     const url = "https://github.com/DRUN-s/DRUN-s.github.io/edit/main/scripts/translations.js";
@@ -506,14 +505,14 @@
   
   // --- Bouton custom ---
   $('#btnOpenPRCustom').addEventListener('click', async ()=>{
-    if (!state.translations) { alert('Charge et analyse d\'abord un fichier.'); return; }
+    if (!state.translations) { alert('Slow down lad ! Load up a file and analyse it first !'); return; }
     const owner = $('#ghOwner').value.trim();
     const repo = $('#ghRepo').value.trim();
     const branch = $('#ghBranch').value.trim() || 'main';
     const path = $('#ghPath').value.trim();
-    if (!owner || !repo || !path){ alert('Renseigne owner, repo et chemin de fichier.'); return; }
+    if (!owner || !repo || !path){ alert('Fill in the owner, repo et file path.'); return; }
     const content = buildJsFile();
-    try { await navigator.clipboard.writeText(content); toast('Fichier copié – ouverture de GitHub…'); } catch {}
+    try { await navigator.clipboard.writeText(content); toast('File has been copied – opening GitHub…'); } catch {}
     const url = `https://github.com/${encodeURIComponent(owner)}/${encodeURIComponent(repo)}/edit/${encodeURIComponent(branch)}/${encodeURIComponent(path)}`;
     window.open(url, '_blank');
   });
