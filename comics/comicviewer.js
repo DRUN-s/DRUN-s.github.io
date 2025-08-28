@@ -145,7 +145,7 @@ $(document).ready(function () {
         .attr("src", imagePath)
         .off("error")
         .on("error", function () {
-          alert("Image non trouvée : " + imagePath);
+          alert("Image not found (there is a high chance it hasn't been translated to your language yet) : " + imagePath);
         });
   
       $("#pageIndicator").text(`Langue : ${data.lang} | Tome : ${data.tomeKey.toUpperCase()} | Page ${data.pageNum}`);
@@ -198,7 +198,7 @@ $(document).ready(function () {
         updateHash(data);
     }
   
-    //Si la zone es cliqué la page change
+    //Change the page when the areas are clicked
     $("#leftZone").on("click", () => changePage(-1));
     $("#rightZone").on("click", () => changePage(1));
   
@@ -215,7 +215,7 @@ $(document).ready(function () {
       updateHash(data);
     });
   
-    // Premier chargement
+    // 1st load
     const initialData = parseHash();
     if (initialData) {
       loadPage(initialData);
@@ -230,20 +230,20 @@ $(document).ready(function () {
     
     fullscreenToggle.addEventListener('click', () => {
         if (!document.fullscreenElement) {
-            // Activer le fullscreen sur clickableArea
+            // Enable fullscreen for clickableArea
             clickableArea.requestFullscreen().then(() => {
-                img.src = '/images/fullscreenOut.png';
+                img.src = '/images/fullscreenOut.svg';
                 body.classList.add('fullscreen-active');
             }).catch(err => {
-                console.error(`Erreur lors du fullscreen : ${err}`);
+                console.error(`Error with fullscreen : ${err}`);
             });
         } else {
             // Quitter le fullscreen
             document.exitFullscreen().then(() => {
-                img.src = '/images/fullscreenIn.png';
+                img.src = '/images/fullscreenIn.svg';
                 body.classList.remove('fullscreen-active');
             }).catch(err => {
-                console.error(`Erreur lors de la sortie du fullscreen : ${err}`);
+                console.error(`Error when exiting fullscreen : ${err}`);
             });
         }
     });
@@ -251,7 +251,7 @@ $(document).ready(function () {
     // Gestion du ESC ou sortie fullscreen
     document.addEventListener('fullscreenchange', () => {
         if (!document.fullscreenElement) {
-            img.src = '/images/fullscreenIn.png';
+            img.src = '/images/fullscreenIn.svg';
             body.classList.remove('fullscreen-active');
         }
     });

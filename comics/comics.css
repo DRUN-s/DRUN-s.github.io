@@ -1,6 +1,6 @@
 body {
 	font-family: sans-serif;
-	background: #111;
+	background: #262323;
 	color: white;
 	margin: 0;
 	padding-top: 5vh;
@@ -142,7 +142,7 @@ body {
   }
   
   .dropdown button {
-	background-color: #231f20;
+	background-color: #34302D;
 	min-width: 130px;
 	width: max-content;
 	height: 40px;

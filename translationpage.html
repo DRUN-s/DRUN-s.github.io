@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- WHOEVER COMES HERE BE AWARE THAT THIS PIECE OF CODE IS UNMAINTAINABLE DO NOT ATTEMPT TO SPEND TOO MUCH TIME HERE -->
 <html lang="fr">
 <head>
   <meta charset="utf-8" />
@@ -86,7 +87,7 @@
             <input id="fileInput" class="input" type="file" accept=".js,.json">
             <button id="btnLoadSample" class="btn">Load from GitHub</button>
           </div>
-          <textarea id="rawArea" placeholder="Ou colle ici ton contenu (const translations = {...};)"></textarea>
+          <textarea id="rawArea" placeholder="Or paste your content here (const translations = {...};)"></textarea>
           <div class="row" style="margin-top:8px">
             <button id="btnParse" class="btn primary">Analyse</button>
             <span id="statusParsed" class="pill">Not analysed</span>
@@ -122,7 +123,7 @@
       <!-- right panel -->
       <section class="card">
         <div class="body">
-          <h3>3) Éditing (Original on the left, your translation)</h3>
+          <h3>3) Editing (Original on the left, your translation)</h3>
 
           <div id="editor" class="editor-grid"></div>
 
@@ -142,22 +143,22 @@
             <!-- Section par défaut -->
             <div class="row" id="defaultGhSection">
             <button id="btnOpenPRDefault" class="btn primary">📤 Send to DRUN-s/translations.js</button>
-            <span class="pill">Copie + ouverture directe de l’éditeur GitHub</span>
+            <span class="pill">Copy + directly opens GitHub editor</span>
             </div>
 
             <!-- Section avancée (masquée au départ) -->
             <div id="advancedGhSection" style="display:none; margin-top:12px">
             <h4>Send somewhere else</h4>
             <div class="row">
-                <input id="ghOwner" class="input" placeholder="Propriétaire (ex: druns)">
+                <input id="ghOwner" class="input" placeholder="Owner (ex: druns)">
                 <input id="ghRepo" class="input" placeholder="Repo (ex: tf2-comics-site)">
             </div>
             <div class="row" style="margin-top:8px">
-                <input id="ghBranch" class="input" placeholder="Branche (ex: main)">
-                <input id="ghPath" class="input" placeholder="Chemin (ex: src/data/translations.js)">
+                <input id="ghBranch" class="input" placeholder="Branch (ex: main)">
+                <input id="ghPath" class="input" placeholder="Path (ex: src/data/translations.js)">
             </div>
             <div style="margin-top:8px" class="row">
-                <button id="btnOpenPRCustom" class="btn">📤 Ouvrir éditeur GitHub personnalisé</button>
+                <button id="btnOpenPRCustom" class="btn">📤 Open custom github editor</button>
             </div>
             </div>
 

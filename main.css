@@ -1,7 +1,7 @@
 /*CSS for comics page for tf2*/
 
 body {
-	background-color:#2e2a28;
+	background-color:#262323;
 	background-repeat:repeat-y;
 	background-position:center;
 	margin:0;
@@ -433,7 +433,7 @@ margin-left: 15px;
   }
   
   .dropdown button {
-	background-color: #231f20;
+	background-color: #34302D;
 	min-width: 130px;
 	width: max-content;
 	height: 40px;
