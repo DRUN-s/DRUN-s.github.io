@@ -31,6 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     updateText(effectiveLang);
+    updateCovers(effectiveLang);
     hideSelected();
 
     // --- Gestion des clics sur la liste ---
@@ -64,6 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
         dropdown.classList.remove("open");
 
         updateText(langCode);
+        updateCovers(langCode);
     }
 
     function updateText(lang) {
@@ -95,27 +97,34 @@ document.addEventListener("DOMContentLoaded", function () {
             tf02Cover: "tf02",
         };
     
+        const BASE = "/comics/covers/main";
+    
+        console.log("=== updateCovers appelé avec :", lang, "===");
+    
         for (const [imgId, comicId] of Object.entries(covers)) {
             const img = document.getElementById(imgId);
-            if (!img) continue;
+            if (!img) {
+                console.warn("Pas trouvé d’image avec id :", imgId);
+                continue;
+            }
     
-            // chemin de ton image traduite
-            let newSrc = `/comics/covers/${comicId}/${comicId}${lang}_cover.png`;
+            const langPath = `${BASE}/${comicId}/${comicId}${lang}_cover.png`;
+            const fallback = `${BASE}/${comicId}/${comicId}_cover.png`;
     
-            // Vérifie si l’image existe, sinon fallback EN
-            fetch(newSrc, { method: "HEAD" })
-                .then(res => {
-                    if (res.ok) {
-                        img.src = newSrc;
-                    } else {
-                        img.src = `/comics/covers/${comicId}/${comicId}tf00_cover.png`;
-                    }
-                })
-                .catch(() => {
-                    img.src = `/comics/covers/${comicId}/${comicId}EN_cover.png`;
-                });
+            const test = new Image();
+            test.onload = () => {
+                img.src = langPath;
+            };
+            test.onerror = () => {
+                console.warn("Cover not found :", langPath, " → fallback to english");
+                img.src = fallback;
+            };
+            test.src = langPath;
         }
     }
+    
+    
+    
     
 
     //Handling the language selector button
