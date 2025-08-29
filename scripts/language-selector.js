@@ -88,6 +88,37 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    function updateCovers(lang) {
+        const covers = {
+            tf00Cover: "tf00",
+            tf01Cover: "tf01",
+            tf02Cover: "tf02",
+        };
+    
+        for (const [imgId, comicId] of Object.entries(covers)) {
+            const img = document.getElementById(imgId);
+            if (!img) continue;
+    
+            // chemin de ton image traduite
+            let newSrc = `/comics/covers/${comicId}/${comicId}${lang}_cover.png`;
+    
+            // Vérifie si l’image existe, sinon fallback EN
+            fetch(newSrc, { method: "HEAD" })
+                .then(res => {
+                    if (res.ok) {
+                        img.src = newSrc;
+                    } else {
+                        img.src = `/comics/covers/${comicId}/${comicId}tf00_cover.png`;
+                    }
+                })
+                .catch(() => {
+                    img.src = `/comics/covers/${comicId}/${comicId}EN_cover.png`;
+                });
+        }
+    }
+    
+
+    //Handling the language selector button
     function unwrapSelector() {
         container.style.pointerEvents = "none";
         setTimeout(() => container.style.pointerEvents = "auto", 200);
