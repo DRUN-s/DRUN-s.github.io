@@ -1,3 +1,4 @@
+//Like a JSON file that is a bit off
 const translations = {
     "FR": {
         "page":"Page",

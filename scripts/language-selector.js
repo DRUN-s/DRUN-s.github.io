@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // --- Détection langue effective ---
-    const supportedLangs = ["EN","FR","FI","ES","KR","DE","PL","TR","CS"];
+    const supportedLangs = Object.keys(translations);
     const browserLang = navigator.language || navigator.userLanguage;
     const langCode = browserLang.split("-")[0].toUpperCase();
     const savedLang = localStorage.getItem("selectedLanguage");
