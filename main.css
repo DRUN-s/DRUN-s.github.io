@@ -7,6 +7,7 @@ body {
 	margin:0;
 	padding:0;
 	font-family: GravePresse;
+	overflow-x: hidden;
 }
 
 p{
@@ -668,3 +669,22 @@ margin-left: 15px;
 	animation: tooltips-vert 300ms ease-out forwards;
   }
   
+
+  /*RESPONSIVE CSS IS GOING TO KILL ME OUT OF DISPAIR*/
+  @media (max-width: 830px) {
+	.comic_box {
+	  width: calc(50% - 20px); /* 2 colonnes */
+	}
+	#centerColContent {
+		width: 100vw;
+	}
+  }
+  
+  @media (max-width: 480px) {
+	.comic_box {
+	  width: 100%; /* 1 colonne */
+	}
+	#centerColContent {
+		width: 100vw;
+	}
+  }
