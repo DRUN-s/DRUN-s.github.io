@@ -1,5 +1,6 @@
 const translations = {
     "FR": {
+        "page":"Page",
         "blurbText": "Valve n'a jamais traduit les BDs de TF2, les efforts de la communauté pour résoudre ce problème sont nombreux, mais désorganisés et souvent paresseux. Quasiment aucun n'ont mené à une traduction complète. Ce projet est une réunification des meilleures traductions des comics TF2 faites par la communauté. Les BDs que vous allez voir ici on été faites avec le kit de traduction des comics TF2 crée par DRUNs pour paraitre les plus authentiques et semblables aux originaux que possible. Enfin, assez parlé (ou plutôt écris). Allez donc lire ces comics dans votre langue, ou apprenez en une nouvelle !",
         "WIPText": "⚠️ CE SITE EST EN CONSTRUCTION! ⚠️ LE CSS C'EST GALÈRE AIDEZ MOI JE VOUS EN SUPPLIE",
         "aboutButtonText":"À propos",
@@ -71,6 +72,7 @@ const translations = {
 
     //For english, brackets can stay empty since it's the default language of the website. 
     "EN": {
+        "page":"Page",
         "blurbText": "Valve never translated the TF2 comics, the community efforts to do so were numerous, but unorganised and sometimes lazy. Almost none led to any full translation. This project is a reunification of the best quality fanmade translations of the TF2 comics. The comics you will see were made with the TF2 comics translation toolkit made by DRUNs to look as much authentic as the original comics. Anyway enough reading unintersting text ! Go on now and read the comics in your favorite language or learn one by trying to do so !",
         "WIPText": "⚠️ THIS WEBSITE IS UNDER CONSTRUCTION! ⚠️ CSS IS HARD PLEASE HELP ME",
         "aboutButtonText":"About",
@@ -140,7 +142,8 @@ const translations = {
     },
 
     "ES": {
-         "blurbText": "Valve nunca hizo un esfuerzo en traducir los comics de TF2, se intentaron numerosos intentos por parte de la comunidad, pero estos fueron desorganizados e incluso en ocasiones, perezosos. Casi ninguno de ellos llevó a una traducción completa. Este proyecto es una reunificación de las mejores traducciones fan-made de los cómics de TF2. Los comics que aquí veréis han sido producidos con el paquete de herramientas de traducción hecha por DRUNs para que sea cuanto más auténtico a los originales como se pueda. Pero bueno, ¡Suficiente lectura pseudo-burocrática y aburrida! ¡Ve, y lee los comics en tu idioma favorito, o aprende un idioma nuevo intentando leerlo!",
+        "page":"Pagina",
+        "blurbText": "Valve nunca hizo un esfuerzo en traducir los comics de TF2, se intentaron numerosos intentos por parte de la comunidad, pero estos fueron desorganizados e incluso en ocasiones, perezosos. Casi ninguno de ellos llevó a una traducción completa. Este proyecto es una reunificación de las mejores traducciones fan-made de los cómics de TF2. Los comics que aquí veréis han sido producidos con el paquete de herramientas de traducción hecha por DRUNs para que sea cuanto más auténtico a los originales como se pueda. Pero bueno, ¡Suficiente lectura pseudo-burocrática y aburrida! ¡Ve, y lee los comics en tu idioma favorito, o aprende un idioma nuevo intentando leerlo!",
         "WIPText": "⚠️ ¡ESTA WEB ESTÁ BAJO CONSTRUCCIÓN! ⚠️ ¡CSS ES DIFICIL DE PELOTAS, POR FAVOR, AYUDA!",
         "aboutButtonText":"",
         "helpButtonText":"",
@@ -209,7 +212,8 @@ const translations = {
     },
     
     "DE": {
-         "blurbText": "Valve never translated the TF2 comics, the community efforts to do so were numerous, but unorganised and sometimes lazy. Almost none led to any full translation. This project is a reunification of the best quality fanmade translations of the TF2 comics. The comics you will see were made with the TF2 comics translation toolkit made by DRUNs to look as much authentic as the original comics. Anyway enough reading unintersting text ! Go on now and read the comics in your favorite language or learn one by trying to do so !",
+        "page":"",
+        "blurbText": "Valve never translated the TF2 comics, the community efforts to do so were numerous, but unorganised and sometimes lazy. Almost none led to any full translation. This project is a reunification of the best quality fanmade translations of the TF2 comics. The comics you will see were made with the TF2 comics translation toolkit made by DRUNs to look as much authentic as the original comics. Anyway enough reading unintersting text ! Go on now and read the comics in your favorite language or learn one by trying to do so !",
         "WIPText": "⚠️ THIS WEBSITE IS UNDER CONSTRUCTION! ⚠️ CSS IS HARD PLEASE HELP ME",
         "aboutButtonText":"",
         "helpButtonText":"",
@@ -278,8 +282,9 @@ const translations = {
     },
 
     "FI": {
+        "page":"",
         "blurbText": "Valve ei koskaan kääntänyt TF2 sarjakuvia. Yhteisöllä oli useita yrityksiä kääntää, mutta yritykset olivat epäorganisoituja ja jopa laiskoja. Käytännössä kaikki projektit epäonnistuivat kääntämisessä; tämä projekti on parhaiden fanikäännösten jälleenyhdistyminen. Sarjakuvat jotka näette on tehty DRUNsin TF2 sarjakuvien käännöstyökalupakin avulla. Käännökset on tehty näyttämään mahdollisimman paljon alkuperäisiltä sarjakuvilta. Kuitenkin nyt riittää mielenkiinnottoman tekstin lukeminen! Menes nyt lukemaan lempikielellesi käännettyä sarjakuvaa tai opi yksi yrittäessäsi lukea!",
-       "WIPText": "⚠️ Tämä verkkosivu on keskeneräinen ⚠️  CSS ON VAIKEAA... TARVITAAN APUA!",
+        "WIPText": "⚠️ Tämä verkkosivu on keskeneräinen ⚠️  CSS ON VAIKEAA... TARVITAAN APUA!",
         "aboutButtonText":"",
         "helpButtonText":"",
         "teamButtonText":"",
@@ -347,6 +352,7 @@ const translations = {
     },
 
     "TR": {
+        "page":"",
         "blurbText":"Valve asla TF2 çizgi romanlarını çevirmedi ve topluluk olarak uğraşılmış çeviriler de çoğunlukla tembelce veya dağınıktı. Neredeyse hiçbiri bütün bir çeviri içermiyordu. Fakat bu proje en iyi TF2 çevirmenleri tarafından özenle hazırlandı. Burada okuyacağınız TF2 çizgi romanların “toolkit” aranjmanı DRUNs tarafından gerçeğine en yakın olacak şekilde yapıldı. Neyse, yeterince boş yaptık! Şimdi TF2 çizgi romanlarını kendi dilinizde de okuyabilirsiniz, isterseniz başka bir dil öğrenmek için bir fırsat da kazanabilirsiniz!",
         "WIPText":"",
         "aboutButtonText":"",
@@ -416,6 +422,7 @@ const translations = {
     },
 
     "CS": {
+        "page":"",
         "blurbText":"Ze strany Valve nikdy nevznikl překlad TF2 komiksů a komunitní snahy, byť početné, byly dezorganizované a jejich výsledky ne vždy kvalitní. Z téměř žádných dosud nevyšel kompletní překlad. Tento projekt zastřešuje ty nejkvalitnější komunitní překlady TF2 komiksů, které díky DRUNově sadě nástrojů pro překladatele působí zcela autenticky. Ale dost bylo nudného textu! Dej se do čtení ve svém preferovaném jazyce, nebo se ním zkus naučit nějaký cizí!",
         "WIPText":"⚠️ NA TÉTO STRÁNCE SE PRACUJE ⚠️  CSSko JE TĚŽKÝ, PROSÍM POŠLETE POMOC!",
         "aboutButtonText":"",
@@ -485,6 +492,7 @@ const translations = {
     },
 
     "PL": {
+        "page":"",
         "blurbText": "Valve nigdy nie przetłumaczył komiksów tf2, społeczność próbowała to zrobić wiele razy, ale te próby były niezorganizowane i czasami leniwe. Prawie żadne nie skończyły się na pełnej translacji. Ten projekt to zjednoczenie najlepszej jakości fanowskiej translacji. Komiksy które zobaczysz zostały stworzone z zestawem tłumaczenia TF2 komiksów stworzonego przez DRUN'a żeby wyglądały jak najautentyczniej do oficjalnych komiksów. Z resztą przestań czytać ten nudny tekst ! Dalej idź przeczytać komiksy w twoim ulubionym języku albo naucz się jednego próbując !",
         "WIPText": "⚠️ TA STRONA JEST JESZCZE TWORZONA! ⚠️ CSS JEST TRUDNE PROSZE POMÓŻCIE",
         "aboutButtonText":"",
@@ -561,6 +569,7 @@ const translations = {
 /* Sample : 
 
 "": {
+    "page":"",
     "blurbText":"",
     "WIPText":"",
     "aboutButtonText":"",

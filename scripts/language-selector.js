@@ -5,39 +5,36 @@ document.addEventListener("DOMContentLoaded", function () {
     let items = list.getElementsByTagName('li');
     let selectedItem = document.getElementById('selectedItem');
 
-    const defaultTexts = {}; // Stockage des textes par défaut au premier passage
+    const defaultTexts = {}; // Stockage des textes par défaut
 
     if (items.length === 0) {
         console.error("Aucun élément de langue trouvé !");
         return;
     }
 
-    //Checks the local storage for the preffered language (the one that has been set on the previous page)
-    let savedLang = localStorage.getItem("selectedLanguage");
-    if (savedLang) {
-        updateText(savedLang);
-        selectedItem.setAttribute("lang-selection", savedLang);
+    // --- Détection langue effective ---
+    const supportedLangs = ["EN","FR","FI","ES","KR","DE","PL","TR","CS"];
+    const browserLang = navigator.language || navigator.userLanguage;
+    const langCode = browserLang.split("-")[0].toUpperCase();
+    const savedLang = localStorage.getItem("selectedLanguage");
 
-        // Updates the language selection button
-        for (let i = 0; i < items.length; i++) {
-            if (items[i].getAttribute('lang-selection') === savedLang) {
-                selectedItem.innerHTML = items[i].innerHTML + '<span class="arrow-down"></span>';
-                hideSelected();
-                break;
-            }
-        }
+    let effectiveLang = savedLang || (supportedLangs.includes(langCode) ? langCode : "EN");
+    localStorage.setItem("selectedLanguage", effectiveLang);
+
+    console.log("Langue appliquée :", effectiveLang);
+
+    // --- Mise à jour du bouton ET du lecteur ---
+    const item = document.querySelector(`#select-container li[lang-selection="${effectiveLang}"]`);
+    if (item && selectedItem) {
+        selectedItem.innerHTML = item.innerHTML + '<span class="arrow-down"></span>';
+        selectedItem.setAttribute("lang-selection", effectiveLang);
     }
 
+    updateText(effectiveLang);
+    hideSelected();
 
-    // Init visuelle : cache l'élément de la langue active dans la liste
-    let activeLangCode = selectedItem.getAttribute('lang-selection');
+    // --- Gestion des clics sur la liste ---
     for (let i = 0; i < items.length; i++) {
-        let itemLang = items[i].getAttribute('lang-selection');
-        if (itemLang === activeLangCode) {
-            items[i].style.opacity = '0';
-            items[i].style.display = 'none';
-        }
-
         items[i].addEventListener("click", function () {
             onSelect(this);
         });
@@ -48,19 +45,16 @@ document.addEventListener("DOMContentLoaded", function () {
         dropdown.classList.toggle("open");
     });
 
-    // Fermer le menu si clic en dehors
     document.addEventListener("click", function () {
         dropdown.classList.remove("open");
     });
 
     function onSelect(item) {
         let langCode = item.getAttribute('lang-selection');
-    
         console.log("Langue sélectionnée :", langCode);
-    
-        // Sauvegarde dans le localStorage
+
         localStorage.setItem("selectedLanguage", langCode);
-    
+
         showUnselected();
         selectedItem.innerHTML = item.innerHTML + '<span class="arrow-down"></span>';
         selectedItem.setAttribute('lang-selection', langCode);
@@ -68,8 +62,8 @@ document.addEventListener("DOMContentLoaded", function () {
         hideSelected();
         unwrapSelector();
         dropdown.classList.remove("open");
-    
-        updateText(langCode); // Mettre à jour les textes !
+
+        updateText(langCode);
     }
 
     function updateText(lang) {
@@ -82,22 +76,17 @@ document.addEventListener("DOMContentLoaded", function () {
             const el = document.getElementById(key);
             if (!el) continue;
     
-            // Sauvegarde du texte original une seule fois
             if (!(key in defaultTexts)) {
                 defaultTexts[key] = el.textContent;
             }
     
-            // Si la valeur est non vide, on applique la traduction
             if (typeof value === "string" && value.trim() !== "") {
                 el.textContent = value;
             } else {
-                // Sinon on restaure le texte par défaut
                 el.textContent = defaultTexts[key];
             }
         }
     }
-    
-    
 
     function unwrapSelector() {
         container.style.pointerEvents = "none";
