@@ -32,6 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     updateText(effectiveLang);
     updateCovers(effectiveLang);
+    checkComicsAvailability(effectiveLang);
     hideSelected();
 
     // --- Gestion des clics sur la liste ---
@@ -59,13 +60,13 @@ document.addEventListener("DOMContentLoaded", function () {
         showUnselected();
         selectedItem.innerHTML = item.innerHTML + '<span class="arrow-down"></span>';
         selectedItem.setAttribute('lang-selection', langCode);
-        selectedItem.setAttribute('tooltip', item.getAttribute('tooltip'));
         hideSelected();
         unwrapSelector();
         dropdown.classList.remove("open");
 
         updateText(langCode);
         updateCovers(langCode);
+        checkComicsAvailability(langCode);
     }
 
     function updateText(lang) {
@@ -123,9 +124,41 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
     
-    
-    
-    
+    function checkComicsAvailability(lang) {
+        const BASE = "/comics";
+        const comics = Object.fromEntries([
+            ["tf00","catchup-comic"],
+            ["tf01","ring-of-fired"],
+            ["tf02","unhappy-returns"],
+            ["tf03","cold-day-in-hell"],
+            ["tf04","blood-in-the-water"],
+            ["tf05","old-wounds"],
+            ["tf06","the-naked-and-the-dead"],
+            ["tf07","the-days-have-worn-away"],
+            ["tfu00","bonus-issue-00"],
+            ["tfu01","bonus-issue-01"],
+            ["tfu02","bonus-issue-02"]
+            ].map(([id, slug]) => [
+            id+"Cover",
+            { dir: `${id}_${slug}`, file: `${id}_${slug.replace(/-/g,"_")}-1.jpg` } //this line converts kebab case (folders) to snake case (files)
+            ]));
+
+        for (const [imgId, { dir, file }] of Object.entries(comics)) {
+            const img = document.getElementById(imgId);
+            if (!img) continue;
+            
+            const wrapper = img.closest(".image_wrapper");
+            const overlay = wrapper ? wrapper.querySelector(".overlay") : null;
+            if (!overlay) continue;
+            
+            const url = `${BASE}/${dir}/${lang}/${file}`;
+            
+            const test = new Image();
+            test.onload = () => { overlay.style.display = "none"; };
+            test.onerror = () => { overlay.style.display = "flex"; };
+            test.src = url + "?_ts=" + Date.now(); // anti-cache
+        }
+    }
 
     //Handling the language selector button
     function unwrapSelector() {

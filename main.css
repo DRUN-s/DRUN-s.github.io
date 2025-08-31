@@ -400,6 +400,21 @@ margin-left: 15px;
   .comic_box:hover .image_wrapper::after {
 	opacity: 1;
   }
+
+  .image_wrapper .overlay {
+	position: absolute;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.6); /* noir semi-transparent */
+	color: #fff;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-weight: bold;
+	font-size: 1.2em;
+	text-align: center;
+	border-radius: 5px; /* optionnel */
+	z-index: 999;
+  }
   
   /* Caption styles inchangés */
   .comic_caption {
