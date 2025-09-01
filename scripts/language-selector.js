@@ -8,11 +8,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const defaultTexts = {}; // Stockage des textes par défaut
 
     if (items.length === 0) {
-        console.error("Aucun élément de langue trouvé !");
+        console.error("No language elements found.");
         return;
     }
 
-    // --- Détection langue effective ---
+    //Detects the browser's language
     const supportedLangs = Object.keys(translations);
     const browserLang = navigator.language || navigator.userLanguage;
     const langCode = browserLang.split("-")[0].toUpperCase();
@@ -21,9 +21,9 @@ document.addEventListener("DOMContentLoaded", function () {
     let effectiveLang = savedLang || (supportedLangs.includes(langCode) ? langCode : "EN");
     localStorage.setItem("selectedLanguage", effectiveLang);
 
-    console.log("Langue appliquée :", effectiveLang);
+    console.log("Applied language :", effectiveLang);
 
-    // --- Mise à jour du bouton ET du lecteur ---
+    //Updates the language selector accordingly
     const item = document.querySelector(`#select-container li[lang-selection="${effectiveLang}"]`);
     if (item && selectedItem) {
         selectedItem.innerHTML = item.innerHTML + '<span class="arrow-down"></span>';
@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
     checkComicsAvailability(effectiveLang);
     hideSelected();
 
-    // --- Gestion des clics sur la liste ---
+    //Clicks on the list.
     for (let i = 0; i < items.length; i++) {
         items[i].addEventListener("click", function () {
             onSelect(this);
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function onSelect(item) {
         let langCode = item.getAttribute('lang-selection');
-        console.log("Langue sélectionnée :", langCode);
+        console.log("Selected language :", langCode);
 
         localStorage.setItem("selectedLanguage", langCode);
 
@@ -71,10 +71,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function updateText(lang) {
         if (!translations?.[lang]) {
-            console.warn("Aucune traduction trouvée pour la langue :", lang);
+            console.warn("No translation found for :", lang);
             return;
         }
     
+        const dict = translations[lang] || translations["EN"];
+
+        document.querySelectorAll("[data-key]").forEach(el => {
+          const key = el.getAttribute("data-key");
+          if (dict[key]) {
+            el.textContent = dict[key];
+          }
+        });
+
         for (const [key, value] of Object.entries(translations[lang])) {
             const el = document.getElementById(key);
             if (!el) continue;
@@ -100,12 +109,12 @@ document.addEventListener("DOMContentLoaded", function () {
     
         const BASE = "/comics/covers/main";
     
-        console.log("=== updateCovers appelé avec :", lang, "===");
+        //console.log("=== updateCovers has been called with :", lang, "===");
     
         for (const [imgId, comicId] of Object.entries(covers)) {
             const img = document.getElementById(imgId);
             if (!img) {
-                console.warn("Pas trouvé d’image avec id :", imgId);
+                console.warn("Couldn't find image from ID :", imgId);
                 continue;
             }
     

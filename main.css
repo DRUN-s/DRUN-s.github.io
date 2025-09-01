@@ -404,7 +404,7 @@ margin-left: 15px;
   .image_wrapper .overlay {
 	position: absolute;
 	inset: 0;
-	background: rgba(0, 0, 0, 0.6); /* noir semi-transparent */
+	background: rgba(0, 0, 0, 0.35); /* noir semi-transparent */
 	color: #fff;
 	display: flex;
 	justify-content: center;
