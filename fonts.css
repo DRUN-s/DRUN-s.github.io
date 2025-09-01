@@ -139,6 +139,11 @@
 /*other fonts*/
 
 @font-face {
+    font-family: 'Maoken Assorted Sans'; /*a name to be used later*/
+    src: url('fonts/MaokenAssortedSans.otf'); /*URL to font*/
+}
+
+@font-face {
     font-family: 'BlackOakStd'; /*a name to be used later*/
     src: url('fonts/BlackoakStd.otf'); /*URL to font*/
 }
