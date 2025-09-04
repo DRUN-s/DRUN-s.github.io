@@ -21,7 +21,7 @@ $(function () {
       pages: 75 
     },
     { key: "tf03", 
-      folder: "tf03_a_cold_day_in_hell", 
+      folder: "tf03_a-cold-day-in-hell", 
       baseName: "tf03_a_cold_day_in_hell", 
       title: Object.fromEntries(Object.keys(translations).map(lang => [lang, translations[lang].tf03Title])),
         pages: 70 
