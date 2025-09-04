@@ -139,14 +139,14 @@ document.addEventListener("DOMContentLoaded", function () {
             ["tf00","catchup-comic"],
             ["tf01","ring-of-fired"],
             ["tf02","unhappy-returns"],
-            ["tf03","cold-day-in-hell"],
+            ["tf03","a-cold-day-in-hell"],
             ["tf04","blood-in-the-water"],
             ["tf05","old-wounds"],
             ["tf06","the-naked-and-the-dead"],
             ["tf07","the-days-have-worn-away"],
-            ["tfu00","bonus-issue-00"],
-            ["tfu01","bonus-issue-01"],
-            ["tfu02","bonus-issue-02"]
+            ["tfu00","XXXXXX"],
+            ["tfu01","XXXXXX"],
+            ["tfu02","XXXXXX"]
             ].map(([id, slug]) => [
             id+"Cover",
             { dir: `${id}_${slug}`, file: `${id}_${slug.replace(/-/g,"_")}-1.jpg` } //this line converts kebab case (folders) to snake case (files)
