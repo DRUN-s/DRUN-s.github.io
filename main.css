@@ -687,7 +687,12 @@ margin-left: 15px;
   
 
   /*RESPONSIVE CSS IS GOING TO KILL ME OUT OF DISPAIR*/
-  @media (max-width: 830px) {
+  @media (max-width: 1005px) {
+	
+	#main {
+		width: 100%;
+	}
+
 	.comic_box {
 	  width: calc(50% - 20px); /* 2 colonnes */
 	}
@@ -696,11 +701,20 @@ margin-left: 15px;
 	}
   }
   
-  @media (max-width: 480px) {
-	.comic_box {
-	  width: 100%; /* 1 colonne */
+  @media (max-width: 860px) {
+	#primaryHeaderArea {
+		flex-direction: column;
 	}
-	#centerColContent {
+	
+	#spNavMenu {
+		flex-direction: column;
+	}
+
+	#spNavMenu a {
 		width: 100vw;
+	}
+
+	#covers a {
+		width: calc(100% - 30px);
 	}
   }
