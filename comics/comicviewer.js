@@ -218,6 +218,40 @@ $(window).on("keyup", function (e) {
   }
   window.setLanguage = setLanguage;
 
+  const fullscreenToggle = document.getElementById('fullscreenToggle');
+  const img = fullscreenToggle.querySelector('img');
+  const clickableArea = document.getElementById('clickableArea');
+  const body = document.body;
+  
+  // Fonction pour basculer le fullscreen
+  function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+          clickableArea.requestFullscreen().then(() => {
+              img.src = '/images/fullscreenOut.svg';
+              body.classList.add('fullscreen-active');
+          }).catch(err => {
+              console.error(`Error with fullscreen : ${err}`);
+          });
+      } else {
+          document.exitFullscreen().then(() => {
+              img.src = '/images/fullscreenIn.svg';
+              body.classList.remove('fullscreen-active');
+          }).catch(err => {
+              console.error(`Error when exiting fullscreen : ${err}`);
+          });
+      }
+  }
+  
+  // Clique sur le bouton
+  fullscreenToggle.addEventListener('click', toggleFullscreen);
+  
+  // Appui sur F
+  document.addEventListener('keydown', (e) => {
+      if (e.key.toLowerCase() === 'f') {
+          toggleFullscreen();
+      }
+  });
+
   // event handlers dropdown / select
   $("#language-dropdown button").on("click", function () { $("#select-container").toggle(); });
   dropdownContent.on("click", function () { const lang = $(this).attr("lang-selection"); setLanguage(lang); $("#select-container").hide(); });

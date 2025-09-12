@@ -74,7 +74,7 @@ const translations = {
     "privacy": "Vie privée",
     "attributions": "Attributions",
     "translationPage": "La page de traduction ultra secrète",
-    "helpControlls":"Vous pouvez naviguer à travers les pages avec : <br>• Les flèches : ⬅ et ➡<br>• La barre d'espace et retour arrière<br>• Clicking on the left or right side of the page. <br><br>• Appuyez sur F pour entrer en mode plein écran. <br>• Appuyez sur H pour afficher cette aide.",
+    "helpControlls":"Vous pouvez naviguer à travers les pages avec : <br>• Les flèches : ⬅ et ➡<br>• La barre d'espace et retour arrière<br>• Clicking on the left or right side of the page. <br><br>• Appuyez sur F pour entrer/sortir en mode plein écran. <br>• Appuyez sur H pour afficher cette aide.",
     "helpFullscreen":"",
     "helpLeft":"",
     "helpRight":""
@@ -154,8 +154,8 @@ const translations = {
     "privacy": "",
     "attributions": "",
     "translationPage": "Super Duper Secret Translating Page",
-    "helpControlls":"You can navigate through pages with : <br>• Arrows : ⬅ and ➡<br>• Space and backspace <br>• Clicking on the left or right side of the page.<br><br>• Press F to go fullscreen <br>• Press H to show/hide this help section.",
-    "helpFullscreen":"Click here to go fullscreen ➡",
+    "helpControlls":"You can navigate through pages with : <br>• Arrows : ⬅ and ➡<br>• Space and backspace <br>• Clicking on the left or right side of the page.<br><br>• Press F to go/exit fullscreen <br>• Press H to show/hide this help section.",
+    "helpFullscreen":"Click here to go/exit fullscreen ➡",
     "helpLeft":"Click on this <br>RED area to go to<br> the previous page.",
     "helpRight":"Click on this GREEN area to go to the next page."
   },
