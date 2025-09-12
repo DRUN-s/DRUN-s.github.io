@@ -171,6 +171,27 @@ $(function () {
     updateHash(data);
   }
 
+$("#helpToggle").on("click", function () {
+  const area = $("#clickableArea");
+  $(this).toggleClass("active");
+  area.toggleClass("help-active");
+});
+
+// Buttons follows the state
+$(window).on("keydown", function (e) {
+  if (e.key.toLowerCase() === "h") {
+    $("#clickableArea").addClass("help-active");
+    $("#helpToggle").addClass("active");
+  }
+});
+
+$(window).on("keyup", function (e) {
+  if (e.key.toLowerCase() === "h") {
+    $("#clickableArea").removeClass("help-active");
+    $("#helpToggle").removeClass("active");
+  }
+});
+
   // --- Dropdown / setLanguage ---
   const selectedItem = $("#selectedItem");
   const dropdownContent = $("#select-container li");
@@ -187,7 +208,7 @@ $(function () {
     localStorage.setItem("selectedLanguage", lang);
     $("#langSelect").val(lang);
 
-    // par défaut on met à jour le hash (sauf si on demande skipHash)
+
     if (!options.skipHash) {
       const data = parseHash();
       if (!data) return;

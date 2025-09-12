@@ -98,7 +98,97 @@ body {
 	display: block;
 	margin-left: auto; 
   }
+
+  /* Messages d’aide - invisibles par défaut */
+#clickableArea .help-message {
+	position: absolute;
+	color: white;
+	font-size: 18px;
+	background: rgba(0, 0, 0, 0.6);
+	padding: 8px 12px;
+	border-radius: 6px;
+	pointer-events: none;
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.3s ease, visibility 0.3s ease;
+	z-index: 10;
+  }
+
+  #clickableArea.help-active #comicPage {
+	filter: grayscale(40%) brightness(85%) blur(2px);
+	transition: filter 0.3s ease;
+  }
   
+  /* Quand le mode aide est actif */
+  #clickableArea.help-active .help-message {
+	opacity: 1;
+	visibility: visible;
+  }
+  
+  /* Positionnement des différents messages */
+  #helpControlls {
+	top: 15%;
+	left: 50%;
+	transform: translateX(-50%);
+  }
+  
+  #helpFullscreen {
+	top: 1%;
+	right: 5%;
+  }
+  
+  #helpLeft {
+	top: 50%;
+	left: 1%;
+	transform: translateY(-50%);
+  }
+  
+  #helpRight {
+	top: 50%;
+	right: 5%;
+	transform: translateY(-50%);
+  }
+  
+  /* Bouton aide toggle */
+.help-toggle {
+	margin-top: 10px;
+	width: 36px;
+	height: 36px;
+	border-radius: 50%;
+	background: #34302D;
+	color: #c8c8be;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: bold;
+	font-size: 20px;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	user-select: none;
+	z-index: 10;
+  }
+  
+  .help-toggle:hover {
+	background: #4a4643;
+	color: white;
+  }
+  
+  .help-toggle.active {
+	background: #ff9800; /* couleur quand activé */
+	color: white;
+	box-shadow: 0 0 8px rgba(255, 152, 0, 0.7);
+  }
+  
+  #clickableArea.help-active #leftZone {
+	background-color: rgba(255, 0, 0, 0.25);
+	z-index: 5;
+  }
+  
+  #clickableArea.help-active #rightZone {
+	background-color: rgba(0, 255, 0, 0.25);
+	z-index: 5;
+  }
+
   #leftZone, #rightZone {
 	position: absolute;
 	top: 0;

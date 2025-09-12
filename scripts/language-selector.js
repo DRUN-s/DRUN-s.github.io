@@ -76,29 +76,35 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     
         const dict = translations[lang] || translations["EN"];
-
+    
         document.querySelectorAll("[data-key]").forEach(el => {
           const key = el.getAttribute("data-key");
           if (dict[key]) {
             el.textContent = dict[key];
           }
         });
-
+    
         for (const [key, value] of Object.entries(translations[lang])) {
             const el = document.getElementById(key);
             if (!el) continue;
     
             if (!(key in defaultTexts)) {
-                defaultTexts[key] = el.textContent;
+                defaultTexts[key] = el.innerHTML;
             }
     
             if (typeof value === "string" && value.trim() !== "") {
-                el.textContent = value;
+
+                if (value.includes("<br>") || value.includes("<span") || value.includes("&")) {
+                    el.innerHTML = value;
+                } else {
+                    el.textContent = value;
+                }
             } else {
-                el.textContent = defaultTexts[key];
+                el.innerHTML = defaultTexts[key];
             }
         }
     }
+    
 
     function updateCovers(lang) {
         const covers = {

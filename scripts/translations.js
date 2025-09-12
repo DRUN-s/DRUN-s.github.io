@@ -73,7 +73,11 @@ const translations = {
     "contact": "Contact",
     "privacy": "Vie privée",
     "attributions": "Attributions",
-    "translationPage": "La page de traduction ultra secrète"
+    "translationPage": "La page de traduction ultra secrète",
+    "helpControlls":"Vous pouvez naviguer à travers les pages avec : <br>• Les flèches : ⬅ et ➡<br>• La barre d'espace et retour arrière<br>• Clicking on the left or right side of the page. <br><br>• Appuyez sur F pour entrer en mode plein écran. <br>• Appuyez sur H pour afficher cette aide.",
+    "helpFullscreen":"",
+    "helpLeft":"",
+    "helpRight":""
   },
   "EN": {
     "404": "Error 404 ! This page ! Couldn't be found !",
@@ -149,7 +153,11 @@ const translations = {
     "contact": "",
     "privacy": "",
     "attributions": "",
-    "translationPage": "Super Duper Secret Translating Page"
+    "translationPage": "Super Duper Secret Translating Page",
+    "helpControlls":"You can navigate through pages with : <br>• Arrows : ⬅ and ➡<br>• Space and backspace <br>• Clicking on the left or right side of the page.<br><br>• Press F to go fullscreen <br>• Press H to show/hide this help section.",
+    "helpFullscreen":"Click here to go fullscreen ➡",
+    "helpLeft":"Click on this <br>RED area to go to<br> the previous page.",
+    "helpRight":"Click on this GREEN area to go to the next page."
   },
   "ES": {
     "404": "",
@@ -225,7 +233,11 @@ const translations = {
     "contact": "",
     "privacy": "",
     "attributions": "",
-    "translationPage": ""
+    "translationPage": "",
+    "helpControlls":"",
+    "helpFullscreen":"",
+    "helpLeft":"",
+    "helpRight":""
   },
   "DE": {
     "404": "",
@@ -301,7 +313,11 @@ const translations = {
     "contact": "",
     "privacy": "",
     "attributions": "",
-    "translationPage": ""
+    "translationPage": "",
+    "helpControlls":"",
+    "helpFullscreen":"",
+    "helpLeft":"",
+    "helpRight":""
   },
   "FI": {
     "404": "",
@@ -377,7 +393,11 @@ const translations = {
     "contact": "",
     "privacy": "",
     "attributions": "",
-    "translationPage": ""
+    "translationPage": "",
+    "helpControlls":"",
+    "helpFullscreen":"",
+    "helpLeft":"",
+    "helpRight":""
   },
   "TR": {
     "notTranslatedYet": "",
@@ -447,7 +467,16 @@ const translations = {
     "tfu18Date": "",
     "saxtonSeries": "SAXTON SERİLERİ",
     "saxtonSeriesTitle": "Saxton Hale Çizgi Roman Kapakları Serisi",
-    "saxtonSeriesDate": "2009"
+    "saxtonSeriesDate": "2009",
+    "footerInfo": "",
+    "contact": "",
+    "privacy": "",
+    "attributions": "",
+    "translationPage": "",
+    "helpControlls":"",
+    "helpFullscreen":"",
+    "helpLeft":"",
+    "helpRight":""
   },
   "CS": {
     "404": "",
@@ -523,7 +552,11 @@ const translations = {
     "contact": "",
     "privacy": "",
     "attributions": "",
-    "translationPage": ""
+    "translationPage": "",
+    "helpControlls":"",
+    "helpFullscreen":"",
+    "helpLeft":"",
+    "helpRight":""
   },
   "PL": {
     "404": "",
@@ -599,6 +632,10 @@ const translations = {
     "contact": "",
     "privacy": "",
     "attributions": "",
-    "translationPage": ""
+    "translationPage": "",
+    "helpControlls":"",
+    "helpFullscreen":"",
+    "helpLeft":"",
+    "helpRight":""
   }
 }

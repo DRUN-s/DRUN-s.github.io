@@ -8,6 +8,7 @@
     <title>Lecteur de Comics</title>
     <link rel="stylesheet" href="comics.css">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="/scripts/language-selector.js" defer></script>
     <script src="/scripts/translations.js" defer></script>
     <script src="comicviewer.js" defer></script>
 
@@ -73,9 +74,18 @@
           </div>
         </div>
       </div>
+      <div id="helpToggle" class="help-toggle" title="Afficher l'aide">
+        <span>?</span>
+      </div>
+      
     </div>
 
     <div id="clickableArea">
+      <div class="help-message" id="helpControlls">You can navigate through pages with : <br>• Arrows : ⬅ and ➡<br>• Space and backspace <br>• Clicking on the left or right side of the page.<br><br>• Press F to go fullscreen <br>• Press H to show/hide this help section.</div>
+      <div class="help-message" id="helpFullscreen">Click here to go fullscreen ➡</div>
+      <div class="help-message" id="helpLeft">Click on this <br>RED area to go to<br> the previous page.</div>
+      <div class="help-message" id="helpRight">Click on this GREEN area to go to the next page.</div>
+  
       <div id="leftZone"></div>
       <div id="rightZone"></div>
       <a id="fullscreenToggle"><img id="fullscreenIcon" src="/images/fullscreenIn.svg"></a>
