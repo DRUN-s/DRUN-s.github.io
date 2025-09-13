@@ -34,7 +34,7 @@ p{
 }
 
 #titleImage {
-	width: 40%;
+	width: 20%;
 	max-height: 60vh;
 	display: inline-block;
 	flex-shrink: 0;
@@ -46,6 +46,7 @@ p{
 	flex-shrink: 0;
 	font-family: BigNoodleTitling;
   	font-size: 37px;
+	width: 65%;
 }
 
 .warning {

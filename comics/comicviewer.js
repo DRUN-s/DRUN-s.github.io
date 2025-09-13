@@ -129,7 +129,9 @@ $(function () {
 
     const tome = findTome(data.tomeKey);
     const localizedTitle = (tome && (tome.title[langUsed] || tome.title["EN"])) || "Comic";
-    document.title = `${localizedTitle} – Page ${data.pageNum}`;
+    const pageLabel = translations[langUsed]?.page || "Page";
+    document.title = `${localizedTitle} – ${pageLabel} ${data.pageNum}`;
+    
 
     // Updating the UI (but also avoids throwing another error)
     if (typeof window.setLanguage === "function") {

@@ -74,7 +74,7 @@ const translations = {
     "privacy": "Vie privée",
     "attributions": "Attributions",
     "translationPage": "La page de traduction ultra secrète",
-    "helpControlls":"Vous pouvez naviguer à travers les pages avec : <br>• Les flèches : ⬅ et ➡<br>• La barre d'espace et retour arrière<br>• Clicking on the left or right side of the page. <br><br>• Appuyez sur F pour entrer/sortir en mode plein écran. <br>• Appuyez sur H pour afficher cette aide.",
+    "helpControlls":"Vous pouvez naviguer à travers les pages avec : <br>• Les flèches : 🠄 et 🠆<br>• La barre d'espace et retour arrière<br>• Clicking on the left or right side of the page. <br><br>• Appuyez sur F pour entrer/sortir en mode plein écran. <br>• Appuyez sur H pour afficher cette aide.",
     "helpFullscreen":"",
     "helpLeft":"",
     "helpRight":""
@@ -154,15 +154,15 @@ const translations = {
     "privacy": "",
     "attributions": "",
     "translationPage": "Super Duper Secret Translating Page",
-    "helpControlls":"You can navigate through pages with : <br>• Arrows : ⬅ and ➡<br>• Space and backspace <br>• Clicking on the left or right side of the page.<br><br>• Press F to go/exit fullscreen <br>• Press H to show/hide this help section.",
-    "helpFullscreen":"Click here to go/exit fullscreen ➡",
+    "helpControlls":"You can navigate through pages with : <br>• Arrows : 🠄 and 🠆<br>• Space and backspace <br>• Clicking on the left or right side of the page.<br><br>• Press F to go/exit fullscreen <br>• Press H to show/hide this help section.",
+    "helpFullscreen":"Click here to go/exit fullscreen 🠆",
     "helpLeft":"Click on this <br>RED area to go to<br> the previous page.",
     "helpRight":"Click on this GREEN area to go to the next page."
   },
   "ES": {
     "404": "",
     "notTranslatedYet": "",
-    "page": "Pagina",
+    "page": "Página",
     "blurbText": "Valve nunca hizo un esfuerzo en traducir los comics de TF2, se intentaron numerosos intentos por parte de la comunidad, pero estos fueron desorganizados e incluso en ocasiones, perezosos. Casi ninguno de ellos llevó a una traducción completa. Este proyecto es una reunificación de las mejores traducciones fan-made de los cómics de TF2. Los comics que aquí veréis han sido producidos con el paquete de herramientas de traducción hecha por DRUNs para que sea cuanto más auténtico a los originales como se pueda. Pero bueno, ¡Suficiente lectura pseudo-burocrática y aburrida! ¡Ve, y lee los comics en tu idioma favorito, o aprende un idioma nuevo intentando leerlo!",
     "WIPText": "⚠️ ¡ESTA WEB ESTÁ BAJO CONSTRUCCIÓN! ⚠️ ¡CSS ES DIFICIL DE PELOTAS, POR FAVOR, AYUDA!",
     "aboutButtonText": "",
