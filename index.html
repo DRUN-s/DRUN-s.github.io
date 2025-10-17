@@ -2,15 +2,15 @@
 
 <html>
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>TF2 Comics Translation Project</title>
 
-    <link rel="shortcut icon" href="images/favicon.svg">
+    <link rel="shortcut icon" href="images/favicon.svg" />
 
-    <link rel="stylesheet" href="main.css?v=14">
-    <link rel="stylesheet" href="fonts.css">
+    <link rel="stylesheet" href="main.css?v=14" />
+    <link rel="stylesheet" href="fonts.css" />
 
     <script src="scripts/main.js" defer></script>
     <script src="scripts/translations.js" defer></script>
@@ -18,98 +18,116 @@
   </head>
 
   <body>
-    <p class="warning" id="WIPText">⚠️ THIS WEBSITE IS UNDER CONSTRUCTION! ⚠️ CSS IS HARD PLEASE HELP ME !</p>
+    <p class="warning" id="WIPText">
+      ⚠️ THIS WEBSITE IS UNDER CONSTRUCTION! ⚠️ CSS IS HARD PLEASE HELP ME !
+    </p>
 
-          <!--language selector-->
+    <!--language selector-->
 
-        <div id="language-container">
-          <div class="dropdown" id="language-dropdown">
-            <button id="selectedItem" lang-selection="EN">
-              <img src="https://cdn.countryflags.com/thumbs/united-kingdom/flag-800.png" />
+    <div id="language-container">
+      <div class="dropdown" id="language-dropdown">
+        <button id="selectedItem" lang-selection="EN">
+          <img
+            src="https://cdn.countryflags.com/thumbs/united-kingdom/flag-800.png"
+          />
+          English
+          <span class="arrow-down"></span>
+        </button>
+
+        <div class="dropdown-content" id="select-container">
+          <ul>
+            <li lang-selection="EN">
+              <img
+                src="https://cdn.countryflags.com/thumbs/united-kingdom/flag-800.png"
+              />
               English
-              <span class="arrow-down"></span>
-            </button>
-          
-            <div class="dropdown-content" id="select-container">
-              <ul>
-                <li lang-selection="EN">
-                  <img src="https://cdn.countryflags.com/thumbs/united-kingdom/flag-800.png" />
-                  English
-                </li>
-                <li lang-selection="FR">
-                  <img src="https://cdn.countryflags.com/thumbs/france/flag-800.png" />
-                  Français
-                </li>
-                <li lang-selection="KR">
-                  <img src="https://cdn.countryflags.com/thumbs/south-korea/flag-800.png" />
-                  한국어
-                </li>
-                <li lang-selection="TR">
-                  <img src="https://cdn.countryflags.com/thumbs/turkey/flag-800.png" />
-                  Türkçe
-                </li>
-                <li lang-selection="SW">
-                  <img src="https://cdn.countryflags.com/thumbs/sweden/flag-800.png" />
-                  Svenska
-                </li>
-                <li lang-selection="FI">
-                  <img src="https://cdn.countryflags.com/thumbs/finland/flag-800.png" />
-                  Suomi
-                </li>
-                <li lang-selection="ES">
-                  <img src="https://cdn.countryflags.com/thumbs/spain/flag-800.png" />
-                  Español
-                </li>
-                <li lang-selection="DE">
-                  <img src="https://cdn.countryflags.com/thumbs/germany/flag-800.png" />
-                  Deutsch
-                </li>
-                <li lang-selection="PL">
-                  <img src="https://cdn.countryflags.com/thumbs/poland/flag-800.png" />
-                  Polski
-                </li>
-                <li lang-selection="CS">
-                  <img src="https://cdn.countryflags.com/thumbs/czech-republic/flag-800.png" />
-                  Čeština
-                </li>
-              </ul>
-            </div>
-          </div>
+            </li>
+            <li lang-selection="FR">
+              <img
+                src="https://cdn.countryflags.com/thumbs/france/flag-800.png"
+              />
+              Français
+            </li>
+            <li lang-selection="KR">
+              <img
+                src="https://cdn.countryflags.com/thumbs/south-korea/flag-800.png"
+              />
+              한국어
+            </li>
+            <li lang-selection="TR">
+              <img
+                src="https://cdn.countryflags.com/thumbs/turkey/flag-800.png"
+              />
+              Türkçe
+            </li>
+            <li lang-selection="SW">
+              <img
+                src="https://cdn.countryflags.com/thumbs/sweden/flag-800.png"
+              />
+              Svenska
+            </li>
+            <li lang-selection="FI">
+              <img
+                src="https://cdn.countryflags.com/thumbs/finland/flag-800.png"
+              />
+              Suomi
+            </li>
+            <li lang-selection="ES">
+              <img
+                src="https://cdn.countryflags.com/thumbs/spain/flag-800.png"
+              />
+              Español
+            </li>
+            <li lang-selection="DE">
+              <img
+                src="https://cdn.countryflags.com/thumbs/germany/flag-800.png"
+              />
+              Deutsch
+            </li>
+            <li lang-selection="PL">
+              <img
+                src="https://cdn.countryflags.com/thumbs/poland/flag-800.png"
+              />
+              Polski
+            </li>
+            <li lang-selection="CS">
+              <img
+                src="https://cdn.countryflags.com/thumbs/czech-republic/flag-800.png"
+              />
+              Čeština
+            </li>
+          </ul>
         </div>
+      </div>
+    </div>
 
     <div id="title">
-
       <a href="">
-
-        <img id="titleImage"
-          src="images/TF2TP_logo.svg"
-        />
-        <img id="titleText" src="/images/Titleplaceholder.png"/>
-        
+        <img id="titleImage" src="images/TF2TP_logo.svg" />
+        <img id="titleText" src="/images/Titleplaceholder.png" />
       </a>
-      
     </div>
 
     <div id="main">
-        <a name="top"></a>
-        <div id="centerColumn">
-          
+      <a name="top"></a>
+      <div id="centerColumn">
+        <div class="boxshadowBox">
           <div id="primaryHeaderArea">
             <!--TODO: Changer le logo.-->
-  
+
             <div id="logoLink">
               <a href="index.php"
-                ><img id="headerAreaImage" src="images/Logo_TF2_flat.svg"/></a>
+                ><img id="headerAreaImage" src="images/Logo_TF2_flat.svg"
+              /></a>
             </div>
-  
+
             <div id="spNavMenu">
-              <a class="aHoverVertShift" id="aboutButtonText" href=""
-                >About</a
-              >
-              <a class="aHoverVertShift" id="teamButtonText" href=""
-                >Team</a
-              >
-              <a class="aHoverVertShift" id="otherTranslationsButtonText" href=""
+              <a class="aHoverVertShift" id="aboutButtonText" href="">About</a>
+              <a class="aHoverVertShift" id="teamButtonText" href="">Team</a>
+              <a
+                class="aHoverVertShift"
+                id="otherTranslationsButtonText"
+                href=""
                 >Other translation projects</a
               >
               <a class="aHoverVertShift" id="helpUsButtonText" href=""
@@ -120,529 +138,673 @@
 
           <div id="centerColContent">
             <div id="blurb">
-            <img src="images/menu-yeti.png">
+              <img src="images/menu-yeti.png" />
               <p id="blurbText">
-                Valve never translated the comics, the community efforts to do so were numerous, but unorganised and sometimes lazy almost none led to any full translation. This project is a reunification of the best quality fanmade translations of the TF2 comics. The comics you will see were made with the TF2 comics translation toolkit made by DRUNs to look as much authentic as the original comics. So go on now and read the comics in your favorite language or learn one by trying to do so !
+                Valve never translated the comics, the community efforts to do
+                so were numerous, but unorganised and sometimes lazy almost none
+                led to any full translation. This project is a reunification of
+                the best quality fanmade translations of the TF2 comics. The
+                comics you will see were made with the TF2 comics translation
+                toolkit made by DRUNs to look as much authentic as the original
+                comics. So go on now and read the comics in your favorite
+                language or learn one by trying to do so !
               </p>
             </div>
 
-              <div id="comics_container">
-
-                <div class="sectionSeparatorContainer">
-                  <div class="sectionSeparatorText" id="tfComics">TF COMICS</div> 
-                  <div class="sectionSeparatorLine"></div>
-                </div>
-
-        <!-- ###  CATCHUP COMIC  ### -->
-        <div class="comic_box" id="tf00Box">
-          <a href="comics/comicreader.html">
-            <div class="image_wrapper">
-              <img id="tf00Cover" src="/comics/covers/main/tf00/tf00_cover.png" />
-              <div class="overlay" style="display: none;">
-                <span id="notTranslatedYet">BD pas encore traduite</span>
+            <div id="comics_container">
+              <div class="sectionSeparatorContainer">
+                <div class="sectionSeparatorText" id="tfComics">TF COMICS</div>
+                <div class="sectionSeparatorLine"></div>
               </div>
-            </div>
-          </a>
-        
-          <div class="comic_caption">
-            <span class="caption_main">
-              <a href="comics/comicreader.html" id="tf00Title">Catch-Up Comic</a>
-            </span>
-            <span class="caption_date" id="tf00Date">May 2, 2014</span>
-          </div>
-        </div>
-        
 
-        <!-- ###  RING OF FIRED  ### -->
-        <div class="comic_box">
-          <a href="comics/comicreader.html#EN-tf01-1">
-            <div class="image_wrapper">
-              <img id="tf01Cover" src="/comics/covers/main/tf01/tf01_cover.png" />
-              <div class="overlay" style="display: none;">
-                <span class="notTranslatedYet" data-key="notTranslatedYet">Not added yet</span>
+              <!-- ###  CATCHUP COMIC  ### -->
+              <div class="comic_box" id="tf00Box">
+                <a href="comics/comicreader.html">
+                  <div class="image_wrapper">
+                    <img
+                      id="tf00Cover"
+                      src="/comics/covers/main/tf00/tf00_cover.png"
+                    />
+                    <div class="overlay" style="display: none">
+                      <span id="notTranslatedYet">BD pas encore traduite</span>
+                    </div>
+                  </div>
+                </a>
+
+                <div class="comic_caption">
+                  <span class="caption_main">
+                    <a href="comics/comicreader.html" id="tf00Title"
+                      >Catch-Up Comic</a
+                    >
+                  </span>
+                  <span class="caption_date" id="tf00Date">May 2, 2014</span>
+                </div>
               </div>
-            </div>
-          </a>
 
-          <div class="comic_caption">
-            <span class="caption_main">
-              <a href="comics/comicreader.html#EN-tf01-1" id="tf01Title">Ring of Fired</a>
-            </span>
-            <span class="caption_date" id="tf01Date">August 28, 2013</span>
-          </div>
-        </div>
-
-        <!-- ###  UNHAPPY RETURNS  ### -->
-        <div class="comic_box">
-          <a href="comics/comicreader.html#EN-tf02-1">
-            <div class="image_wrapper">
-              <img id="tf02Cover" src="/comics/covers/main/tf02/tf02_cover.png" />
-              <div class="overlay" style="display: none;">
-                <span class="notTranslatedYet" data-key="notTranslatedYet">Not added yet</span>
-              </div>
-            </div>
-          </a>
-          <div class="comic_caption">
-            <span class="caption_main">
-              <a href="comics/comicreader.html#EN-tf03-1" id="tf02Title">Unhappy Returns</a>
-            </span>
-            <span class="caption_date" id="tf02Date">December 4, 2013</span>
-          </div>
-        </div>
-
-        <!-- ###  A COLD DAY IN HELL  ### -->
-        <div class="comic_box">
-          <a href="https://www.teamfortress.com/tf03_cold_day_in_hell/">
-            <div class="image_wrapper">
-              <img id="tf03Cover" src="/comics/covers/main/tf03_cover.png" />
-              <div class="overlay" style="display: none;">
-                <span class="notTranslatedYet" data-key="notTranslatedYet">Not added yet</span>
-              </div>
-            </div>
-          </a>
-          <div class="comic_caption">
-            <span class="caption_main">
-              <a href="https://www.teamfortress.com/tf03_cold_day_in_hell/" id="tf03Title">A Cold Day in Hell</a>
-            </span>
-            <span class="caption_date" id="tf03Date">April 2, 2014</span>
-          </div>
-        </div>
-
-        <!-- ###  BLOOD IN THE WATER  ### -->
-        <div class="comic_box">
-          <a href="https://www.teamfortress.com/tf04_blood_in_the_water/">
-            <div class="image_wrapper">
-              <img id="tf04Cover" src="/comics/covers/main/tf04_cover.png" />
-              <div class="overlay" style="display: none;">
-                <span class="notTranslatedYet" data-key="notTranslatedYet">Not added yet</span>
-              </div>
-            </div>
-          </a>
-          <div class="comic_caption">
-            <span class="caption_main">
-              <a href="https://www.teamfortress.com/tf04_blood_in_the_water/" id="tf04Title">Blood in the Water</a>
-            </span>
-            <span class="caption_date" id="tf04Date">October 2, 2014</span>
-          </div>
-        </div>
-
-        <!-- ###  OLD WOUNDS  ### -->
-        <div class="comic_box">
-          <a href="https://www.teamfortress.com/tf05_old_wounds/">
-            <div class="image_wrapper">
-              <img id="tf05Cover" src="/comics/covers/main/tf05_cover.png" />
-              <div class="overlay" style="display: none;">
-                <span class="notTranslatedYet" data-key="notTranslatedYet">Not added yet</span>
-              </div>
-            </div>
-          </a>
-          <div class="comic_caption">
-            <span class="caption_main">
-              <a href="https://www.teamfortress.com/tf05_old_wounds/" id="tf05Title">Old Wounds</a>
-            </span>
-            <span class="caption_date" id="tf05Date">August 31, 2015</span>
-          </div>
-        </div>
-
-        <!-- ###  THE NAKED AND THE DEAD  ### -->
-        <div class="comic_box">
-          <a href="https://www.teamfortress.com/tf06_thenakedandthedead/">
-            <div class="image_wrapper">
-              <img id="tf06Cover" src="/comics/covers/main/tf06_cover.png" />
-              <div class="overlay" style="display: none;">
-                <span class="notTranslatedYet" data-key="notTranslatedYet">Not added yet</span>
-              </div>
-            </div>
-          </a>
-          <div class="comic_caption">
-            <span class="caption_main">
-              <a href="https://www.teamfortress.com/tf06_thenakedandthedead/" id="tf06Title">The Naked and the Dead</a>
-            </span>
-            <span class="caption_date" id="tf06Date">January 10, 2017</span>
-          </div>
-        </div>
-
-        <!-- ###  THE DAYS HAVE WORN AWAY  ### -->
-        <div class="comic_box">
-          <a href="tf07_thedayshavewornaway/">
-            <div class="image_wrapper">
-              <img id="tf07Cover" src="/placeholder.png" alt="TF07 Cover" />
-              <div class="overlay" style="display: none;">
-                <span class="notTranslatedYet" data-key="notTranslatedYet">Not added yet</span>
-              </div>
-            </div>
-          </a>
-          <div class="comic_caption">
-            <span class="caption_main">
-              <a href="tf07_thedayshavewornaway/" id="tf07Title">The Days Have Worn Away</a>
-            </span>
-            <span class="caption_date" id="tf07Date">December 20, 2024</span>
-          </div>
-        </div>
-
-        <!-- Small script that chooses one of the three covers randomly -->
-          <script>
-            (function () {
-              const random = Math.floor(Math.random() * 3) + 1; // 1, 2 or 3
-              const img = document.getElementById("tf07Cover");
-              img.src = `/comics/covers/main/tf07_cover${random}.png`;
-            })();
-          </script>
-
-        <br />
-<!--==================================================================================== -->
-
-                <div class="sectionSeparatorContainer">
-                  <div class="sectionSeparatorText" id="updateComics">UPDATE COMICS</div> 
-                  <div class="sectionSeparatorLine"></div>
-                </div>
-
-                <div class="comic_box">
-                  <a href="https://www.teamfortress.com/theshowdown/"
-                    ><img
-                      src="https://steamcdn-a.akamaihd.net/apps/tf2/blog/images/comics/theshowdown.png"
-                  /></a>
-
-                  <div class="comic_caption">
-                    <span class="caption_main"
-                      ><a id="tfu18Title" href="https://www.teamfortress.com/theshowdown/"
-                        >The Showdown</a
-                      ></span
-                    >
-
-                    <span id="tfu18Date" class="caption_date">July 7, 2016</span>
-                  </div>
-                </div>
-
-                <div class="comic_box">
-                  <a href="https://www.teamfortress.com/gargoyles_and_gravel/"
-                    ><img
-                      src="https://steamcdn-a.akamaihd.net/apps/tf2/blog/images/comics/screamfortress7.png"
-                  /></a>
-
-                  <div class="comic_caption">
-                    <span class="caption_main"
-                      ><a id="tfu17Title" href="https://www.teamfortress.com/gargoyles_and_gravel/"
-                        >Gargoyles & Gravel - Scream Fortress 7</a
-                      ></span
-                    >
-
-                    <span id="tfu17Date" class="caption_date">October 28, 2015</span>
-                  </div>
-                </div>
-
-                <div class="comic_box">
-                  <a href="https://www.teamfortress.com/thecontract/"
-                    ><img
-                      src="https://steamcdn-a.akamaihd.net/apps/tf2/blog/images/comics/contract.png"
-                  /></a>
-
-                  <div class="comic_caption">
-                    <span class="caption_main"
-                      ><a id="tfu16Title" href="https://www.teamfortress.com/thecontract/"
-                        >The Contract</a
-                      ></span
-                    >
-
-                    <span id="tfu16Date" class="caption_date">July 2, 2015</span>
-                  </div>
-                </div>
-
-                <div class="comic_box">
-                  <a href="https://www.teamfortress.com/bloodmoney/"
-                    ><img
-                      src="https://steamcdn-a.akamaihd.net/apps/tf2/blog/images/comics/blood_money.png"
-                  /></a>
-
-                  <div class="comic_caption">
-                    <span class="caption_main"
-                      ><a id="tfu15Title" href="https://www.teamfortress.com/bloodmoney/"
-                        >Blood Money</a
-                      ></span
-                    >
-
-                    <span id="tfu15Date" class="caption_date">October 29, 2014</span>
-                  </div>
-                </div>
-
-                <div class="comic_box">
-                  <a href="https://www.teamfortress.com/gravematters/">
+              <!-- ###  RING OF FIRED  ### -->
+              <div class="comic_box">
+                <a href="comics/comicreader.html#EN-tf01-1">
+                  <div class="image_wrapper">
                     <img
-                      src="https://steamcdn-a.akamaihd.net/apps/tf2/blog/images/comics/grave_matters.png"
+                      id="tf01Cover"
+                      src="/comics/covers/main/tf01/tf01_cover.png"
                     />
-                  </a>
-
-                  <div class="comic_caption">
-                    <span class="caption_main"
-                      ><a id="tfu14Title" href="https://www.teamfortress.com/gravematters/"
-                        >Grave Matters</a
-                      ></span
-                    >
-
-                    <span id="tfu14Date" class="caption_date">October 28, 2013</span>
+                    <div class="overlay" style="display: none">
+                      <span class="notTranslatedYet" data-key="notTranslatedYet"
+                        >Not added yet</span
+                      >
+                    </div>
                   </div>
-                </div>
+                </a>
 
-                <div class="comic_box">
-                  <a href="https://www.teamfortress.com/shadowboxers/">
-                    <img
-                      src="https://steamcdn-a.akamaihd.net/apps/tf2/blog/images/comics/shadow_boxers.png"
-                    />
-                  </a>
-
-                  <div class="comic_caption">
-                    <span class="caption_main"
-                      ><a id="tfu13Title" href="https://www.teamfortress.com/shadowboxers/"
-                        >The Shadow Boxers</a
-                      ></span
+                <div class="comic_caption">
+                  <span class="caption_main">
+                    <a href="comics/comicreader.html#EN-tf01-1" id="tf01Title"
+                      >Ring of Fired</a
                     >
-
-                    <span id="tfu13Date" class="caption_date">December 19, 2012</span>
-                  </div>
-                </div>
-
-                <div class="comic_box">
-                  <a href="https://www.teamfortress.com/doommates/">
-                    <img
-                      src="https://steamcdn-a.akamaihd.net/apps/tf2/blog/images/comics/doom_mates.png"
-                    />
-                  </a>
-
-                  <div class="comic_caption">
-                    <span class="caption_main"
-                      ><a id="tfu12Title" href="https://www.teamfortress.com/doommates/"
-                        >Doom-Mates</a
-                      ></span
-                    >
-
-                    <span id="tfu12Date" class="caption_date">October 24, 2012</span>
-                  </div>
-                </div>
-
-                <div class="comic_box">
-                  <a href="https://www.teamfortress.com/fateworsethanchess/">
-                    <img
-                      src="https://steamcdn-a.akamaihd.net/apps/tf2/blog/images/comics/fate_worse_than_chess.png"
-                    />
-                  </a>
-
-                  <div class="comic_caption">
-                    <span class="caption_main"
-                      ><a id="tfu11Title" href="https://www.teamfortress.com/fateworsethanchess/"
-                        >A Fate Worse Than Chess</a
-                      ></span
-                    >
-
-                    <span id="tfu11Date" class="caption_date">August 13, 2012</span>
-                  </div>
-                </div>
-
-                <div class="comic_box">
-                  <a href="https://www.teamfortress.com/bloodbrothers/">
-                    <img
-                      src="https://steamcdn-a.akamaihd.net/apps/tf2/blog/images/comics/blood_brothers.png"
-                    />
-                  </a>
-
-                  <div class="comic_caption">
-                    <span class="caption_main"
-                      ><a id="tfu10Title" href="https://www.teamfortress.com/bloodbrothers/"
-                        >Blood Brothers</a
-                      ></span
-                    >
-
-                    <span id="tfu10Date" class="caption_date">August 12, 2012</span>
-                  </div>
-                </div>
-
-                <div class="comic_box">
-                  <a href="https://www.teamfortress.com/asmissmasstory/">
-                    <img
-                      src="https://steamcdn-a.akamaihd.net/apps/tf2/blog/images/comics/smissmas.png"
-                    />
-                  </a>
-
-                  <div class="comic_caption">
-                    <span class="caption_main"
-                      ><a id="tfu09Title" href="https://www.teamfortress.com/asmissmasstory/"
-                        >A Smissmas Story</a
-                      ></span
-                    >
-
-                    <span id="tfu09Date" class="caption_date">December 15, 2011</span>
-                  </div>
-                </div>
-
-                <div class="comic_box">
-                  <a href="https://www.teamfortress.com/truemeaning/">
-                    <img
-                      src="https://steamcdn-a.akamaihd.net/apps/tf2/blog/images/comics/true_meaning.png"
-                    />
-                  </a>
-
-                  <div class="comic_caption">
-                    <span class="caption_main"
-                      ><a id="tfu08Title" href="https://www.teamfortress.com/truemeaning/"
-                        >True Meaning</a
-                      ></span
-                    >
-
-                    <span id="tfu08Date" class="caption_date">December 13, 2011</span>
-                  </div>
-                </div>
-
-                <div class="comic_box">
-                  <a href="https://www.teamfortress.com/bombinomicon/">
-                    <img
-                      src="https://steamcdn-a.akamaihd.net/apps/tf2/blog/images/comics/bombinomicon.png"
-                    />
-                  </a>
-
-                  <div class="comic_caption">
-                    <span class="caption_main"
-                      ><a id="tfu07Title" href="https://www.teamfortress.com/bombinomicon/"
-                        >Bombinomicon</a
-                      ></span
-                    >
-
-                    <span id="tfu07Date" class="caption_date">October 27, 2011</span>
-                  </div>
-                </div>
-
-                <div class="comic_box">
-                  <a href="https://www.teamfortress.com/grordborts/comic/">
-                    <img
-                      src="https://steamcdn-a.akamaihd.net/apps/tf2/blog/images/comics/grordbort.png"
-                    />
-                  </a>
-
-                  <div class="comic_caption">
-                    <span class="caption_main"
-                      ><a id="tfu06Title" href="https://www.teamfortress.com/grordborts/comic/"
-                        >Dr. Grordbort's Crash Landing</a
-                      ></span
-                    >
-
-                    <span id="tfu06Date" class="caption_date">July 20, 2011</span>
-                  </div>
-                </div>
-
-                <div class="comic_box">
-                  <a href="https://www.teamfortress.com/meetthedirector/">
-                    <img
-                      src="https://steamcdn-a.akamaihd.net/apps/tf2/blog/images/comics/meet_the_director.png"
-                    />
-                  </a>
-
-                  <div class="comic_caption">
-                    <span class="caption_main"
-                      ><a id="tfu05Title" href="https://www.teamfortress.com/meetthedirector/"
-                        >Meet the Director</a
-                      ></span
-                    >
-
-                    <span id="tfu05Date" class="caption_date">May 5, 2011</span>
-                  </div>
-                </div>
-
-                <div class="comic_box">
-                  <a href="https://www.teamfortress.com/bidwells_big_plan/">
-                    <img
-                      src="https://steamcdn-a.akamaihd.net/apps/tf2/blog/images/comics/bidwells_big_plan.png"
-                    />
-                  </a>
-
-                  <div class="comic_caption">
-                    <span class="caption_main"
-                      ><a id="tfu04Title" href="https://www.teamfortress.com/bidwells_big_plan/"
-                        >Bidwell's Big Plan</a
-                      ></span
-                    >
-
-                    <span id="tfu04Date" class="caption_date">September 30, 2010</span>
-                  </div>
-                </div>
-
-                <div class="comic_box">
-                  <a href="https://www.teamfortress.com/loosecanon/">
-                    <img
-                      src="https://steamcdn-a.akamaihd.net/apps/tf2/blog/images/comics/loose_canon.png"
-                    />
-                  </a>
-
-                  <div class="comic_caption">
-                    <span class="caption_main"
-                      ><a id="tfu03Title" href="https://www.teamfortress.com/loosecanon/"
-                        >Loose Canon</a
-                      ></span
-                    >
-
-                    <span id="tfu03Date" class="caption_date">July 2, 2010</span>
-                  </div>
-                </div>
-
-                <div class="comic_box">
-                  <a href="https://www.teamfortress.com/macupdate/comic/">
-                    <img
-                      src="https://steamcdn-a.akamaihd.net/apps/tf2/blog/images/comics/mac.png"
-                    />
-                  </a>
-
-                  <div class="comic_caption">
-                    <span class="caption_main"
-                      ><a id="tfu02Title" href="https://www.teamfortress.com/macupdate/comic/"
-                        >A Visual History</a
-                      ></span
-                    >
-
-                    <span id="tfu02Date" class="caption_date">June 10, 2010</span>
-                  </div>
-                </div>
-
-                <div class="comic_box">
-                  <a href="https://www.teamfortress.com/war/administrator">
-                    <img
-                      src="https://steamcdn-a.akamaihd.net/apps/tf2/blog/images/comics/war.png"
-                    />
-                  </a>
-
-                  <div class="comic_caption">
-                    <span class="caption_main"
-                      ><a id="tf01Title" href="https://www.teamfortress.com/war/administrator/"
-                        >WAR!</a
-                      ></span
-                    >
-
-                    <span id="tfu01Date" class="caption_date">December 17, 2009</span>
-                  </div>
-                </div>
-
-                <div class="comic_box">
-                  <a
-                    href="https://www.teamfortress.com/sniper_vs_spy/day07_english.htm"
+                  </span>
+                  <span class="caption_date" id="tf01Date"
+                    >August 28, 2013</span
                   >
-                    <img
-                      src="https://steamcdn-a.akamaihd.net/apps/tf2/blog/images/comics/jarate.png"
-                    />
-                  </a>
-
-                  <div class="comic_caption">
-                    <span class="caption_main"
-                      ><a id="tfu00Title" href="https://www.teamfortress.com/sniper_vs_spy/day07_english.htm"
-                        >The Insult That Made a "Jarate Master" Out of Sniper</a
-                      ></span
-                    >
-
-                    <span id="tfu00Date" class="caption_date">May 20, 2009</span>
-                  </div>
                 </div>
-                
-                <div style="clear: both"></div>
               </div>
+
+              <!-- ###  UNHAPPY RETURNS  ### -->
+              <div class="comic_box">
+                <a href="comics/comicreader.html#EN-tf02-1">
+                  <div class="image_wrapper">
+                    <img
+                      id="tf02Cover"
+                      src="/comics/covers/main/tf02/tf02_cover.png"
+                    />
+                    <div class="overlay" style="display: none">
+                      <span class="notTranslatedYet" data-key="notTranslatedYet"
+                        >Not added yet</span
+                      >
+                    </div>
+                  </div>
+                </a>
+                <div class="comic_caption">
+                  <span class="caption_main">
+                    <a href="comics/comicreader.html#EN-tf03-1" id="tf02Title"
+                      >Unhappy Returns</a
+                    >
+                  </span>
+                  <span class="caption_date" id="tf02Date"
+                    >December 4, 2013</span
+                  >
+                </div>
+              </div>
+
+              <!-- ###  A COLD DAY IN HELL  ### -->
+              <div class="comic_box">
+                <a href="https://www.teamfortress.com/tf03_cold_day_in_hell/">
+                  <div class="image_wrapper">
+                    <img
+                      id="tf03Cover"
+                      src="/comics/covers/main/tf03_cover.png"
+                    />
+                    <div class="overlay" style="display: none">
+                      <span class="notTranslatedYet" data-key="notTranslatedYet"
+                        >Not added yet</span
+                      >
+                    </div>
+                  </div>
+                </a>
+                <div class="comic_caption">
+                  <span class="caption_main">
+                    <a
+                      href="https://www.teamfortress.com/tf03_cold_day_in_hell/"
+                      id="tf03Title"
+                      >A Cold Day in Hell</a
+                    >
+                  </span>
+                  <span class="caption_date" id="tf03Date">April 2, 2014</span>
+                </div>
+              </div>
+
+              <!-- ###  BLOOD IN THE WATER  ### -->
+              <div class="comic_box">
+                <a href="https://www.teamfortress.com/tf04_blood_in_the_water/">
+                  <div class="image_wrapper">
+                    <img
+                      id="tf04Cover"
+                      src="/comics/covers/main/tf04_cover.png"
+                    />
+                    <div class="overlay" style="display: none">
+                      <span class="notTranslatedYet" data-key="notTranslatedYet"
+                        >Not added yet</span
+                      >
+                    </div>
+                  </div>
+                </a>
+                <div class="comic_caption">
+                  <span class="caption_main">
+                    <a
+                      href="https://www.teamfortress.com/tf04_blood_in_the_water/"
+                      id="tf04Title"
+                      >Blood in the Water</a
+                    >
+                  </span>
+                  <span class="caption_date" id="tf04Date"
+                    >October 2, 2014</span
+                  >
+                </div>
+              </div>
+
+              <!-- ###  OLD WOUNDS  ### -->
+              <div class="comic_box">
+                <a href="https://www.teamfortress.com/tf05_old_wounds/">
+                  <div class="image_wrapper">
+                    <img
+                      id="tf05Cover"
+                      src="/comics/covers/main/tf05_cover.png"
+                    />
+                    <div class="overlay" style="display: none">
+                      <span class="notTranslatedYet" data-key="notTranslatedYet"
+                        >Not added yet</span
+                      >
+                    </div>
+                  </div>
+                </a>
+                <div class="comic_caption">
+                  <span class="caption_main">
+                    <a
+                      href="https://www.teamfortress.com/tf05_old_wounds/"
+                      id="tf05Title"
+                      >Old Wounds</a
+                    >
+                  </span>
+                  <span class="caption_date" id="tf05Date"
+                    >August 31, 2015</span
+                  >
+                </div>
+              </div>
+
+              <!-- ###  THE NAKED AND THE DEAD  ### -->
+              <div class="comic_box">
+                <a href="https://www.teamfortress.com/tf06_thenakedandthedead/">
+                  <div class="image_wrapper">
+                    <img
+                      id="tf06Cover"
+                      src="/comics/covers/main/tf06_cover.png"
+                    />
+                    <div class="overlay" style="display: none">
+                      <span class="notTranslatedYet" data-key="notTranslatedYet"
+                        >Not added yet</span
+                      >
+                    </div>
+                  </div>
+                </a>
+                <div class="comic_caption">
+                  <span class="caption_main">
+                    <a
+                      href="https://www.teamfortress.com/tf06_thenakedandthedead/"
+                      id="tf06Title"
+                      >The Naked and the Dead</a
+                    >
+                  </span>
+                  <span class="caption_date" id="tf06Date"
+                    >January 10, 2017</span
+                  >
+                </div>
+              </div>
+
+              <!-- ###  THE DAYS HAVE WORN AWAY  ### -->
+              <div class="comic_box">
+                <a href="tf07_thedayshavewornaway/">
+                  <div class="image_wrapper">
+                    <img
+                      id="tf07Cover"
+                      src="/placeholder.png"
+                      alt="TF07 Cover"
+                    />
+                    <div class="overlay" style="display: none">
+                      <span class="notTranslatedYet" data-key="notTranslatedYet"
+                        >Not added yet</span
+                      >
+                    </div>
+                  </div>
+                </a>
+                <div class="comic_caption">
+                  <span class="caption_main">
+                    <a href="tf07_thedayshavewornaway/" id="tf07Title"
+                      >The Days Have Worn Away</a
+                    >
+                  </span>
+                  <span class="caption_date" id="tf07Date"
+                    >December 20, 2024</span
+                  >
+                </div>
+              </div>
+
+              <!-- Small script that chooses one of the three covers randomly -->
+              <script>
+                (function () {
+                  const random = Math.floor(Math.random() * 3) + 1; // 1, 2 or 3
+                  const img = document.getElementById("tf07Cover");
+                  img.src = `/comics/covers/main/tf07_cover${random}.png`;
+                })();
+              </script>
+
+              <br />
+              <!--==================================================================================== -->
+
+              <div class="sectionSeparatorContainer">
+                <div class="sectionSeparatorText" id="updateComics">
+                  UPDATE COMICS
+                </div>
+                <div class="sectionSeparatorLine"></div>
+              </div>
+
+              <div class="comic_box">
+                <a href="https://www.teamfortress.com/theshowdown/"
+                  ><img
+                    src="https://steamcdn-a.akamaihd.net/apps/tf2/blog/images/comics/theshowdown.png"
+                /></a>
+
+                <div class="comic_caption">
+                  <span class="caption_main"
+                    ><a
+                      id="tfu18Title"
+                      href="https://www.teamfortress.com/theshowdown/"
+                      >The Showdown</a
+                    ></span
+                  >
+
+                  <span id="tfu18Date" class="caption_date">July 7, 2016</span>
+                </div>
+              </div>
+
+              <div class="comic_box">
+                <a href="https://www.teamfortress.com/gargoyles_and_gravel/"
+                  ><img
+                    src="https://steamcdn-a.akamaihd.net/apps/tf2/blog/images/comics/screamfortress7.png"
+                /></a>
+
+                <div class="comic_caption">
+                  <span class="caption_main"
+                    ><a
+                      id="tfu17Title"
+                      href="https://www.teamfortress.com/gargoyles_and_gravel/"
+                      >Gargoyles & Gravel - Scream Fortress 7</a
+                    ></span
+                  >
+
+                  <span id="tfu17Date" class="caption_date"
+                    >October 28, 2015</span
+                  >
+                </div>
+              </div>
+
+              <div class="comic_box">
+                <a href="https://www.teamfortress.com/thecontract/"
+                  ><img
+                    src="https://steamcdn-a.akamaihd.net/apps/tf2/blog/images/comics/contract.png"
+                /></a>
+
+                <div class="comic_caption">
+                  <span class="caption_main"
+                    ><a
+                      id="tfu16Title"
+                      href="https://www.teamfortress.com/thecontract/"
+                      >The Contract</a
+                    ></span
+                  >
+
+                  <span id="tfu16Date" class="caption_date">July 2, 2015</span>
+                </div>
+              </div>
+
+              <div class="comic_box">
+                <a href="https://www.teamfortress.com/bloodmoney/"
+                  ><img
+                    src="https://steamcdn-a.akamaihd.net/apps/tf2/blog/images/comics/blood_money.png"
+                /></a>
+
+                <div class="comic_caption">
+                  <span class="caption_main"
+                    ><a
+                      id="tfu15Title"
+                      href="https://www.teamfortress.com/bloodmoney/"
+                      >Blood Money</a
+                    ></span
+                  >
+
+                  <span id="tfu15Date" class="caption_date"
+                    >October 29, 2014</span
+                  >
+                </div>
+              </div>
+
+              <div class="comic_box">
+                <a href="https://www.teamfortress.com/gravematters/">
+                  <img
+                    src="https://steamcdn-a.akamaihd.net/apps/tf2/blog/images/comics/grave_matters.png"
+                  />
+                </a>
+
+                <div class="comic_caption">
+                  <span class="caption_main"
+                    ><a
+                      id="tfu14Title"
+                      href="https://www.teamfortress.com/gravematters/"
+                      >Grave Matters</a
+                    ></span
+                  >
+
+                  <span id="tfu14Date" class="caption_date"
+                    >October 28, 2013</span
+                  >
+                </div>
+              </div>
+
+              <div class="comic_box">
+                <a href="https://www.teamfortress.com/shadowboxers/">
+                  <img
+                    src="https://steamcdn-a.akamaihd.net/apps/tf2/blog/images/comics/shadow_boxers.png"
+                  />
+                </a>
+
+                <div class="comic_caption">
+                  <span class="caption_main"
+                    ><a
+                      id="tfu13Title"
+                      href="https://www.teamfortress.com/shadowboxers/"
+                      >The Shadow Boxers</a
+                    ></span
+                  >
+
+                  <span id="tfu13Date" class="caption_date"
+                    >December 19, 2012</span
+                  >
+                </div>
+              </div>
+
+              <div class="comic_box">
+                <a href="https://www.teamfortress.com/doommates/">
+                  <img
+                    src="https://steamcdn-a.akamaihd.net/apps/tf2/blog/images/comics/doom_mates.png"
+                  />
+                </a>
+
+                <div class="comic_caption">
+                  <span class="caption_main"
+                    ><a
+                      id="tfu12Title"
+                      href="https://www.teamfortress.com/doommates/"
+                      >Doom-Mates</a
+                    ></span
+                  >
+
+                  <span id="tfu12Date" class="caption_date"
+                    >October 24, 2012</span
+                  >
+                </div>
+              </div>
+
+              <div class="comic_box">
+                <a href="https://www.teamfortress.com/fateworsethanchess/">
+                  <img
+                    src="https://steamcdn-a.akamaihd.net/apps/tf2/blog/images/comics/fate_worse_than_chess.png"
+                  />
+                </a>
+
+                <div class="comic_caption">
+                  <span class="caption_main"
+                    ><a
+                      id="tfu11Title"
+                      href="https://www.teamfortress.com/fateworsethanchess/"
+                      >A Fate Worse Than Chess</a
+                    ></span
+                  >
+
+                  <span id="tfu11Date" class="caption_date"
+                    >August 13, 2012</span
+                  >
+                </div>
+              </div>
+
+              <div class="comic_box">
+                <a href="https://www.teamfortress.com/bloodbrothers/">
+                  <img
+                    src="https://steamcdn-a.akamaihd.net/apps/tf2/blog/images/comics/blood_brothers.png"
+                  />
+                </a>
+
+                <div class="comic_caption">
+                  <span class="caption_main"
+                    ><a
+                      id="tfu10Title"
+                      href="https://www.teamfortress.com/bloodbrothers/"
+                      >Blood Brothers</a
+                    ></span
+                  >
+
+                  <span id="tfu10Date" class="caption_date"
+                    >August 12, 2012</span
+                  >
+                </div>
+              </div>
+
+              <div class="comic_box">
+                <a href="https://www.teamfortress.com/asmissmasstory/">
+                  <img
+                    src="https://steamcdn-a.akamaihd.net/apps/tf2/blog/images/comics/smissmas.png"
+                  />
+                </a>
+
+                <div class="comic_caption">
+                  <span class="caption_main"
+                    ><a
+                      id="tfu09Title"
+                      href="https://www.teamfortress.com/asmissmasstory/"
+                      >A Smissmas Story</a
+                    ></span
+                  >
+
+                  <span id="tfu09Date" class="caption_date"
+                    >December 15, 2011</span
+                  >
+                </div>
+              </div>
+
+              <div class="comic_box">
+                <a href="https://www.teamfortress.com/truemeaning/">
+                  <img
+                    src="https://steamcdn-a.akamaihd.net/apps/tf2/blog/images/comics/true_meaning.png"
+                  />
+                </a>
+
+                <div class="comic_caption">
+                  <span class="caption_main"
+                    ><a
+                      id="tfu08Title"
+                      href="https://www.teamfortress.com/truemeaning/"
+                      >True Meaning</a
+                    ></span
+                  >
+
+                  <span id="tfu08Date" class="caption_date"
+                    >December 13, 2011</span
+                  >
+                </div>
+              </div>
+
+              <div class="comic_box">
+                <a href="https://www.teamfortress.com/bombinomicon/">
+                  <img
+                    src="https://steamcdn-a.akamaihd.net/apps/tf2/blog/images/comics/bombinomicon.png"
+                  />
+                </a>
+
+                <div class="comic_caption">
+                  <span class="caption_main"
+                    ><a
+                      id="tfu07Title"
+                      href="https://www.teamfortress.com/bombinomicon/"
+                      >Bombinomicon</a
+                    ></span
+                  >
+
+                  <span id="tfu07Date" class="caption_date"
+                    >October 27, 2011</span
+                  >
+                </div>
+              </div>
+
+              <div class="comic_box">
+                <a href="https://www.teamfortress.com/grordborts/comic/">
+                  <img
+                    src="https://steamcdn-a.akamaihd.net/apps/tf2/blog/images/comics/grordbort.png"
+                  />
+                </a>
+
+                <div class="comic_caption">
+                  <span class="caption_main"
+                    ><a
+                      id="tfu06Title"
+                      href="https://www.teamfortress.com/grordborts/comic/"
+                      >Dr. Grordbort's Crash Landing</a
+                    ></span
+                  >
+
+                  <span id="tfu06Date" class="caption_date">July 20, 2011</span>
+                </div>
+              </div>
+
+              <div class="comic_box">
+                <a href="https://www.teamfortress.com/meetthedirector/">
+                  <img
+                    src="https://steamcdn-a.akamaihd.net/apps/tf2/blog/images/comics/meet_the_director.png"
+                  />
+                </a>
+
+                <div class="comic_caption">
+                  <span class="caption_main"
+                    ><a
+                      id="tfu05Title"
+                      href="https://www.teamfortress.com/meetthedirector/"
+                      >Meet the Director</a
+                    ></span
+                  >
+
+                  <span id="tfu05Date" class="caption_date">May 5, 2011</span>
+                </div>
+              </div>
+
+              <div class="comic_box">
+                <a href="https://www.teamfortress.com/bidwells_big_plan/">
+                  <img
+                    src="https://steamcdn-a.akamaihd.net/apps/tf2/blog/images/comics/bidwells_big_plan.png"
+                  />
+                </a>
+
+                <div class="comic_caption">
+                  <span class="caption_main"
+                    ><a
+                      id="tfu04Title"
+                      href="https://www.teamfortress.com/bidwells_big_plan/"
+                      >Bidwell's Big Plan</a
+                    ></span
+                  >
+
+                  <span id="tfu04Date" class="caption_date"
+                    >September 30, 2010</span
+                  >
+                </div>
+              </div>
+
+              <div class="comic_box">
+                <a href="https://www.teamfortress.com/loosecanon/">
+                  <img
+                    src="https://steamcdn-a.akamaihd.net/apps/tf2/blog/images/comics/loose_canon.png"
+                  />
+                </a>
+
+                <div class="comic_caption">
+                  <span class="caption_main"
+                    ><a
+                      id="tfu03Title"
+                      href="https://www.teamfortress.com/loosecanon/"
+                      >Loose Canon</a
+                    ></span
+                  >
+
+                  <span id="tfu03Date" class="caption_date">July 2, 2010</span>
+                </div>
+              </div>
+
+              <div class="comic_box">
+                <a href="https://www.teamfortress.com/macupdate/comic/">
+                  <img
+                    src="https://steamcdn-a.akamaihd.net/apps/tf2/blog/images/comics/mac.png"
+                  />
+                </a>
+
+                <div class="comic_caption">
+                  <span class="caption_main"
+                    ><a
+                      id="tfu02Title"
+                      href="https://www.teamfortress.com/macupdate/comic/"
+                      >A Visual History</a
+                    ></span
+                  >
+
+                  <span id="tfu02Date" class="caption_date">June 10, 2010</span>
+                </div>
+              </div>
+
+              <div class="comic_box">
+                <a href="https://www.teamfortress.com/war/administrator">
+                  <img
+                    src="https://steamcdn-a.akamaihd.net/apps/tf2/blog/images/comics/war.png"
+                  />
+                </a>
+
+                <div class="comic_caption">
+                  <span class="caption_main"
+                    ><a
+                      id="tf01Title"
+                      href="https://www.teamfortress.com/war/administrator/"
+                      >WAR!</a
+                    ></span
+                  >
+
+                  <span id="tfu01Date" class="caption_date"
+                    >December 17, 2009</span
+                  >
+                </div>
+              </div>
+
+              <div class="comic_box">
+                <a
+                  href="https://www.teamfortress.com/sniper_vs_spy/day07_english.htm"
+                >
+                  <img
+                    src="https://steamcdn-a.akamaihd.net/apps/tf2/blog/images/comics/jarate.png"
+                  />
+                </a>
+
+                <div class="comic_caption">
+                  <span class="caption_main"
+                    ><a
+                      id="tfu00Title"
+                      href="https://www.teamfortress.com/sniper_vs_spy/day07_english.htm"
+                      >The Insult That Made a "Jarate Master" Out of Sniper</a
+                    ></span
+                  >
+
+                  <span id="tfu00Date" class="caption_date">May 20, 2009</span>
+                </div>
+              </div>
+
+              <div style="clear: both"></div>
+            </div>
 
             <div id="saxton_container">
               <div class="sectionSeparatorContainer">
-                <div class="sectionSeparatorText">SAXTON SERIES</div> 
+                <div class="sectionSeparatorText">SAXTON SERIES</div>
                 <div class="sectionSeparatorLine"></div>
               </div>
 
@@ -675,35 +837,56 @@
                   ><img src="images/saxton_covers/saxton_thrillingtales.png"
                 /></a>
               </div>
-              
+
               <span id="saxtonSeriesTitle" class="caption_main">
                 Series of Saxton Hale Comic Book Covers
               </span>
               <span id="saxtonSeriesDate" class="caption_date">2009</span>
-
             </div>
           </div>
         </div>
+      </div>
     </div>
-        <footer id="footer">
-          <div id="footerContainer">
-            <a id="footerLogo" class="imageLink" target="_blank" href="Drunswebsite">
-              <img src="/images/druns.png" alt="DRUNs" />
-            </a>
-            <div id="footerText">
-              <p id="footerInfo">Valve, the Valve logo, Steam, the Steam logo, Team Fortress, and the Team Fortress logo are trademarks and/or registered trademarks of <a target="_blank" href="https://www.valvesoftware.com/">Valve Corporation</a>. Team Fortress 2 Translation Project and Team Fortress 2 Translation Tool-Kit are fan creations and are not affiliated with Valve Corporation.</p>
+    <footer id="footer">
+      <div class="boxshadowBox">
+        <div id="footerContainer">
+          <a
+            id="footerLogo"
+            class="imageLink"
+            target="_blank"
+            href="Drunswebsite"
+          >
+            <img src="/images/druns.png" alt="DRUNs" />
+          </a>
+          <div id="footerText">
+            <p id="footerInfo">
+              Valve, the Valve logo, Steam, the Steam logo, Team Fortress, and
+              the Team Fortress logo are trademarks and/or registered trademarks
+              of
+              <a target="_blank" href="https://www.valvesoftware.com/"
+                >Valve Corporation</a
+              >. Team Fortress 2 Translation Project and Team Fortress 2
+              Translation Tool-Kit are fan creations and are not affiliated with
+              Valve Corporation.
+            </p>
             <div id="footerLinks">
-            <ul>
-              <li><a id="contact" href="/contact">Contact</a></li>
-              <li><a id="privacy" href="/privacy">Privacy</a></li>
-              <li><a id="attributions" href="/attributions">Attributions</a></li>
-              <li><a id="translationPage" href="/translationpage.html">Super secret translation page</a></li>
-            </ul>
+              <ul>
+                <li><a id="contact" href="/contact">Contact</a></li>
+                <li><a id="privacy" href="/privacy">Privacy</a></li>
+                <li>
+                  <a id="attributions" href="/attributions">Attributions</a>
+                </li>
+                <li>
+                  <a id="translationPage" href="/translationpage.html"
+                    >Super secret translation page</a
+                  >
+                </li>
+              </ul>
             </div>
-              <p id="footerVersion">Site v0.6.0 • Kit v0.3.5</p>
-            </div>
+            <p id="footerVersion">Site v0.6.0 • Kit v0.3.5</p>
           </div>
-          </footer>
-
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
