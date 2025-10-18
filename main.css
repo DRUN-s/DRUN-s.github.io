@@ -1,17 +1,17 @@
 /*CSS for comics page for tf2*/
-
+html{overflow-x: hidden;}
 body {
   background-color: #262323;
   background-repeat: repeat-y;
   background-position: center;
   margin: 0;
   padding: 0;
-  font-family: GravePresse;
+  font-family: Host Grotesk;
   overflow-x: hidden;
 }
 
 p {
-  font-family: GravePresse;
+  font-family: Host Grotesk;
 }
 
 #title {
@@ -37,7 +37,7 @@ p {
   max-height: 60vh;
   display: inline-block;
   flex-shrink: 0;
-  filter: drop-shadow(11px 18px 5px #000000);
+  /*filter: drop-shadow(11px 18px 5px #000000);*/
 }
 
 #titleText {
@@ -49,7 +49,7 @@ p {
 }
 
 .warning {
-  position: absolute;
+  position: relative;
   width: 100%;
   text-align: center;
   font-size: 14pt;
@@ -63,6 +63,7 @@ p {
   width: calc(100% - 330px);
   max-width: 1400px;
   margin: auto;
+  overflow-x: hidden;
 }
 
 a,
@@ -70,12 +71,11 @@ a:hover,
 a:visited,
 a:active {
   color: #b35215;
-  text-decoration: none;
-  font-weight: bold;
 }
 
 a:hover {
-  text-decoration: underline;
+  transform: translateY(-2px);
+  transition: all 0.2s ease-in-out;
 }
 
 img {
@@ -87,6 +87,28 @@ img {
   height: 100%;
   box-shadow: 0 0 20px #000;
   overflow-x: hidden;
+}
+
+.textSubject{
+  display: flex;
+  flex-direction: column;
+}
+
+.textSubject div {
+  display: flex;
+  flex-direction: row;
+}
+
+.textSubject img {
+  align-self: center;
+  width: 15%;
+  height: auto;
+}
+
+.textSubject p {
+  padding-left: 5%;
+  padding-right: 5%;
+  font-family: Host Grotesk;
 }
 
 #centerFooter {
@@ -140,7 +162,7 @@ img {
   border-radius: 3px;
 }
 #footerLogo img:hover {
-  filter: drop-shadow(0px 0px 8px #000000);
+  /*filter: drop-shadow(0px 0px 8px #000000);*/
 }
 #footerText p {
   font-family: Host Grotesk;
@@ -181,6 +203,7 @@ img {
   width: 100%;
   margin: auto;
   text-align: left;
+  overflow-x: hidden;
 }
 
 #primaryHeaderArea {
@@ -210,6 +233,8 @@ img {
   display: flex;
   justify-content: space-around;
   margin-right: 3em;
+  font-weight: bolder;
+  font-size: clamp(5pt, 15pt, 18pt);
 }
 #logoLink {
   position: relative;
@@ -346,7 +371,7 @@ img {
   width: calc(50% - 30px);
   margin-top: 10px;
   min-width: 300px;
-  box-shadow: 0px 0px 5px #000000;
+  /*box-shadow: 0px 0px 5px #000000;*/
   overflow-x: hidden;
   border-radius: 5px;
 }
@@ -390,7 +415,7 @@ img {
   position: absolute;
   inset: 0;
   border-radius: 5px;
-  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.5);
+  /*box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.5);*/
   overflow-x: hidden;
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
@@ -691,6 +716,7 @@ img {
 @media (max-width: 1005px) {
   #main {
     width: 100%;
+    overflow-x: hidden;
   }
 
   .comic_box {

@@ -12,7 +12,7 @@
     font-family: 'Host Grotesk';
     src: url('fonts/HostGrotesk-ExtraBoldItalic.woff2') format('woff2'),
         url('fonts/HostGrotesk-ExtraBoldItalic.woff') format('woff');
-    font-weight: bold;
+    font-weight: bolder;
     font-style: italic;
     font-display: swap;
 }
@@ -48,7 +48,7 @@
     font-family: 'Host Grotesk';
     src: url('fonts/HostGrotesk-ExtraBold.woff2') format('woff2'),
         url('fonts/HostGrotesk-ExtraBold.woff') format('woff');
-    font-weight: bold;
+    font-weight: bolder;
     font-style: normal;
     font-display: swap;
 }
