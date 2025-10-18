@@ -37,7 +37,7 @@ p {
   max-height: 60vh;
   display: inline-block;
   flex-shrink: 0;
-  /*filter: drop-shadow(11px 18px 5px #000000);*/
+  filter: drop-shadow(11px 18px 5px #000000);
 }
 
 #titleText {
@@ -105,7 +105,7 @@ img {
   height: auto;
 }
 
-.textSubject p {
+.textSubject p,h1,h2,h3,h4,h5 {
   padding-left: 5%;
   padding-right: 5%;
   font-family: Host Grotesk;
@@ -125,7 +125,7 @@ img {
   background: #231f20;
   color: #9b948e;
   position: relative;
-  z-index: 1;
+  z-index: -1;
 }
 #footerContainer {
   max-width: 1200px;
@@ -162,7 +162,7 @@ img {
   border-radius: 3px;
 }
 #footerLogo img:hover {
-  /*filter: drop-shadow(0px 0px 8px #000000);*/
+  filter: drop-shadow(0px 0px 8px #000000);
 }
 #footerText p {
   font-family: Host Grotesk;
@@ -371,7 +371,7 @@ img {
   width: calc(50% - 30px);
   margin-top: 10px;
   min-width: 300px;
-  /*box-shadow: 0px 0px 5px #000000;*/
+  box-shadow: 0px 0px 5px #000000;
   overflow-x: hidden;
   border-radius: 5px;
 }
@@ -415,7 +415,7 @@ img {
   position: absolute;
   inset: 0;
   border-radius: 5px;
-  /*box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.5);*/
+  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.5);
   overflow-x: hidden;
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
@@ -518,7 +518,7 @@ img {
   position: absolute;
   background-color: #f5e7de;
   min-width: 160px;
-  /*box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);*/
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   overflow-x: hidden;
   z-index: 1;
   border-radius: 5px;

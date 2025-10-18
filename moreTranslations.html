@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>TF2 translation projects</title>
+
+    <link rel="shortcut icon" href="images/favicon.svg" />
+
+    <link rel="stylesheet" href="main.css?v=14" />
+    <link rel="stylesheet" href="fonts.css" />
+
+    <script src="scripts/main.js" defer></script>
+    <script src="scripts/translations.js" defer></script>
+    <script src="scripts/language-selector.js" defer></script>
+  </head>
+
+  <body>
+    <p class="warning" id="WIPText">
+      ⚠️ THIS WEBSITE IS UNDER CONSTRUCTION! ⚠️ CSS IS HARD PLEASE HELP ME !
+    </p>
+
+    <!--language selector-->
+    <div id="language-container">
+      <div class="dropdown" id="language-dropdown">
+        <button id="selectedItem" lang-selection="EN">
+          <img
+            src="https://cdn.countryflags.com/thumbs/united-kingdom/flag-800.png"
+          />
+          English
+          <span class="arrow-down"></span>
+        </button>
+
+        <div class="dropdown-content" id="select-container">
+          <ul>
+            <li lang-selection="EN">
+              <img
+                src="https://cdn.countryflags.com/thumbs/united-kingdom/flag-800.png"
+              />
+              English
+            </li>
+            <li lang-selection="FR">
+              <img
+                src="https://cdn.countryflags.com/thumbs/france/flag-800.png"
+              />
+              Français
+            </li>
+            <li lang-selection="KR">
+              <img
+                src="https://cdn.countryflags.com/thumbs/south-korea/flag-800.png"
+              />
+              한국어
+            </li>
+            <li lang-selection="TR">
+              <img
+                src="https://cdn.countryflags.com/thumbs/turkey/flag-800.png"
+              />
+              Türkçe
+            </li>
+            <li lang-selection="SW">
+              <img
+                src="https://cdn.countryflags.com/thumbs/sweden/flag-800.png"
+              />
+              Svenska
+            </li>
+            <li lang-selection="FI">
+              <img
+                src="https://cdn.countryflags.com/thumbs/finland/flag-800.png"
+              />
+              Suomi
+            </li>
+            <li lang-selection="ES">
+              <img
+                src="https://cdn.countryflags.com/thumbs/spain/flag-800.png"
+              />
+              Español
+            </li>
+            <li lang-selection="DE">
+              <img
+                src="https://cdn.countryflags.com/thumbs/germany/flag-800.png"
+              />
+              Deutsch
+            </li>
+            <li lang-selection="PL">
+              <img
+                src="https://cdn.countryflags.com/thumbs/poland/flag-800.png"
+              />
+              Polski
+            </li>
+            <li lang-selection="CS">
+              <img
+                src="https://cdn.countryflags.com/thumbs/czech-republic/flag-800.png"
+              />
+              Čeština
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="main" style="margin-top: 5vh">
+      <a name="top"></a>
+      <div id="centerColumn">
+        <div class="boxshadowBox">
+          <div id="primaryHeaderArea">
+            <!--TODO: Changer le logo.-->
+
+            <div id="logoLink">
+              <a href="index.html"
+                ><img id="headerAreaImage" src="images/Logo_TF2_flat.svg"
+              /></a>
+            </div>
+
+            <div id="spNavMenu">
+              <a class="aHoverVertShift" id="aboutButtonText" href="about.html"
+                >About</a
+              >
+              <a class="aHoverVertShift" id="teamButtonText" href="team.html"
+                >Team</a
+              >
+              <a
+                class="aHoverVertShift"
+                id="otherTranslationsButtonText"
+                href="moreTranslations.html"
+                style="color: #a03f02"
+                >Other translation projects</a
+              >
+              <a class="aHoverVertShift" id="helpUsButtonText" href="help.html"
+                >Help us</a
+              >
+            </div>
+          </div>
+
+          <div id="centerColContent">
+            <div class="textSubject">
+              <img src="images/blurbImages/menu-yeti.png" />
+              <md> This page is currently being worked on </md>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+      <div class="boxshadowBox">
+        <div id="footerContainer">
+          <a
+            id="footerLogo"
+            class="imageLink"
+            target="_blank"
+            href="Drunswebsite"
+          >
+            <img src="/images/druns.png" alt="DRUNs" />
+          </a>
+          <div id="footerText">
+            <p id="footerInfo">
+              Valve, the Valve logo, Steam, the Steam logo, Team Fortress, and
+              the Team Fortress logo are trademarks and/or registered trademarks
+              of
+              <a target="_blank" href="https://www.valvesoftware.com/"
+                >Valve Corporation</a
+              >. Team Fortress 2 Translation Project and Team Fortress 2
+              Translation Tool-Kit are fan creations and are not affiliated with
+              Valve Corporation.
+            </p>
+            <div id="footerLinks">
+              <ul>
+                <li><a id="contact" href="/contact">Contact</a></li>
+                <li><a id="privacy" href="privacy.txt">Privacy</a></li>
+                <li>
+                  <a id="attributions" href="/attributions">Attributions</a>
+                </li>
+                <li>
+                  <a id="translationPage" href="/translationpage.html"
+                    >Super secret translation page</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <p id="footerVersion">Site v0.6.0 • Kit v0.3.5</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+  <script src="https://cdn.jsdelivr.net/gh/MarketingPipeline/Markdown-Tag/markdown-tag.js"></script>
+</html>
