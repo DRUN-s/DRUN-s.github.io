@@ -1,5 +1,7 @@
 /*CSS for comics page for tf2*/
-html{overflow-x: hidden;}
+html {
+  overflow-x: hidden;
+}
 body {
   background-color: #262323;
   background-repeat: repeat-y;
@@ -89,14 +91,23 @@ img {
   overflow-x: hidden;
 }
 
-.textSubject{
+.textSubject {
   display: flex;
+  padding: 1em;
   flex-direction: column;
+  justify-content: flex-start;
 }
 
 .textSubject div {
   display: flex;
   flex-direction: row;
+  align-items: baseline; /* This is a default, if it has to be different then it should be precised in the HTML style attribute. */
+  justify-content: flex-start;
+}
+
+.textSubject div img {
+  width: auto; /* Both size values are set to auto to keep aspect ratio, actual sizes have to be specified per element in the HTML. */
+  height: auto;
 }
 
 .textSubject img {
@@ -105,7 +116,12 @@ img {
   height: auto;
 }
 
-.textSubject p,h1,h2,h3,h4,h5 {
+.textSubject p,
+h1,
+h2,
+h3,
+h4,
+h5 {
   padding-left: 5%;
   padding-right: 5%;
   font-family: Host Grotesk;
@@ -125,7 +141,7 @@ img {
   background: #231f20;
   color: #9b948e;
   position: relative;
-  z-index: -1;
+  z-index: 0;
 }
 #footerContainer {
   max-width: 1200px;
@@ -291,7 +307,7 @@ img {
   margin-left: 45px;
   width: 60%;
   font-family: Host Grotesk;
-  font-weight: 600;
+  font-weight: 400;
   align-content: center;
 }
 
@@ -448,6 +464,7 @@ img {
   z-index: 999;
   font-size: 18pt;
   padding: 25px;
+  pointer-events: none;
 }
 
 /* Caption styles inchangés */
