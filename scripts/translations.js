@@ -154,7 +154,7 @@ const translations = {
     tfu15Date: "October 29, 2014",
     tfu16Title: "The Contract",
     tfu16Date: "July 2, 2015",
-    tfu17Title: "Gargoyles & Gravel - Scream Fortress 7",
+    tfu17Title: "Gargoyles & Gravel",
     tfu17Date: "October 28, 2015",
     tfu18Title: "The Showdown",
     tfu18Date: "July 7, 2016",
