@@ -299,17 +299,39 @@
         background: rgba(128, 128, 128, 0.15);
         cursor: not-allowed;
       }
+
+      .warning {
+        position: relative;
+        width: 100%;
+        text-align: center;
+        font-size: 14pt;
+        font-family: BigNoodleTitling;
+        background-color: hsl(51, 78%, 42%);
+        color: rgb(33, 34, 27);
+        padding: 5px;
+        margin: 0px !important;
+      }
     </style>
   </head>
   <body>
+    <p class="warning" id="WIPText">
+      ⚠️ DO NOT CLOSE THIS TAB UNTIL YOU ARE SURE YOU'VE SAVED YOUR CHANGES ⚠️ FOLLOW THE STEPS AND EVERYTING WILL BE FINE !
+    </p>
     <div class="container">
-      <h1>Edit translations.js easily <br> CAUTION CLOSING THIS TAB MEANS LOOSING ALL YOUR PROGRESS ON THE TRANSLATION</h1>
+      <h1>
+        Edit translations.js easily <br />
+      </h1>
       <div class="subtitle">
-        Load up a file (preferably from github), edit it, and then you can
-        either export to github and do a pull request, or paste it into the
-        discord's translation ressources. Export in github : Send to github then
+        Prerequisites : <br>
+        You have a GitHub account (You save me some time)<br>
+        AND / OR<br>
+        You have a discord account and you're on the TF2TP's server (You shouldn't feel guitly making me lose some time, I'm the one at fault here for not doing a better system)<br><br>
+
+        1) Load up a file (preferably from github),<br> 2) edit it,<br> 3) then you can
+        either export to github (here this basically means copying the file) and do a pull request, or paste it into the
+        discord's translation ressources. <br><br>Export in github : Send to github then
         hit ctrl+A then ctrl+V and click commit then click pull request. The
-        commit description will be "[Your language tag] update"
+        commit description will be "[Your language tag] update"<br><br>Sending it to discord : Click "copy translation.js" 
       </div>
 
       <div class="layout">
@@ -353,7 +375,7 @@
               <input
                 id="filterInput"
                 class="input"
-                placeholder="Filtrer par clé (ex: tf01Title)"
+                placeholder="Filter by key (ex: tf01Title)"
               />
               <label style="display: flex; align-items: center; gap: 8px"
                 ><input id="toggleShowEN" type="checkbox" checked />Show

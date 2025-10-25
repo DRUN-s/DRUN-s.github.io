@@ -736,6 +736,14 @@ h5 {
     overflow-x: hidden;
   }
 
+  #primaryHeaderArea {
+    justify-content: space-evenly;
+  }
+
+  #spNavMenu {
+    margin: 0;
+  }
+
   .comic_box {
     width: calc(50% - 20px); /* 2 colonnes */
   }
@@ -755,6 +763,8 @@ h5 {
 
   #spNavMenu {
     flex-direction: column;
+    justify-content: center;
+    margin: 0;
   }
 
   #spNavMenu a {
