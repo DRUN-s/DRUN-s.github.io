@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 99.7 76">
+    <path fill="#5865F2" d="M84.5 6.4A79 79 0 0 0 63.9 0q-1.5 2.6-2.6 5.4a79 79 0 0 0-22.8 0L35.9 0Q25.2 1.8 15.3 6.4A84 84 0 0 0 .4 63.3 85 85 0 0 0 25.7 76a61 61 0 0 0 5.4-8.8 55 55 0 0 1-8.5-4.1l2.1-1.6c16 7.6 34.5 7.6 50.5 0l2.1 1.6q-4.1 2.4-8.5 4.1 2.4 4.6 5.4 8.8a86 86 0 0 0 25.3-12.7 85 85 0 0 0-15-56.9M33.3 51.8c-4.9 0-9-4.5-9-10s3.9-10 9-10 9.1 4.5 9 10-4 10-9 10m33.1 0c-4.9 0-9-4.5-9-10s3.9-10 9-10 9.1 4.5 9 10-3.9 10-9 10"/><style xmlns="" id="gxm_accents">
+        :root { 
+            --opera-gx-accent-color: #dc7c2e !important;
+            --opera-gx-background-color: #161413 !important;
+
+            --opera-gx-accent-color-r: 220 !important;
+            --opera-gx-accent-color-g: 124 !important;
+            --opera-gx-accent-color-b: 46 !important;
+            --opera-gx-accent-color-h: 27 !important;
+            --opera-gx-accent-color-s: 71 !important;
+            --opera-gx-accent-color-l: 52 !important;
+
+            --opera-gx-background-color-r: 22 !important;
+            --opera-gx-background-color-g: 20 !important;
+            --opera-gx-background-color-b: 19 !important;
+            --opera-gx-background-color-h: 20 !important;
+            --opera-gx-background-color-s: 7 !important;
+            --opera-gx-background-color-l: 8 !important;
+
+            --gx-accent-l-8: 27deg 27% 4.4% !important;
+            --gx-accent-l-16: 27deg 27% 8.8% !important;
+            --gx-accent-l-24: 27deg 27% 13.2% !important;
+            --gx-accent-l-30: 27deg 27% 16.5% !important;
+            --gx-accent-l-60: 27deg 27% 33% !important;
+            --gx-accent-l-80: 27deg 27% 44% !important;
+            --gx-accent-l-100: 27deg 27% 55% !important;
+            --gx-accent-l-120: 27deg 27% 66% !important;
+            --gx-accent-l-140: 27deg 27% 77% !important;
+            --gx-accent-l-160: 27deg 27% 88% !important;
+            --gx-no-00: 20deg 7% 0% !important;
+            --gx-no-04: 20deg 7% 4% !important;
+            --gx-no-08: 20deg 7% 8% !important;
+            --gx-no-12: 20deg 7% 12% !important;
+            --gx-no-16: 20deg 7% 16% !important;
+            --gx-no-20: 20deg 7% 20% !important;
+            --gx-no-24: 20deg 7% 24% !important;
+            --gx-no-32: 20deg 7% 32% !important;
+            --gx-no-40: 20deg 7% 40% !important;
+            --gx-no-59: 20deg 7% 59% !important;
+            --gx-no-77: 20deg 7% 77% !important;
+            --gx-no-80: 20deg 7% 80% !important;
+            --gx-no-88: 20deg 7% 88% !important;
+            --gx-no-90: 20deg 7% 90% !important;
+            --gx-no-92: 20deg 7% 92% !important;
+            --gx-no-96: 20deg 7% 96% !important;
+            --gx-no-98: 20deg 7% 98% !important;
+            --gx-no-100: 20deg 7% 100% !important;
+
+            --gx-accent-100-contrast: 0deg 0% 0% !important;
+        }
+    </style>
+</svg>
