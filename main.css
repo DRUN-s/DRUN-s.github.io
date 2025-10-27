@@ -771,6 +771,15 @@ h5 {
     width: 100vw;
   }
 
+  #blurbText {
+    margin-left: 0;
+    width: 95%;
+  }
+
+  .comic_box {
+    width: calc(85% - 20px); /* 2 colonnes */
+  }
+
   #covers a {
     width: calc(100% - 30px);
   }
