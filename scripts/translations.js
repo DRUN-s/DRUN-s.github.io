@@ -446,7 +446,7 @@ const translations = {
     mainPhilosophyText: "",
   },
   TR: {
-    notTranslatedYet: "Henüz Çevrilmedi",
+    notTranslatedYet: "Bu çizgi romanlar daha çevrilmedi",
     page: "Sayfa",
     blurbText:
       "Valve asla TF2 çizgi romanlarını çevirmedi ve topluluk olarak uğraşılmış çeviriler de çoğunlukla tembelce veya dağınıktı. Neredeyse hiçbiri bütün bir çeviri içermiyordu. Fakat bu proje en iyi TF2 çevirmenleri tarafından özenle hazırlandı. Burada okuyacağınız TF2 çizgi romanların “toolkit” aranjmanı DRUNs tarafından gerçeğine en yakın olacak şekilde yapıldı. Neyse, yeterince boş yaptık! Şimdi TF2 çizgi romanlarını kendi dilinizde de okuyabilirsiniz, isterseniz başka bir dil öğrenmek için bir fırsat da kazanabilirsiniz!",
