@@ -675,43 +675,43 @@ h5 {
 	margin-bottom: 1em;
 }
 
-.member > .devlinks {
+.member > .memberLinks {
 	display: flex;
 	gap: 10px;
 	justify-content: center;
 	margin-top: auto;
 }
 
-.member > .devlinks > a {
+.member > .memberLinks > a {
 	height: 20px;
 	width: 20px;
 	display: inline-block;
 	/* background-color: red; */
 }
 
-.devlinks a {
+.memberLinks a {
 	background-size: 20px 20px;
 	background-repeat: no-repeat;
 	filter: brightness(0%);
 
 }
 
-.devlinks a:hover {
+.memberLinks a:hover {
 	filter: brightness(0%) drop-shadow(0 0 5px var(--beige));
 }
 
-.devlinks a.artstation { background-image: url(artstation_simplified.svg); }
-.devlinks a.bandcamp { background-image: url(bandcamp_simplified.svg); }
-.devlinks a.bluesky { background-image: url(bsky_simplified.svg); }
-.devlinks a.github { background-image: url(github_simplified.svg); }
-.devlinks a.instagram { background-image: url(instagram_simplified.svg); }
-.devlinks a.linkedin { background-image: url(linkedin_simplified.svg); }
-.devlinks a.spotify { background-image: url(spotify_simplified.svg); }
-.devlinks a.steam { background-image: url(steam_simplified.svg); }
-.devlinks a.twitter { background-image: url(twitter_simplified.svg); }
-.devlinks a.vimeo { background-image: url(vimeo_simplified.svg); }
-.devlinks a.website { background-image: url(www_simplified.svg); }
-.devlinks a.youtube { background-image: url(youtube_simplified.svg); }
+.memberLinks a.deviantart { background-image: url(/images/platforms/simplified/deviantart_simplified.svg); }
+.memberLinks a.bandcamp { background-image: url(/images/platforms/simplified/bandcamp_simplified.svg); }
+.memberLinks a.bluesky { background-image: url(/images/platforms/simplified/bsky_simplified.svg); }
+.memberLinks a.github { background-image: url(/images/platforms/simplified/github_simplified.svg); }
+.memberLinks a.instagram { background-image: url(/images/platforms/simplified/instagram_simplified.svg); }
+.memberLinks a.linkedin { background-image: url(/images/platforms/simplified/linkedin_simplified.svg); }
+.memberLinks a.spotify { background-image: url(/images/platforms/simplified/spotify_simplified.svg); }
+.memberLinks a.steam { background-image: url(/images/platforms/simplified/steam_simplified.svg); }
+.memberLinks a.twitter { background-image: url(/images/platforms/simplified/twitter_simplified.svg); }
+.memberLinks a.vimeo { background-image: url(/images/platforms/simplified/vimeo_simplified.svg); }
+.memberLinks a.website { background-image: url(/images/platforms/simplified/www_simplified.svg); }
+.memberLinks a.youtube { background-image: url(/images/platforms/simplified/youtube_simplified.svg); }
 
 .teamRoles {
 	bottom:0px;
@@ -743,7 +743,6 @@ h5 {
 
 @media (max-width: 850px) {
 	.teamRole {
-		float:unset !important;
 		width:unset !important;
 		display:inline-block !important;
 		margin:2px !important;
