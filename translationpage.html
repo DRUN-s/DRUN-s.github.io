@@ -959,10 +959,10 @@
           renderKeysBar();
           renderEditor();
           updateParsedStatus(true);
-          toast("Fichier analysé");
+          toast("Analysed file");
         } catch (err) {
           updateParsedStatus(false);
-          alert("Erreur d'analyse : " + err.message);
+          alert("Analysis error : " + err.message);
           console.error(err);
         }
       });
@@ -1016,7 +1016,7 @@
           toast("Copied to your clipboard ! ✅");
         } catch {
           alert(
-            "Unable to copy for you'll have to export as JS and copy the content of the dowloaded file."
+            "Unable to copy you'll have to export as JS and copy the content of the dowloaded file."
           );
         }
       });
@@ -1144,7 +1144,7 @@
         const content = buildJsFile();
         try {
           await navigator.clipboard.writeText(content);
-          toast("Fichier copié – ouverture de GitHub…");
+          toast("File Copied – Opening GitHub…");
         } catch {}
         const url =
           "https://github.com/DRUN-s/DRUN-s.github.io/edit/main/scripts/translations.js";
