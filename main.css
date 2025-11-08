@@ -621,6 +621,13 @@ h5 {
 	/* justify-content: space-between; */
 }
 
+@media (max-width: 850px) {
+	.member {
+    flex-direction: row;
+    width: 90%;
+	}
+  
+}
 
 .member > .roles {
 	display: block;
@@ -680,20 +687,19 @@ h5 {
 	gap: 10px;
 	justify-content: center;
 	margin-top: auto;
+  flex-wrap: wrap;
 }
 
 .member > .memberLinks > a {
 	height: 20px;
 	width: 20px;
 	display: inline-block;
-	/* background-color: red; */
 }
 
 .memberLinks a {
 	background-size: 20px 20px;
 	background-repeat: no-repeat;
 	filter: brightness(0%);
-
 }
 
 .memberLinks a:hover {
@@ -718,6 +724,10 @@ h5 {
 	font-size:0;
 	width:110%;
 	padding-bottom:6px;
+}
+
+.memberContainer {
+  display: flex;
 }
 
 @media (max-width: 850px) {
