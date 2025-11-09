@@ -735,6 +735,10 @@ h5 {
   position: relative;
 }
 
+.memberContainer {
+  display: flex;
+}
+
 @media (max-width: 850px) {
 	.teamRoles {
 		position:relative !important;
