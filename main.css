@@ -713,6 +713,9 @@ h5 {
 .memberLinks a.vimeo { background-image: url(/images/platforms/simplified/vimeo_simplified.svg); }
 .memberLinks a.website { background-image: url(/images/platforms/simplified/www_simplified.svg); }
 .memberLinks a.youtube { background-image: url(/images/platforms/simplified/youtube_simplified.svg); }
+.memberLinks a.discord { background-image: url(/images/platforms/simplified/discord_simplified.svg); }
+.memberLinks a.tumblr { background-image: url(/images/platforms/simplified/tumblr_simplified.svg); }
+.memberLinks a.reddit { background-image: url(/images/platforms/simplified/reddit_simplified.svg); }
 
 .teamRoles {
 	bottom:0px;
