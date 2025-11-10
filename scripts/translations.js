@@ -99,7 +99,7 @@ const translations = {
       "⚠️ THIS WEBSITE IS UNDER CONSTRUCTION! ⚠️ CSS IS HARD PLEASE HELP ME",
     aboutButtonText: "About",
     helpButtonText: "Help",
-    teamButtonText: "Team",
+    teamButtonText: "Our Team",
     otherTranslationsButtonText: "Other translation projects",
     helpUsButtonText: "Help us",
     tfComics: "TF COMICS",
