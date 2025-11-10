@@ -719,6 +719,10 @@ h5 {
 .memberLinks a.discord { background-image: url(/images/platforms/simplified/discord_simplified.svg); }
 .memberLinks a.tumblr { background-image: url(/images/platforms/simplified/tumblr_simplified.svg); }
 .memberLinks a.reddit { background-image: url(/images/platforms/simplified/reddit_simplified.svg); }
+.memberLinks a.newgrounds { background-image: url(/images/platforms/simplified/newgrounds_simplified.svg); }
+.memberLinks a.itchio { background-image: url(/images/platforms/simplified/itchio_simplified.svg); }
+.memberLinks a.twitch { background-image: url(/images/platforms/simplified/twitch_simplified.svg); }
+.memberLinks a.modworkshop { background-image: url(/images/platforms/simplified/modworkshop_simplified.svg); }
 
 .teamRoles {
 	bottom:0px;

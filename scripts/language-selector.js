@@ -102,7 +102,8 @@ document.addEventListener("DOMContentLoaded", function () {
           value.includes("<br>") ||
           value.includes("<span") ||
           value.includes("&") ||
-          value.includes("<b>") 
+          value.includes("<b>") ||
+          value.includes("</a>") 
         ) {
           el.innerHTML = value;
         } else {
