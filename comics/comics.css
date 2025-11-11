@@ -167,6 +167,12 @@ body {
 	user-select: none;
 	z-index: 10;
   }
+
+  .help-toggle span {
+	font-weight: bold;
+	font-size: 20px;
+	font-family: Host Grotesk;
+  }
   
   .help-toggle:hover {
 	background: #4a4643;
