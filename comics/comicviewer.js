@@ -34,7 +34,7 @@ $(function () {
           translations[lang].tf02Title,
         ])
       ),
-      pages: 75,
+      pages: 70,
     },
     {
       key: "tf03",
