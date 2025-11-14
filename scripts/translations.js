@@ -980,4 +980,3 @@ const translations = {
     "coordinator": ""
   }
 }
-

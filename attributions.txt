@@ -1,0 +1,7 @@
+Thanks to all the community. The kit aims for openneness and efficiency in it's software choices. Though some choices had to be made. 
+The kit was mainly done using photoshop.
+Most translations were made on https://www.photopea.com/ which has the best .psd parser of all softwares and I wish it was more open.
+Illustrations were made using Inkscape, and a bit of krita. https://www.inkscape.org/ https://krita.org/ 
+The code here was made by hand, with knowledges about html, css and programming, but also with some AI. Take it like you want, but remember the goal is the result for code. I used chatGPT which often told me dumb things, and Claude who wanted to make a GIGA corporate website.
+I should mention also TF2C https://tf2classic.com/team and open fortress team especially the webdevs, because I yanked ideas and stuff you might recognise. 
+If you really read this document here is a fun fact for you : In early stages I wanted to name the project TF2:CP for comics project, but I had a second thought after listing all the possible meanings of CP in Internet culture...
