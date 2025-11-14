@@ -110,7 +110,11 @@ const translations = {
     "webDev": "Web Dev (je te vois !)",
     "kitDevelopper": "Développeur du kit",
     "kitArtist": "Artiste du kit",
-    "coordinator": "Coordinateur(trice)"
+    "coordinator": "Coordinateur(trice)",
+    "helpingUs": "Nous aider",
+    "helpingUsText": "Salut, si vous êtes ici c'est que vous pensez pouvoir nous aider, que vous soyez un traducteur, un webdesigner, voire même un programmeur. Mais il y a plein d'autres façons de contribuer. Notamment en lisant les comics et en nous indiquant les bugs, mais aussi d'autres façons plus impies ! Comme poster des mèmes sur notre discord. Nous vous accueillerions avec joie là bas. En bref c'est encore un de ces projets communautaires TF2, et si vous êtes là c'est que vous êtes surement un membre de la communauté ! Donc vous êtes en quelque sorte déjà un membre ! Nous acceptons toutes candidatures pour toutes sortes de connaissances et talents. Mais nous n'accepterons pas trop de traducteurs car comme le dit l'adage : Trop de cuistots gâtent la soupe ! Et cette soupe c'est de la vraie, faite avec des choux à moi ! Faite avec une variété de Printemps, le bacalan hâtif.",
+    "helpingUsTextLinks": "",
+    "anyway": ""
   },
   "EN": {
     "404": "Error 404 ! This page ! Couldn't be found !",
@@ -223,7 +227,11 @@ const translations = {
     "webDev": "Web team (I see you)",
     "kitDevelopper": "Kit dev",
     "kitArtist": "Kit artist",
-    "coordinator": "Coordinator"
+    "coordinator": "Coordinator",
+    "helpingUs": "Helping Us :",
+    "helpingUsText": "Hi, if you’re here it’s certainly because you feel like you could help us in some way, either you’re a translator, or a webdesigner, heck even a programmer. But there are many more ways to contribute. Notably reading the comics and reporting bugs. Or even, the filthiest one of all ! Posting memes in the discord. We would be glad to welcome you there. This is yet another TF2 community project, and if you’re here, you certainly are part of the community ! So you’re part of us in a way ! We accept every applications for any sets of skills, but we won’t accept too much translators per languages, as you know, too many cooks spoil the broth, and such supper, should be exquisite.",
+    "helpingUsTextLinks": "Everything is on <a target=\"_blank\" href=\"https://discord.gg/wFRM6daVBd\" style=\"text-decoration: none\" >our discord !!!</a>",
+    "anyway": "ANYWAY !"
   },
   "ES": {
     "404": "",
@@ -336,7 +344,11 @@ const translations = {
     "webDev": "",
     "kitDevelopper": "",
     "kitArtist": "",
-    "coordinator": ""
+    "coordinator": "",
+    "helpingUs": "",
+    "helpingUsText": "",
+    "helpingUsTextLinks": "",
+    "anyway": ""
   },
   "DE": {
     "404": "",
@@ -449,7 +461,11 @@ const translations = {
     "webDev": "",
     "kitDevelopper": "",
     "kitArtist": "",
-    "coordinator": ""
+    "coordinator": "",
+    "helpingUs": "",
+    "helpingUsText": "",
+    "helpingUsTextLinks": "",
+    "anyway": ""
   },
   "FI": {
     "404": "",
@@ -562,7 +578,11 @@ const translations = {
     "webDev": "",
     "kitDevelopper": "",
     "kitArtist": "",
-    "coordinator": ""
+    "coordinator": "",
+    "helpingUs": "",
+    "helpingUsText": "",
+    "helpingUsTextLinks": "",
+    "anyway": ""
   },
   "TR": {
     "notTranslatedYet": "Bu çizgi romanlar daha çevrilmedi",
@@ -674,7 +694,11 @@ const translations = {
     "webDev": "",
     "kitDevelopper": "",
     "kitArtist": "",
-    "coordinator": ""
+    "coordinator": "",
+    "helpingUs": "",
+    "helpingUsText": "",
+    "helpingUsTextLinks": "",
+    "anyway": ""
   },
   "CS": {
     "404": "",
@@ -787,7 +811,11 @@ const translations = {
     "webDev": "",
     "kitDevelopper": "",
     "kitArtist": "",
-    "coordinator": ""
+    "coordinator": "",
+    "helpingUs": "",
+    "helpingUsText": "",
+    "helpingUsTextLinks": "",
+    "anyway": ""
   },
   "PL": {
     "404": "",
@@ -900,7 +928,11 @@ const translations = {
     "webDev": "",
     "kitDevelopper": "",
     "kitArtist": "",
-    "coordinator": ""
+    "coordinator": "",
+    "helpingUs": "",
+    "helpingUsText": "",
+    "helpingUsTextLinks": "",
+    "anyway": ""
   },
   "KR": {
     "404": "",
@@ -1013,6 +1045,10 @@ const translations = {
     "webDev": "",
     "kitDevelopper": "",
     "kitArtist": "",
-    "coordinator": ""
+    "coordinator": "",
+    "helpingUs": "",
+    "helpingUsText": "",
+    "helpingUsTextLinks": "",
+    "anyway": ""
   }
 }
