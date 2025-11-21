@@ -1,0 +1,4 @@
+files:
+  - source: /scripts/translation.json
+    translation: /scripts/%two_letters_code%
+    multilingual: 1
