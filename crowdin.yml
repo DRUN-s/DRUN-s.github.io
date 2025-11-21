@@ -1,4 +1,4 @@
 files:
-  - source: /scripts/translation.json
-    translation: /scripts/%two_letters_code%
+  - source: /scripts/translations.js
+    translation: /scripts/
     multilingual: 1
