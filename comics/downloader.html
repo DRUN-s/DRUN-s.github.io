@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Download TF2 Comics</title>
+
+    <link rel="shortcut icon" href="/images/favicon.svg" />
+
+    <link rel="stylesheet" href="/main.css?v=14" />
+    <link rel="stylesheet" href="/fonts.css" />
+
+    <script src="scripts/main.js" defer></script>
+    <script src="scripts/translations.js" defer></script>
+    <script src="scripts/language-selector.js" defer></script>
+    
+    <style>
+      .download-container {
+        padding: 30px;
+      }
+
+      .download-section {
+        margin-bottom: 30px;
+      }
+
+      .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 3px solid #b35215;
+      }
+
+      .section-title {
+        font-family: BebasNeue;
+        font-size: 28px;
+        color: #3b3632;
+        margin: 0;
+      }
+
+      .series-tabs {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+
+      .series-tab {
+        padding: 12px 24px;
+        background: white;
+        border: 2px solid #c8c8be;
+        border-radius: 8px;
+        font-family: Host Grotesk;
+        font-weight: 600;
+        font-size: 14px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        color: #3b3632;
+      }
+
+      .series-tab:hover {
+        border-color: #b35215;
+        transform: translateY(-2px);
+      }
+
+      .series-tab.active {
+        background: #b35215;
+        color: white;
+        border-color: #b35215;
+      }
+
+      .comics-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 20px;
+        margin-bottom: 20px;
+      }
+
+      .comic-card {
+        background: white;
+        border: 3px solid #c8c8be;
+        border-radius: 12px;
+        overflow: hidden;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      .comic-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        border-color: #b35215;
+      }
+
+      .comic-card.selected {
+        border-color: #2a6fb4;
+        border-width: 3px;
+        box-shadow: 0 0 0 3px rgba(42, 111, 180, 0.2);
+      }
+
+      .comic-card.unavailable {
+        opacity: 0.4;
+        cursor: not-allowed;
+      }
+
+      .comic-card.unavailable:hover {
+        transform: none;
+        box-shadow: none;
+        border-color: #c8c8be;
+      }
+
+      .comic-cover {
+        width: 100%;
+        aspect-ratio: 2/3;
+        object-fit: cover;
+        background: #ded2c0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: BebasNeue;
+        font-size: 48px;
+        color: #5f5851;
+      }
+
+      .comic-info {
+        padding: 12px;
+      }
+
+      .comic-name {
+        font-family: BebasNeue;
+        font-size: 16px;
+        color: #3b3632;
+        margin-bottom: 4px;
+        line-height: 1.2;
+      }
+
+      .comic-meta {
+        font-family: Host Grotesk;
+        font-size: 12px;
+        color: #5f5851;
+      }
+
+      .selection-badge {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 30px;
+        height: 30px;
+        background: #2a6fb4;
+        border-radius: 50%;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
+        font-size: 16px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      }
+
+      .comic-card.selected .selection-badge {
+        display: flex;
+      }
+
+      .unavailable-badge {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(0,0,0,0.8);
+        color: white;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-family: Host Grotesk;
+        font-weight: 600;
+        font-size: 12px;
+        display: none;
+      }
+
+      .comic-card.unavailable .unavailable-badge {
+        display: block;
+      }
+
+      .select-controls {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+
+      .control-btn {
+        padding: 10px 20px;
+        background: white;
+        border: 2px solid #c8c8be;
+        border-radius: 8px;
+        font-family: Host Grotesk;
+        font-weight: 600;
+        font-size: 14px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        color: #3b3632;
+      }
+
+      .control-btn:hover {
+        border-color: #b35215;
+        background: #f5f5f5;
+      }
+
+      .options-panel {
+        background: #f5e7de;
+        border-radius: 12px;
+        padding: 25px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-label {
+        font-family: Host Grotesk;
+        font-weight: 600;
+        font-size: 15px;
+        color: #3b3632;
+        margin-bottom: 8px;
+        display: block;
+      }
+
+      .custom-select {
+        width: 100%;
+        padding: 12px 15px;
+        background: white;
+        border: 2px solid #c8c8be;
+        border-radius: 8px;
+        font-family: Host Grotesk;
+        font-size: 14px;
+        color: #3b3632;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%233b3632' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 15px center;
+        padding-right: 40px;
+      }
+
+      .custom-select:hover {
+        border-color: #b35215;
+      }
+
+      .custom-select:focus {
+        outline: none;
+        border-color: #b35215;
+        box-shadow: 0 0 0 3px rgba(179, 82, 21, 0.1);
+      }
+
+      .format-options {
+        display: flex;
+        gap: 10px;
+      }
+
+      .format-radio {
+        flex: 1;
+        position: relative;
+      }
+
+      .format-radio input[type="radio"] {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+      }
+
+      .format-label {
+        display: block;
+        padding: 12px;
+        background: white;
+        border: 2px solid #c8c8be;
+        border-radius: 8px;
+        text-align: center;
+        font-family: Host Grotesk;
+        font-weight: 600;
+        font-size: 14px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        color: #3b3632;
+      }
+
+      .format-radio input[type="radio"]:checked + .format-label {
+        background: #b35215;
+        color: white;
+        border-color: #b35215;
+      }
+
+      .format-label:hover {
+        border-color: #b35215;
+      }
+
+      .selection-summary {
+        background: white;
+        padding: 15px;
+        border-radius: 8px;
+        margin: 20px 0;
+        border-left: 4px solid #b35215;
+      }
+
+      .summary-row {
+        display: flex;
+        justify-content: space-between;
+        margin: 8px 0;
+        font-family: Host Grotesk;
+        font-size: 14px;
+        color: #3b3632;
+      }
+
+      .summary-label {
+        font-weight: 600;
+        color: #b35215;
+      }
+
+      .download-btn-big {
+        width: 100%;
+        padding: 18px;
+        background: linear-gradient(180deg, #2a6fb4, #1f4b85);
+        color: white;
+        border: none;
+        border-radius: 10px;
+        font-family: BebasNeue;
+        font-size: 24px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+      }
+
+      .download-btn-big:hover:not(:disabled) {
+        background: linear-gradient(180deg, #3a7fc4, #2f5b95);
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(42, 111, 180, 0.4);
+      }
+
+      .download-btn-big:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      .download-btn-big svg {
+        width: 28px;
+        height: 28px;
+      }
+
+      .info-box {
+        background: rgba(255,255,255,0.5);
+        padding: 12px;
+        border-radius: 6px;
+        font-family: Host Grotesk;
+        font-size: 13px;
+        color: #5f5851;
+        margin-top: 10px;
+      }
+
+      @media (max-width: 768px) {
+        .download-container {
+          padding: 15px;
+        }
+
+        .comics-grid {
+          grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        }
+
+        .series-tabs {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <p class="warning" id="WIPText">
+      ⚠️ THIS WEBSITE IS UNDER CONSTRUCTION! ⚠️ CSS IS HARD PLEASE HELP ME !
+    </p>
+
+    <div id="language-container">
+      <div class="dropdown" id="language-dropdown">
+        <button id="selectedItem" lang-selection="EN">
+          <img src="https://cdn.countryflags.com/thumbs/united-kingdom/flag-800.png" />
+          English
+          <span class="arrow-down"></span>
+        </button>
+
+        <div class="dropdown-content" id="select-container">
+          <ul>
+            <li lang-selection="EN">
+              <img src="https://cdn.countryflags.com/thumbs/united-kingdom/flag-800.png" />
+              English
+            </li>
+            <li lang-selection="FR">
+              <img src="https://cdn.countryflags.com/thumbs/france/flag-800.png" />
+              Français
+            </li>
+            <li lang-selection="KR">
+              <img src="https://cdn.countryflags.com/thumbs/south-korea/flag-800.png" />
+              한국어
+            </li>
+            <li lang-selection="TR">
+              <img src="https://cdn.countryflags.com/thumbs/turkey/flag-800.png" />
+              Türkçe
+            </li>
+            <li lang-selection="SW">
+              <img src="https://cdn.countryflags.com/thumbs/sweden/flag-800.png" />
+              Svenska
+            </li>
+            <li lang-selection="FI">
+              <img src="https://cdn.countryflags.com/thumbs/finland/flag-800.png" />
+              Suomi
+            </li>
+            <li lang-selection="ES">
+              <img src="https://cdn.countryflags.com/thumbs/spain/flag-800.png" />
+              Español
+            </li>
+            <li lang-selection="DE">
+              <img src="https://cdn.countryflags.com/thumbs/germany/flag-800.png" />
+              Deutsch
+            </li>
+            <li lang-selection="PL">
+              <img src="https://cdn.countryflags.com/thumbs/poland/flag-800.png" />
+              Polski
+            </li>
+            <li lang-selection="CS">
+              <img src="https://cdn.countryflags.com/thumbs/czech-republic/flag-800.png" />
+              Čeština
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="main" style="margin-top: 5vh">
+      <a name="top"></a>
+      <div id="centerColumn">
+        <div class="boxshadowBox">
+          <div id="primaryHeaderArea">
+            <div id="logoLink">
+              <a href="index.html">
+                <img id="headerAreaImage" src="/images/Logo_TF2_flat.svg" />
+              </a>
+            </div>
+
+            <div id="spNavMenu">
+              <a class="aHoverVertShift" id="aboutButtonText" href="/about.html">About</a>
+              <a class="aHoverVertShift" id="teamButtonText" href="/team.html">Our Team</a>
+              <a class="aHoverVertShift" id="otherTranslationsButtonText" href="/moreTranslations.html">
+                Other translation projects
+              </a>
+              <a class="aHoverVertShift" id="helpUsButtonText" href="/help.html">Help us</a>
+              <a class="aHoverVertShift" href="/download.html" style="color: #a03f02">Download</a>
+            </div>
+          </div>
+
+          <div id="centerColContent">
+            <div class="textSubject">
+              <img src="/images/blurbImages/menu-yeti.png" />
+              <h1>Download TF2 Comics</h1>
+              <p>
+                Select the comics you want to download by clicking on their covers. 
+                You can select multiple comics and download them all at once!
+              </p>
+            </div>
+
+            <div class="download-container">
+              
+              <!-- Comic Series Selection -->
+              <div class="download-section">
+                <div class="section-header">
+                  <h2 class="section-title">1. Select Comics</h2>
+                  <div class="select-controls">
+                    <button class="control-btn" onclick="selectAllComics()">
+                      ✓ Select All
+                    </button>
+                    <button class="control-btn" onclick="deselectAllComics()">
+                      ✗ Clear Selection
+                    </button>
+                  </div>
+                </div>
+
+                <div class="series-tabs">
+                  <button class="series-tab active" onclick="switchSeries('all')">
+                    All Comics
+                  </button>
+                  <button class="series-tab" onclick="switchSeries('main')">
+                    Main Comics
+                  </button>
+                  <button class="series-tab" onclick="switchSeries('update')">
+                    Update Comics
+                  </button>
+                </div>
+
+                <div class="comics-grid" id="comicsGrid">
+                  <!-- Will be populated by JavaScript -->
+                </div>
+              </div>
+
+              <!-- Download Options -->
+              <div class="download-section">
+                <div class="section-header">
+                  <h2 class="section-title">2. Download Options</h2>
+                </div>
+
+                <div class="options-panel">
+                  <!-- Language Selection -->
+                  <div class="form-group">
+                    <label class="form-label">Language</label>
+                    <select class="custom-select" id="languageSelect" onchange="updateAvailability()">
+                      <option value="ALL">🌍 All Available Languages</option>
+                      <option value="EN">🇬🇧 English</option>
+                      <option value="FR">🇫🇷 Français</option>
+                      <option value="DE">🇩🇪 Deutsch</option>
+                      <option value="ES">🇪🇸 Español</option>
+                      <option value="TR">🇹🇷 Türkçe</option>
+                      <option value="FI">🇫🇮 Suomi</option>
+                      <option value="PL">🇵🇱 Polski</option>
+                      <option value="CS">🇨🇿 Čeština</option>
+                    </select>
+                    <div class="info-box" id="langInfo">
+                      Select "All Available Languages" to download comics in every language they've been translated to.
+                    </div>
+                  </div>
+
+                  <!-- Format Selection -->
+                  <div class="form-group">
+                    <label class="form-label">Format</label>
+                    <div class="format-options">
+                      <div class="format-radio">
+                        <input type="radio" name="format" id="formatPdf" value="pdf" checked onchange="updateSummary()">
+                        <label for="formatPdf" class="format-label">📄 PDF</label>
+                      </div>
+                      <div class="format-radio">
+                        <input type="radio" name="format" id="formatCbz" value="cbz" onchange="updateSummary()">
+                        <label for="formatCbz" class="format-label">📚 CBZ</label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Summary -->
+                  <div class="selection-summary">
+                    <div class="summary-row">
+                      <span class="summary-label">Selected:</span>
+                      <span class="summary-value" id="sumCount">0 comics</span>
+                    </div>
+                    <div class="summary-row">
+                      <span class="summary-label">Languages:</span>
+                      <span class="summary-value" id="sumLangs">-</span>
+                    </div>
+                    <div class="summary-row">
+                      <span class="summary-label">Total pages:</span>
+                      <span class="summary-value" id="sumPages">0 pages</span>
+                    </div>
+                    <div class="summary-row">
+                      <span class="summary-label">Estimated size:</span>
+                      <span class="summary-value" id="sumSize">0 MB</span>
+                    </div>
+                    <div class="summary-row">
+                      <span class="summary-label">Format:</span>
+                      <span class="summary-value" id="sumFormat">PDF</span>
+                    </div>
+                  </div>
+
+                  <!-- Download Button -->
+                  <button class="download-btn-big" id="downloadBtn" onclick="initiateDownload()" disabled>
+                    <svg fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                    </svg>
+                    Download Comics
+                  </button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer id="footer">
+      <div class="boxshadowBox">
+        <div id="footerContainer">
+          <a id="footerLogo" class="imageLink" target="_blank" href="Drunswebsite">
+            <img src="/images/druns.png" alt="DRUNs" />
+          </a>
+          <div id="footerText">
+            <p id="footerInfo">
+              Valve, the Valve logo, Steam, the Steam logo, Team Fortress, and
+              the Team Fortress logo are trademarks and/or registered trademarks
+              of
+              <a target="_blank" href="https://www.valvesoftware.com/">Valve Corporation</a>.
+              Team Fortress 2 Translation Project and Team Fortress 2
+              Translation Tool-Kit are fan creations and are not affiliated with
+              Valve Corporation.
+            </p>
+            <div id="footerLinks">
+              <ul>
+                <li><a id="contact" href="/contact">Contact</a></li>
+                <li><a id="privacy" href="privacy.txt">Privacy</a></li>
+                <li><a id="attributions" href="/attributions">Attributions</a></li>
+                <li>
+                  <a id="translationPage" href="/translationpage.html">
+                    Super secret translation page
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <p id="footerVersion">Site v0.6.0 • Kit v0.3.5</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script> 
+const randomTF07 = Math.floor(Math.random() * 3) + 1;
+const tf07CoverUrl = `/comics/covers/main/tf07_cover${randomTF07}.png`;
+
+      // Comics database
+      const comicsData = {
+        main: [
+          { id: 'tf00', name: 'Catch-Up Comic', pages: 20, langs: ['EN', 'FR'], cover: '/comics/covers/main/tf00/tf00_cover_textless.png' },
+          { id: 'tf01', name: 'Ring of Fired', pages: 68, langs: ['EN', 'FR'], cover: '/comics/covers/main/tf01/tf01_cover_textless.png' },
+          { id: 'tf02', name: 'Unhappy Returns', pages: 75, langs: ['EN', 'FR'], cover: '/comics/covers/main/tf02/tf02_cover_textless.png' },
+          { id: 'tf03', name: 'A Cold Day in Hell', pages: 70, langs: ['EN'], cover: '/comics/covers/main/tf03_cover.png' },
+          { id: 'tf04', name: 'Blood in the Water', pages: 113, langs: ['EN'], cover: '/comics/covers/main/tf04_cover.png' },
+          { id: 'tf05', name: 'Old Wounds', pages: 79, langs: ['EN'], cover: '/comics/covers/main/tf05_cover.png' },
+          { id: 'tf06', name: 'The Naked and the Dead', pages: 274, langs: ['EN'], cover: '/comics/covers/main/tf06_cover.png' },
+          { id: 'tf07', name: 'The Days Have Worn Away', pages: 330, langs: ['EN'], cover: tf07CoverUrl }
+        ],
+        update: [
+          { id: 'tfu00', name: 'The Insult That Made a "Jarate Master"', pages: 8, langs: ['EN'], cover: null },
+          { id: 'tfu01', name: 'WAR!', pages: 21, langs: ['EN'], cover: null },
+          { id: 'tfu02', name: 'A Visual History', pages: 4, langs: ['EN'], cover: null },
+          { id: 'tfu03', name: 'Loose Canon', pages: 13, langs: ['EN'], cover: null },
+          { id: 'tfu04', name: 'Bidwell\'s Big plan', pages: 6, langs: ['EN'], cover: null },
+          { id: 'tfu05', name: 'Meet the Director', pages: 10, langs: ['EN'], cover: null },
+          { id: 'tfu06', name: 'Dr. Grordbort\'s Crash Landing', pages: 3, langs: ['EN'], cover: null },
+          { id: 'tfu07', name: 'Bombinomicon', pages: 10, langs: ['EN'], cover: null },
+          { id: 'tfu08', name: 'True Meaning', pages: 4, langs: ['EN'], cover: null },
+          { id: 'tfu09', name: 'A Smissmas Story', pages: 14, langs: ['EN'], cover: null },
+          { id: 'tfu10', name: 'Blood Brothers', pages: 43, langs: ['EN'], cover: '/comics/covers/update/tfu10_cover.png' },
+          { id: 'tfu11', name: 'A Fate Worse Than Chess', pages: 33, langs: ['EN'], cover: '/comics/covers/update/tfu11_cover.png' },
+          { id: 'tfu12', name: 'Doom-mates', pages: 19, langs: ['EN'], cover: '/comics/covers/update/tfu12_cover.png' },
+          { id: 'tfu13', name: 'The Shadow Boxers', pages: 28, langs: ['EN'], cover: '/comics/covers/update/tfu13_cover.png' },
+          { id: 'tfu14', name: 'Grave Matters', pages: 20, langs: ['EN'], cover: '/comics/covers/update/tfu14_cover.png' },
+          { id: 'tfu15', name: 'Blood Money', pages: 12, langs: ['EN'], cover: '/comics/covers/update/tfu15_cover.png' },
+          { id: 'tfu16', name: 'The Contract', pages: 18, langs: ['EN'], cover: '/comics/covers/update/tfu16_cover.png' },
+          { id: 'tfu17', name: 'Gargoyles & Gravel', pages: 23, langs: ['EN'], cover: '/comics/covers/update/tfu17_cover.png' },
+          { id: 'tfu18', name: 'The Showdown', pages: 53, langs: ['EN'], cover: '/comics/covers/update/tfu18_cover.png' }
+        ]
+      };
+
+      // State
+      let selectedComics = new Set();
+      let currentSeries = 'all';
+
+      // Initialize
+      function init() {
+        renderComics();
+        updateSummary();
+      }
+
+      // Switch series
+      function switchSeries(series) {
+        currentSeries = series;
+        
+        document.querySelectorAll('.series-tab').forEach(tab => {
+          tab.classList.remove('active');
+        });
+        event.target.classList.add('active');
+        
+        renderComics();
+      }
+
+      // Render comics grid
+      function renderComics() {
+        const grid = document.getElementById('comicsGrid');
+        grid.innerHTML = '';
+
+        let comics = [];
+        if (currentSeries === 'all') {
+          comics = [...comicsData.main, ...comicsData.update];
+        } else {
+          comics = comicsData[currentSeries];
+        }
+
+        comics.forEach(comic => {
+          const card = document.createElement('div');
+          card.className = 'comic-card';
+          card.id = `card_${comic.id}`;
+          card.onclick = () => toggleComic(comic.id);
+
+          if (selectedComics.has(comic.id)) {
+            card.classList.add('selected');
+          }
+
+          const cover = document.createElement('div');
+          cover.className = 'comic-cover';
+          
+          if (comic.cover) {
+            const img = document.createElement('img');
+            img.src = comic.cover;
+            img.alt = comic.name;
+            img.style.width = '100%';
+            img.style.height = '100%';
+            img.style.objectFit = 'cover';
+            cover.appendChild(img);
+          } else {
+            cover.textContent = comic.id.toUpperCase();
+          }
+
+          const badge = document.createElement('div');
+          badge.className = 'selection-badge';
+          badge.textContent = '✓';
+
+          const unavailableBadge = document.createElement('div');
+          unavailableBadge.className = 'unavailable-badge';
+          unavailableBadge.textContent = 'Unavailable';
+
+          const info = document.createElement('div');
+          info.className = 'comic-info';
+
+          const name = document.createElement('div');
+          name.className = 'comic-name';
+          name.textContent = comic.name;
+
+          const meta = document.createElement('div');
+          meta.className = 'comic-meta';
+          meta.textContent = `${comic.pages} pages • ${comic.langs.join(', ')}`;
+
+          info.appendChild(name);
+          info.appendChild(meta);
+
+          card.appendChild(cover);
+          card.appendChild(badge);
+          card.appendChild(unavailableBadge);
+          card.appendChild(info);
+
+          grid.appendChild(card);
+        });
+
+        updateAvailability();
+      }
+
+      // Toggle comic selection
+      function toggleComic(comicId) {
+        const card = document.getElementById(`card_${comicId}`);
+        if (card.classList.contains('unavailable')) return;
+
+        if (selectedComics.has(comicId)) {
+          selectedComics.delete(comicId);
+          card.classList.remove('selected');
+        } else {
+          selectedComics.add(comicId);
+          card.classList.add('selected');
+        }
+
+        updateSummary();
+      }
+
+      // Select all comics
+      function selectAllComics() {
+        const lang = document.getElementById('languageSelect').value;
+        
+        let comics = [];
+        if (currentSeries === 'all') {
+          comics = [...comicsData.main, ...comicsData.update];
+        } else {
+          comics = comicsData[currentSeries];
+        }
+
+        comics.forEach(comic => {
+          if (lang === 'ALL' || comic.langs.includes(lang)) {
+            selectedComics.add(comic.id);
+            const card = document.getElementById(`card_${comic.id}`);
+            if (card) card.classList.add('selected');
+          }
+        });
+
+        updateSummary();
+      }
+
+      // Deselect all comics
+      function deselectAllComics() {
+        selectedComics.clear();
+        document.querySelectorAll('.comic-card').forEach(card => {
+          card.classList.remove('selected');
+        });
+        updateSummary();
+      }
+
+      // Update availability based on language
+      function updateAvailability() {
+        const lang = document.getElementById('languageSelect').value;
+        
+        let comics = [];
+        if (currentSeries === 'all') {
+          comics = [...comicsData.main, ...comicsData.update];
+        } else {
+          comics = comicsData[currentSeries];
+        }
+
+        comics.forEach(comic => {
+          const card = document.getElementById(`card_${comic.id}`);
+          if (!card) return;
+
+          const isAvailable = lang === 'ALL' || comic.langs.includes(lang);
+          
+          if (isAvailable) {
+            card.classList.remove('unavailable');
+          } else {
+            card.classList.add('unavailable');
+            if (selectedComics.has(comic.id)) {
+              selectedComics.delete(comic.id);
+              card.classList.remove('selected');
+            }
+          }
+        });
+
+        updateSummary();
+      }
+
+      // Update summary
+      function updateSummary() {
+        let comics = [];
+        if (currentSeries === 'all') {
+          comics = [...comicsData.main, ...comicsData.update];
+        } else {
+          comics = comicsData[currentSeries];
+        }
+
+        const selected = comics.filter(c => selectedComics.has(c.id));
+        const totalPages = selected.reduce((sum, c) => sum + c.pages, 0);
+        
+        const lang = document.getElementById('languageSelect').value;
+        const format = document.querySelector('input[name="format"]:checked').value;
+
+        // Calculate languages info
+        let langsInfo = '';
+        if (lang === 'ALL') {
+          const allLangs = new Set();
+          selected.forEach(c => c.langs.forEach(l => allLangs.add(l)));
+          langsInfo = `${allLangs.size} language${allLangs.size !== 1 ? 's' : ''} (${Array.from(allLangs).join(', ')})`;
+        } else {
+          langsInfo = lang;
+        }
+
+        // Calculate size
+        let estimatedSize = 0;
+        if (lang === 'ALL') {
+          // If downloading all languages, multiply by number of languages
+          selected.forEach(c => {
+            estimatedSize += c.pages * 0.8 * c.langs.length;
+          });
+        } else {
+          estimatedSize = totalPages * 0.8;
+        }
+
+        document.getElementById('sumCount').textContent = `${selected.length} comic${selected.length !== 1 ? 's' : ''}`;
+        document.getElementById('sumLangs').textContent = langsInfo;
+        document.getElementById('sumPages').textContent = `${totalPages} pages`;
+        document.getElementById('sumSize').textContent = `~${Math.round(estimatedSize)} MB`;
+        document.getElementById('sumFormat').textContent = format.toUpperCase();
+
+        // Enable/disable download button
+        document.getElementById('downloadBtn').disabled = selected.length === 0;
+      }
+
+      // Initiate download
+      function initiateDownload() {
+        if (selectedComics.size === 0) return;
+
+        const lang = document.getElementById('languageSelect').value;
+        const format = document.querySelector('input[name="format"]:checked').value;
+
+        let comics = [];
+        if (currentSeries === 'all') {
+          comics = [...comicsData.main, ...comicsData.update];
+        } else {
+          comics = comicsData[currentSeries];
+        }
+
+        const selected = comics.filter(c => selectedComics.has(c.id));
+
+        // Build download info
+        let downloadInfo = `Download Configuration:\n\n`;
+        downloadInfo += `Comics (${selected.length}):\n`;
+        selected.forEach(c => {
+          downloadInfo += `  - ${c.name} (${c.pages}p)\n`;
+        });
+        downloadInfo += `\nLanguage: ${lang === 'ALL' ? 'All Available Languages' : lang}\n`;
+        downloadInfo += `Format: ${format.toUpperCase()}\n`;
+        
+        const totalPages = selected.reduce((sum, c) => sum + c.pages, 0);
+        downloadInfo += `Total pages: ${totalPages}\n`;
+
+        if (lang === 'ALL') {
+          const allLangs = new Set();
+          selected.forEach(c => c.langs.forEach(l => allLangs.add(l)));
+          downloadInfo += `Languages included: ${Array.from(allLangs).join(', ')}\n`;
+          
+          let totalSize = 0;
+          selected.forEach(c => {
+            totalSize += c.pages * 0.8 * c.langs.length;
+          });
+          downloadInfo += `Estimated size: ~${Math.round(totalSize)} MB\n\n`;
+        } else {
+          downloadInfo += `Estimated size: ~${Math.round(totalPages * 0.8)} MB\n\n`;
+        }
+
+        // Download URL construction
+        if (selected.length === 1 && lang !== 'ALL') {
+          const comic = selected[0];
+          downloadInfo += `Download URL: /downloads/${comic.id}_${lang}.${format}`;
+        } else {
+          downloadInfo += `Download URL: /downloads/TF2_Custom_Pack_${Date.now()}.zip`;
+          downloadInfo += `\n\nThis will create a ZIP file containing:\n`;
+          
+          if (lang === 'ALL') {
+            selected.forEach(comic => {
+              comic.langs.forEach(l => {
+                downloadInfo += `  - ${comic.id}_${l}.${format}\n`;
+              });
+            });
+          } else {
+            selected.forEach(comic => {
+              downloadInfo += `  - ${comic.id}_${lang}.${format}\n`;
+            });
+          }
+        }
+
+        alert(downloadInfo + '\n\nIn production, this would initiate the actual download.');
+        
+        // Actual implementation would be something like:
+        // window.location.href = downloadUrl;
+      }
+
+      // Initialize on page load
+      window.addEventListener('DOMContentLoaded', init);
+    </script>
+  </body>
+</html>
