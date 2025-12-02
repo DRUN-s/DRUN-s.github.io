@@ -17,11 +17,11 @@ List of things todo :
 
 ### Other tasks
 
-- [ ] Create an About page
-- [ ] Create a Team page
-- [ ] Create a Other translation projects
+- [x] Create an About page
+- [x] Create a Team page
+- [x] Create a Other translation projects
   - [ ] Finding a Shorter way of saying "Other translation projects"
-- [ ] Create a Help us Page
+- [x] Create a Help us Page
 - [ ] Reorder the footer with more relevant things
 - [ ] Create a section where we link our social media on the main page.
 - [ ] Cleanup the code from Valve's spaghetti.
