@@ -1053,7 +1053,6 @@ const translations = {
     "anyway": "ANYWAY !"
   },
   "SW": {},
-  "UK": {},
   "CZ": {
     "404": "Error 404 ! This page ! Couldn't be found !",
     "notTranslatedYet": "Not added yet",
