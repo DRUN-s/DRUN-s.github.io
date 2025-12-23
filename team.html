@@ -1,29 +1,22 @@
 <!DOCTYPE html>
-<!--TODO: Need to add translation variables (id) for all the section separators-->
 <html>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
     <title>TF2TP Team</title>
-
     <link rel="shortcut icon" href="images/favicon.svg" />
-
     <link rel="stylesheet" href="main.css?v=14" />
     <link rel="stylesheet" href="fonts.css" />
-
     <script src="scripts/main.js" defer></script>
     <script src="scripts/translations.js" defer></script>
     <script src="scripts/language-selector.js" defer></script>
   </head>
-
   <body>
     <p class="warning" id="WIPText">
       ⚠️ THIS WEBSITE IS UNDER CONSTRUCTION! ⚠️ CSS IS HARD PLEASE HELP ME !
     </p>
 
     <!--language selector-->
-
     <div id="language-container">
       <div class="dropdown" id="language-dropdown">
         <button id="selectedItem" lang-selection="EN">
@@ -33,92 +26,73 @@
           English
           <span class="arrow-down"></span>
         </button>
-
         <div class="dropdown-content" id="select-container">
           <ul>
             <li lang-selection="EN">
               <img
                 src="https://cdn.countryflags.com/thumbs/united-kingdom/flag-800.png"
-              />
-              English
+              />English
             </li>
             <li lang-selection="FR">
               <img
                 src="https://cdn.countryflags.com/thumbs/france/flag-800.png"
-              />
-              Français
+              />Français
             </li>
             <li lang-selection="KR">
               <img
                 src="https://cdn.countryflags.com/thumbs/south-korea/flag-800.png"
-              />
-              한국어
+              />한국어
             </li>
             <li lang-selection="TR">
               <img
                 src="https://cdn.countryflags.com/thumbs/turkey/flag-800.png"
-              />
-              Türkçe
+              />Türkçe
             </li>
             <li lang-selection="SW">
               <img
                 src="https://cdn.countryflags.com/thumbs/sweden/flag-800.png"
-              />
-              Svenska
+              />Svenska
             </li>
             <li lang-selection="FI">
               <img
                 src="https://cdn.countryflags.com/thumbs/finland/flag-800.png"
-              />
-              Suomi
+              />Suomi
             </li>
             <li lang-selection="ES">
               <img
                 src="https://cdn.countryflags.com/thumbs/spain/flag-800.png"
-              />
-              Español
+              />Español
             </li>
             <li lang-selection="DE">
               <img
                 src="https://cdn.countryflags.com/thumbs/germany/flag-800.png"
-              />
-              Deutsch
+              />Deutsch
             </li>
             <li lang-selection="PL">
               <img
                 src="https://cdn.countryflags.com/thumbs/poland/flag-800.png"
-              />
-              Polski
+              />Polski
             </li>
             <li lang-selection="CS">
               <img
                 src="https://cdn.countryflags.com/thumbs/czech-republic/flag-800.png"
-              />
-              Čeština
-            </li>
-            <li lang-selection="IT">
-              <img
-                src="https://cdn.countryflags.com/thumbs/italy/flag-800.png"
-              />
-              Italiano
+              />Čeština
             </li>
           </ul>
         </div>
       </div>
     </div>
+
     <div id="main" style="margin-top: 5vh">
       <a name="top"></a>
       <div id="centerColumn">
         <div class="boxshadowBox">
           <div id="primaryHeaderArea">
-            <!--TODO: Changer le logo.-->
-
             <div id="logoLink">
               <a href="index.html"
                 ><img id="headerAreaImage" src="images/Logo_TF2_flat.svg"
               /></a>
             </div>
-
             <div id="spNavMenu">
               <a class="aHoverVertShift" id="aboutButtonText" href="about.html"
                 >About</a
@@ -139,15 +113,16 @@
               <a class="aHoverVertShift" id="helpUsButtonText" href="help.html"
                 >Help us</a
               >
+              <a class="aHoverVertShift" id="" style="padding: 12px 24px; background: #b35215; border: 2px solid #b35215; border-radius: 8px; font-family: Host Grotesk; font-weight: 600; font-size: 14px; cursor: pointer; transition: all 0.2s ease; color:rgb(237, 237, 226); font-size:clamp(5pt, 15pt, 18pt); display:flex; flex-direction:column; justify-content:center;" href="/comics/downloader.html"
+              >Download</a>
             </div>
+            
           </div>
 
           <div id="centerColContent">
             <div class="textSubject">
               <img src="images/blurbImages/menu-yeti.png" />
-
               <h1 id="teamButtonText" data-key="teamButtonText">Our Team</h1>
-
               <p id="teamInfoText">
                 Our team is not only full of translators, it is filled with
                 talented people and job looking people, open commissions people
@@ -163,712 +138,13 @@
                 !
               </p>
             </div>
-            <div class="sectionSeparatorContainer">
-              <div class="sectionSeparatorText" id="teamFR">FRENCH TEAM</div>
-              <div class="sectionSeparatorLine"></div>
-            </div>
-            <div id="members">
-              <!--DRUN-->
-              <div class="member">
-                <div class="polaroid">
-                  <img src="/images/userImages/DRUNs.png" alt="avatar" />
-                </div>
-                <h3>DRUNs</h3>
-                <div class="memberContainer">
-                  <div class="teamRoles">
-                    <div class="teamRole" data-key="founder" style="background: #1fa5a2">
-                      Founder
-                    </div>
-                    <div class="teamRole" data-key="webDev" style="background: #c23c3c">
-                      Web team (I see you)
-                    </div>
-                    <div class="teamRole" data-key="kitDevelopper" style="background: #7c7cf1">
-                      Kit dev
-                    </div>
-                    <div class="teamRole" data-key="translator" style="background: #af5cca">
-                      Translator
-                    </div>
-                  </div>
-                  <div class="memberLinks">
-                    <a
-                      target="_blank"
-                      href="https://steamcommunity.com/id/secretlyapyro"
-                      class="steam"
-                    ></a>
-                    <a
-                      target="_blank"
-                      href="https://github.com/DRUN-s/DRUN-s.github.io"
-                      class="github"
-                    ></a>
-                    <a
-                      target="_blank"
-                      href="https://youtube.com/@druns0?si=-Ep7HR6sBInYhiFt"
-                      class="youtube"
-                    ></a>
-                    <a
-                      target="_blank"
-                      href="https://discord.gg/wFRM6daVBd"
-                      class="discord"
-                    ></a>
-                  </div>
-                </div>
-              </div>
-              <!--Drama-->
-              <div class="member">
-                <div class="polaroid">
-                  <img src="/images/userImages/Drama.png" alt="avatar" />
-                </div>
-                <h3>Drama</h3>
-                <div class="memberContainer">
-                  <div class="teamRoles">
-                    <div class="teamRole" data-key="kitArtist" style="background: #9d2c6c">
-                      Kit artist
-                    </div>
-                    <div class="teamRole" data-key="translator" style="background: #af5cca">
-                      Translator
-                    </div>
-                  </div>
-                  <div class="memberLinks">
-                    <a
-                      target="_blank"
-                      href="https://www.instagram.com/_dramart_"
-                      class="instagram"
-                    ></a>
-                    <a
-                      target="_blank"
-                      href="https://www.tumblr.com/dramart06"
-                      class="tumblr"
-                    ></a>
-                    <a
-                      target="_blank"
-                      href="https://www.reddit.com/u/Far-Funny80/s/1yl9FFBra9"
-                      class="reddit"
-                    ></a>
-                    <a
-                      target="_blank"
-                      href="https://x.com/dramartt"
-                      class="twitter"
-                    ></a>
-                    <a
-                      target="_blank"
-                      href="https://steamcommunity.com/profiles/76561199436213204"
-                      class="steam"
-                    ></a>
-                  </div>
-                </div>
-              </div>
-              <!--Ghomera-->
-              <div class="member">
-                <div class="polaroid">
-                  <img src="/images/userImages/Ghomera.png" alt="avatar" />
-                </div>
-                <h3>Ghomera</h3>
-                <div class="memberContainer">
-                  <div class="teamRoles">
-                    <div class="teamRole" data-key="kitDevelopper" style="background: #7c7cf1">
-                      Kit dev
-                    </div>
-                    <div class="teamRole" data-key="translator" style="background: #af5cca">
-                      Translator
-                    </div>
-                  </div>
-                  <div class="memberLinks">
-                    <a
-                      target="_blank"
-                      href="https://steamcommunity.com/profiles/76561198077853308/"
-                      class="steam"
-                    ></a>
-                  </div>
-                </div>
-              </div>
 
-              <!--Raidebaron-->
-              <div class="member">
-                <div class="polaroid">
-                  <img src="/images/userImages/Raidebaron.png" alt="avatar" />
-                </div>
-                <h3>Raidebaron</h3>
-                <div class="memberContainer">
-                  <div class="teamRoles">
-                    <div class="teamRole" data-key="translator" style="background: #af5cca">
-                      Translator
-                    </div>
-                  </div>
-                  <div class="memberLinks">
-                    <a
-                      target="_blank"
-                      href="https://steamcommunity.com/id/raidebaron/"
-                      class="steam"
-                    ></a>
-                    <a
-                      target="_blank"
-                      href="https://x.com/raidebaron"
-                      class="twitter"
-                    ></a>
-                  </div>
-                </div>
-              </div>
-
-              <!-- ~~~~~~~~~~~~~ ITALIAN TEAM ~~~~~~~~~~~~~ -->
-              <div class="sectionSeparatorContainer">
-                <div class="sectionSeparatorText" id="teamIT">ITALIAN TEAM</div>
-                <div class="sectionSeparatorLine"></div>
-              </div>
-
-              <!--Valiant-->
-              <div class="member">
-                <div class="polaroid">
-                  <img src="/images/userImages/Valiant.png" alt="avatar" />
-                </div>
-                <h3>Valiant</h3>
-                <div class="memberContainer">
-                  <div class="teamRoles">
-                    <div class="teamRole" data-key="translator" style="background: #af5cca">
-                      Translator
-                    </div>
-                  </div>
-                  <div class="memberLinks">
-                    <a
-                      target="_blank"
-                      href="https://thebunnybeast.newgrounds.com/"
-                      class="newgrounds"
-                    ></a>
-                    <a
-                      target="_blank"
-                      href="https://steamcommunity.com/profiles/76561199092623105"
-                      class="steam"
-                    ></a>
-                  </div>
-                </div>
-              </div>
-
-              <!--Saimon-->
-              <div class="member">
-                <div class="polaroid">
-                  <img src="/images/userImages/Saimon.png" alt="avatar" />
-                </div>
-                <h3>Saimon</h3>
-                <div class="memberContainer">
-                  <div class="teamRoles">
-                    <div class="teamRole" data-key="translator" style="background: #af5cca">
-                      Translator
-                    </div>
-                  </div>
-                  <div class="memberLinks">
-                    <a
-                      target="_blank"
-                      href="https://steamcommunity.com/id/ADELKOTES/"
-                      class="steam"
-                    ></a>
-                  </div>
-                </div>
-              </div>
-
-              <!-- ~~~~~~~~~~~~~ GERMAN TEAM ~~~~~~~~~~~~~ -->
-              <div class="sectionSeparatorContainer">
-                <div class="sectionSeparatorText" id="teamDE">GERMAN TEAM</div>
-                <div class="sectionSeparatorLine"></div>
-              </div>
-
-              <!--Nugget-->
-              <div class="member">
-                <div class="polaroid">
-                  <img src="/images/userImages/Nugget.png" alt="avatar" />
-                </div>
-                <h3>Nugget</h3>
-                <div class="memberContainer">
-                  <div class="teamRoles">
-                    <div class="teamRole" data-key="coordinator" style="background: #7fc034">
-                      Coordinator
-                    </div>
-                    <div class="teamRole" data-key="translator" style="background: #af5cca">
-                      Translator
-                    </div>
-                  </div>
-                  <div class="memberLinks">
-                    <a
-                      target="_blank"
-                      href="https://www.youtube.com/@rottennugget8197"
-                      class="youtube"
-                    ></a>
-                    <a
-                      target="_blank"
-                      href="https://rottennuggetgames.itch.io/"
-                      class="itchio"
-                    ></a>
-                    <a
-                      target="_blank"
-                      href="https://rottennuggetgames.itch.io/"
-                      class="twitch"
-                    ></a>
-                  </div>
-                </div>
-              </div>
-
-              <!--William the Buster-->
-              <div class="member">
-                <div class="polaroid">
-                  <img
-                    src="/images/userImages/WilliamTheBuster.png"
-                    alt="avatar"
-                  />
-                </div>
-                <h3>William the Buster</h3>
-                <div class="memberContainer">
-                  <div class="teamRoles">
-                    <div class="teamRole" data-key="translator" style="background: #af5cca">
-                      Translator
-                    </div>
-                  </div>
-                  <div class="memberLinks">
-                    <!--TODO: Acquire member's social media-->
-                  </div>
-                </div>
-              </div>
-
-              <!--TimeStorm-->
-              <div class="member">
-                <div class="polaroid">
-                  <img src="/images/userImages/TimeStorm.png" alt="avatar" />
-                </div>
-                <h3>TimeStorm</h3>
-                <div class="memberContainer">
-                  <div class="teamRoles">
-                    <div class="teamRole" data-key="translator" style="background: #af5cca">
-                      Translator
-                    </div>
-                  </div>
-                  <div class="memberLinks">
-                    <!--TODO: Acquire member's social media-->
-                  </div>
-                </div>
-              </div>
-
-              <!-- ~~~~~~~~~~~~~ SWEDISH TEAM ~~~~~~~~~~~~~ -->
-              <div class="sectionSeparatorContainer">
-                <div class="sectionSeparatorText" id="teamSW">SWEDISH TEAM</div>
-                <div class="sectionSeparatorLine"></div>
-              </div>
-
-              <!--Cavus-->
-              <div class="member">
-                <div class="polaroid">
-                  <img src="/images/userImages/Cavus.png" alt="avatar" />
-                </div>
-                <h3>Cavus</h3>
-                <div class="memberContainer">
-                  <div class="teamRoles">
-                    <div class="teamRole" data-key="translator" style="background: #af5cca">
-                      Translator
-                    </div>
-                  </div>
-                  <div class="memberLinks">
-                    <!--TODO: Acquire member's social media-->
-                  </div>
-                </div>
-              </div>
-
-              <!-- ~~~~~~~~~~~~~ SPANISH TEAM ~~~~~~~~~~~~~ -->
-              <div class="sectionSeparatorContainer">
-                <div class="sectionSeparatorText" id="teamES">SPANISH TEAM</div>
-                <div class="sectionSeparatorLine"></div>
-              </div>
-
-              <!--Juan Chu8-->
-              <div class="member">
-                <div class="polaroid">
-                  <img src="/images/userImages/JuanChu8.png" alt="avatar" />
-                </div>
-                <h3>Juan Chu8</h3>
-                <div class="memberContainer">
-                  <div class="teamRoles">
-                    <div class="teamRole" style="background: #7fc034">
-                      Coordinator
-                    </div>
-                    <div class="teamRole" data-key="translator" style="background: #af5cca">
-                      Translator
-                    </div>
-                  </div>
-                  <div class="memberLinks">
-                    <!--TODO: Acquire member's social media-->
-                  </div>
-                </div>
-              </div>
-
-              <!--Ra-->
-              <div class="member">
-                <div class="polaroid">
-                  <img src="/images/userImages/Ra.png" alt="avatar" />
-                </div>
-                <h3>Ra</h3>
-                <div class="memberContainer">
-                  <div class="teamRoles">
-                    <div class="teamRole" data-key="translator" style="background: #af5cca">
-                      Translator
-                    </div>
-                  </div>
-                  <div class="memberLinks">
-                    <a
-                      target="_blank"
-                      href="https://www.tumblr.com/valiantlyfuriousearthquake"
-                      class="tumblr"
-                    ></a>
-                    
-                  </div>
-                </div>
-              </div>
-
-              <!--Lasagna-->
-              <div class="member">
-                <div class="polaroid">
-                  <img src="/images/userImages/Lasagna.png" alt="avatar" />
-                </div>
-                <h3>Lasagna</h3>
-                <div class="memberContainer">
-                  <div class="teamRoles">
-                    <div class="teamRole" data-key="translator" style="background: #af5cca">
-                      Translator
-                    </div>
-                  </div>
-                  <div class="memberLinks">
-                    <!--TODO: Acquire member's social media-->
-                  </div>
-                </div>
-              </div>
-
-              <!-- ~~~~~~~~~~~~~ KOREAN TEAM ~~~~~~~~~~~~~ -->
-              <div class="sectionSeparatorContainer">
-                <div class="sectionSeparatorText" id="teamKR">KOREAN TEAM</div>
-                <div class="sectionSeparatorLine"></div>
-              </div>
-
-              <!--Henry-->
-              <div class="member">
-                <div class="polaroid">
-                  <img src="/images/userImages/Henry.png" alt="avatar" />
-                </div>
-                <h3>Henry</h3>
-                <div class="memberContainer">
-                  <div class="teamRoles">
-                    <div class="teamRole" data-key="translator" style="background: #af5cca">
-                      Translator
-                    </div>
-                  </div>
-                  <div class="memberLinks">
-                    <a
-                      target="_blank"
-                      href="https://steamcommunity.com/id/Henryexe/"
-                      class="steam"
-                    ></a>
-                    <a
-                      target="_blank"
-                      href="https://www.youtube.com/@Henry_exe"
-                      class="youtube"
-                    ></a>
-                  </div>
-                </div>
-              </div>
-
-              <!-- ~~~~~~~~~~~~~ ESTONIAN TEAM ~~~~~~~~~~~~~ -->
-              <div class="sectionSeparatorContainer">
-                <div class="sectionSeparatorText" id="teamET">ESTONIAN TEAM</div>
-                <div class="sectionSeparatorLine"></div>
-              </div>
-
-              <!--KrisTheBread-->
-              <div class="member">
-                <div class="polaroid">
-                  <img src="/images/userImages/KrisTheBread.png" alt="avatar" />
-                </div>
-                <h3>KrisTheBread</h3>
-                <div class="memberContainer">
-                  <div class="teamRoles">
-                    <div class="teamRole" data-key="translator" style="background: #af5cca">
-                      Translator
-                    </div>
-                  </div>
-                  <div class="memberLinks">
-                    <!--TODO: Acquire member's social media-->
-                  </div>
-                </div>
-              </div>
-
-              <!-- ~~~~~~~~~~~~~ ROMANIAN TEAM ~~~~~~~~~~~~~ -->
-              <div class="sectionSeparatorContainer">
-                <div class="sectionSeparatorText" id="teamRO">ROMANIAN TEAM</div>
-                <div class="sectionSeparatorLine"></div>
-              </div>
-
-              <!--Kor-->
-              <div class="member">
-                <div class="polaroid">
-                  <img src="/images/userImages/Kor.png" alt="avatar" />
-                </div>
-                <h3>Kor</h3>
-                <div class="memberContainer">
-                  <div class="teamRoles">
-                    <div class="teamRole" data-key="translator" style="background: #af5cca">
-                      Translator
-                    </div>
-                  </div>
-                  <div class="memberLinks">
-                    <!--TODO: Acquire member's social media-->
-                  </div>
-                </div>
-              </div>
-
-              <!-- ~~~~~~~~~~~~~ CZECH TEAM ~~~~~~~~~~~~~ -->
-              <div class="sectionSeparatorContainer">
-                <div class="sectionSeparatorText" id="teamCZ">CZECH TEAM</div>
-                <div class="sectionSeparatorLine"></div>
-              </div>
-
-              <!--Herotroll-->
-              <div class="member">
-                <div class="polaroid">
-                  <img src="/images/userImages/Herotroll.png" alt="avatar" />
-                </div>
-                <h3>Herotroll</h3>
-                <div class="memberContainer">
-                  <div class="teamRoles">
-                    <div class="teamRole" data-key="translator" style="background: #af5cca">
-                      Translator
-                    </div>
-                  </div>
-                  <div class="memberLinks">
-                    <a
-                      target="_blank"
-                      href="https://steamcommunity.com/id/Herotroll/"
-                      class="steam"
-                    ></a>
-                  </div>
-                </div>
-              </div>
-
-              <!--Termox-->
-              <div class="member">
-                <div class="polaroid">
-                  <img src="/images/userImages/Termox.png" alt="avatar" />
-                </div>
-                <h3>Termox</h3>
-                <div class="memberContainer">
-                  <div class="teamRoles">
-                    <div class="teamRole" data-key="translator" style="background: #af5cca">
-                      Translator
-                    </div>
-                  </div>
-                  <div class="memberLinks">
-                    <!--TODO: Acquire member's social media-->
-                  </div>
-                </div>
-              </div>
-
-              <!-- ~~~~~~~~~~~~~ TURKISH TEAM ~~~~~~~~~~~~~ -->
-              <div class="sectionSeparatorContainer">
-                <div class="sectionSeparatorText" id="teamTR">TURKISH TEAM</div>
-                <div class="sectionSeparatorLine"></div>
-              </div>
-
-              <!--Octavio Silva-->
-              <div class="member">
-                <div class="polaroid">
-                  <img src="/images/userImages/OctavioSilva.png" alt="avatar" />
-                </div>
-                <h3>Octavio Silva</h3>
-                <div class="memberContainer">
-                  <div class="teamRoles">
-                    <div class="teamRole" data-key="coordinator" style="background: #7fc034">
-                      Coordinator
-                    </div>
-                    <div class="teamRole" data-key="translator" style="background: #af5cca">
-                      Translator
-                    </div>
-                  </div>
-                  <div class="memberLinks">
-                    <a
-                      target="_blank"
-                      href="https://www.instagram.com/octaviosilvaturk/"
-                      class="instagram"
-                    ></a>
-                  </div>
-                </div>
-              </div>
-
-              <!--Nyoom-->
-              <div class="member">
-                <div class="polaroid">
-                  <img src="/images/userImages/Nyoom.png" alt="avatar" />
-                </div>
-                <h3>Nyoom</h3>
-                <div class="memberContainer">
-                  <div class="teamRoles">
-                    <div class="teamRole" data-key="kitArtist" style="background: #9d2c6c">
-                      Kit artist
-                    </div>
-                    <div class="teamRole" data-key="translator" style="background: #af5cca">
-                      Translator
-                    </div>
-                  </div>
-                  <div class="memberLinks">
-                    <!--TODO: Acquire member's social media-->
-                  </div>
-                </div>
-              </div>
-
-              <!--Sokisati-->
-              <div class="member">
-                <div class="polaroid">
-                  <img
-                    src="/images/userImages/Sokisati.png"
-                    alt="avatar"
-                  />
-                </div>
-                <h3>Sokisati</h3>
-                <div class="memberContainer">
-                  <div class="teamRoles">
-                    <div class="teamRole" data-key="translator" style="background: #af5cca">
-                      Translator
-                    </div>
-                  </div>
-                  <div class="memberLinks">
-                    <a
-                      target="_blank"
-                      href="https://github.com/Sokisati"
-                      class="github"
-                    ></a>
-                    <a
-                      target="_blank"
-                      href="https://www.linkedin.com/in/ya%C4%9F%C4%B1z-alp-ersoy-947176256/"
-                      class="linkedin"
-                    ></a>
-                  </div>
-                </div>
-              </div>
-
-              <!-- ~~~~~~~~~~~~~ SLOVAK TEAM ~~~~~~~~~~~~~ -->
-              <div class="sectionSeparatorContainer">
-                <div class="sectionSeparatorText" id="teamSK">SLOVAK TEAM</div>
-                <div class="sectionSeparatorLine"></div>
-              </div>
-
-              <!--Termox-->
-              <div class="member">
-                <div class="polaroid">
-                  <img src="/images/userImages/Termox.png" alt="avatar" />
-                </div>
-                <h3>Termox</h3>
-                <div class="memberContainer">
-                  <div class="teamRoles">
-                    <div class="teamRole" data-key="translator" style="background: #af5cca">
-                      Translator
-                    </div>
-                  </div>
-                  <div class="memberLinks">
-                    <!--TODO: Acquire member's social media-->
-                  </div>
-                </div>
-              </div>
-
-              <!-- ~~~~~~~~~~~~~ FINNISH TEAM ~~~~~~~~~~~~~ -->
-              <div class="sectionSeparatorContainer">
-                <div class="sectionSeparatorText" id="teamFI">FINNISH TEAM</div>
-                <div class="sectionSeparatorLine"></div>
-              </div>
-
-              <!--Spizium-->
-              <div class="member">
-                <div class="polaroid">
-                  <img src="/images/userImages/Spizium.png" alt="avatar" />
-                </div>
-                <h3>Spizium</h3>
-                <div class="memberContainer">
-                  <div class="teamRoles">
-                    <div class="teamRole" data-key="translator" style="background: #af5cca">
-                      Translator
-                    </div>
-                  </div>
-                  <div class="memberLinks">
-                    
-                    <a
-                      target="_blank"
-                      href="https://modworkshop.net/user/spizium_makes_stuff"
-                      class="modworkshop"
-                    ></a>
-                  </div>
-                </div>
-              </div>
-
-              <!-- ~~~~~~~~~~~~~ POLISH TEAM ~~~~~~~~~~~~~ -->
-              <div class="sectionSeparatorContainer">
-                <div class="sectionSeparatorText" id="teamPL">POLISH TEAM</div>
-                <div class="sectionSeparatorLine"></div>
-              </div>
-
-              <!--KapKap-->
-              <div class="member">
-                <div class="polaroid">
-                  <img src="/images/userImages/KapKap.png" alt="avatar" />
-                </div>
-                <h3>KapKap</h3>
-                <div class="memberContainer">
-                  <div class="teamRoles">
-                    <div class="teamRole" data-key="translator" style="background: #af5cca">
-                      Translator
-                    </div>
-                  </div>
-                  <div class="memberLinks">
-                    <a
-                      target="_blank"
-                      href="https://www.tumblr.com/moldingbun?source=share"
-                      class="tumblr"
-                    ></a>
-
-                  </div>
-                </div>
-              </div>
-
-              <!-- ~~~~~~~~~~~~~ PORTUGUESE (BRAZIL) TEAM ~~~~~~~~~~~~~ -->
-              <div class="sectionSeparatorContainer">
-                <div class="sectionSeparatorText" id="teamPTbr">PORTUGUESE (BRAZIL) TEAM</div>
-                <div class="sectionSeparatorLine"></div>
-              </div>
-
-              <!--NanDubs-->
-              <div class="member">
-                <div class="polaroid">
-                  <img src="/images/userImages/NanDubs.png" alt="avatar" />
-                </div>
-                <h3>NanDubs</h3>
-                <div class="memberContainer">
-                  <div class="teamRoles">
-                    <div class="teamRole" data-key="translator" style="background: #af5cca">
-                      Translator
-                    </div>
-                  </div>
-                  <div class="memberLinks">
-                    <a
-                      target="_blank"
-                      href="https://www.instagram.com/nandubsofc/"
-                      class="instagram"
-                    ></a>
-                    <a
-                      target="_blank"
-                      href="https://youtube.com/@nandubsofc?si=4WnOXPfmmqVj6lqW"
-                      class="youtube"
-                    ></a>
-                    <a
-                      target="_blank"
-                      href="https://www.twitch.tv/nandit0u"
-                      class="twitch"
-                    ></a>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <div id="members"></div>
           </div>
         </div>
       </div>
     </div>
+
     <footer id="footer">
       <div class="boxshadowBox">
         <div id="footerContainer">
@@ -910,6 +186,396 @@
         </div>
       </div>
     </footer>
+
+    <script>
+      // Team data
+      const TEAMS = [
+        {
+          id: "FR",
+          name: "FRENCH TEAM",
+          members: [
+            {
+              name: "DRUNs",
+              img: "/images/userImages/DRUNs.png",
+              roles: [
+                { t: "Founder", c: "#1fa5a2" },
+                { t: "Web team (I see you)", c: "#c23c3c" },
+                { t: "Kit dev", c: "#7c7cf1" },
+                { t: "Translator", c: "#af5cca" },
+              ],
+              links: [
+                {
+                  type: "steam",
+                  url: "https://steamcommunity.com/id/secretlyapyro",
+                },
+                {
+                  type: "github",
+                  url: "https://github.com/DRUN-s/DRUN-s.github.io",
+                },
+                {
+                  type: "youtube",
+                  url: "https://youtube.com/@druns0?si=-Ep7HR6sBInYhiFt",
+                },
+                { type: "discord", url: "https://discord.gg/wFRM6daVBd" },
+              ],
+            },
+            {
+              name: "Drama",
+              img: "/images/userImages/Drama.png",
+              roles: [
+                { t: "Kit artist", c: "#9d2c6c" },
+                { t: "Translator", c: "#af5cca" },
+              ],
+              links: [
+                {
+                  type: "instagram",
+                  url: "https://www.instagram.com/_dramart_",
+                },
+                { type: "tumblr", url: "https://www.tumblr.com/dramart06" },
+                {
+                  type: "reddit",
+                  url: "https://www.reddit.com/u/Far-Funny80/s/1yl9FFBra9",
+                },
+                { type: "twitter", url: "https://x.com/dramartt" },
+                {
+                  type: "steam",
+                  url: "https://steamcommunity.com/profiles/76561199436213204",
+                },
+              ],
+            },
+            {
+              name: "Ghomera",
+              img: "/images/userImages/Ghomera.png",
+              roles: [
+                { t: "Kit dev", c: "#7c7cf1" },
+                { t: "Translator", c: "#af5cca" },
+              ],
+              links: [
+                {
+                  type: "steam",
+                  url: "https://steamcommunity.com/profiles/76561198077853308/",
+                },
+              ],
+            },
+            {
+              name: "Raidebaron",
+              img: "/images/userImages/Raidebaron.png",
+              roles: [{ t: "Translator", c: "#af5cca" }],
+              links: [],
+            },
+          ],
+        },
+        {
+          id: "IT",
+          name: "ITALIAN TEAM",
+          members: [
+            {
+              name: "Valiant",
+              img: "/images/userImages/Valiant.png",
+              roles: [{ t: "Translator", c: "#af5cca" }],
+              links: [
+                {
+                  type: "newgrounds",
+                  url: "https://thebunnybeast.newgrounds.com/",
+                },
+                {
+                  type: "steam",
+                  url: "https://steamcommunity.com/profiles/76561199092623105",
+                },
+              ],
+            },
+            {
+              name: "Saimon",
+              img: "/images/userImages/Saimon.png",
+              roles: [{ t: "Translator", c: "#af5cca" }],
+              links: [],
+            },
+          ],
+        },
+        {
+          id: "DE",
+          name: "GERMAN TEAM",
+          members: [
+            {
+              name: "Nugget",
+              img: "/images/userImages/Nugget.png",
+              roles: [
+                { t: "Coordinator", c: "#7fc034" },
+                { t: "Translator", c: "#af5cca" },
+              ],
+              links: [
+                {
+                  type: "youtube",
+                  url: "https://www.youtube.com/@rottennugget8197",
+                },
+                { type: "itchio", url: "https://rottennuggetgames.itch.io/" },
+                { type: "twitch", url: "https://rottennuggetgames.itch.io/" },
+              ],
+            },
+            {
+              name: "William the Buster",
+              img: "/images/userImages/WilliamTheBuster.png",
+              roles: [{ t: "Translator", c: "#af5cca" }],
+              links: [],
+            },
+            {
+              name: "TimeStorm",
+              img: "/images/userImages/TimeStorm.png",
+              roles: [{ t: "Translator", c: "#af5cca" }],
+              links: [],
+            },
+          ],
+        },
+        {
+          id: "SW",
+          name: "SWEDISH TEAM",
+          members: [
+            {
+              name: "Cavus",
+              img: "/images/userImages/Cavus.png",
+              roles: [{ t: "Translator", c: "#af5cca" }],
+              links: [],
+            },
+          ],
+        },
+        {
+          id: "ES",
+          name: "SPANISH TEAM",
+          members: [
+            {
+              name: "Juan Chu8",
+              img: "/images/userImages/JuanChu8.png",
+              roles: [
+                { t: "Coordinator", c: "#7fc034" },
+                { t: "Translator", c: "#af5cca" },
+              ],
+              links: [],
+            },
+            {
+              name: "Ra",
+              img: "/images/userImages/Ra.png",
+              roles: [{ t: "Translator", c: "#af5cca" }],
+              links: [],
+            },
+            {
+              name: "Lasagna",
+              img: "/images/userImages/Lasagna.png",
+              roles: [{ t: "Translator", c: "#af5cca" }],
+              links: [],
+            },
+          ],
+        },
+        {
+          id: "KR",
+          name: "KOREAN TEAM",
+          members: [
+            {
+              name: "Henry",
+              img: "/images/userImages/Henry.png",
+              roles: [{ t: "Translator", c: "#af5cca" }],
+              links: [
+                {
+                  type: "steam",
+                  url: "https://steamcommunity.com/id/Henryexe/",
+                },
+                { type: "youtube", url: "https://www.youtube.com/@Henry_exe" },
+              ],
+            },
+          ],
+        },
+        {
+          id: "ET",
+          name: "ESTONIAN TEAM",
+          members: [
+            {
+              name: "KrisTheBread",
+              img: "/images/userImages/KrisTheBread.png",
+              roles: [{ t: "Translator", c: "#af5cca" }],
+              links: [],
+            },
+          ],
+        },
+        {
+          id: "RO",
+          name: "ROMANIAN TEAM",
+          members: [
+            {
+              name: "Kor",
+              img: "/images/userImages/Kor.png",
+              roles: [{ t: "Translator", c: "#af5cca" }],
+              links: [],
+            },
+          ],
+        },
+        {
+          id: "CZ",
+          name: "CZECH TEAM",
+          members: [
+            {
+              name: "Herotroll",
+              img: "/images/userImages/Herotroll.png",
+              roles: [{ t: "Translator", c: "#af5cca" }],
+              links: [
+                {
+                  type: "steam",
+                  url: "https://steamcommunity.com/id/Herotroll/",
+                },
+              ],
+            },
+            {
+              name: "Termox",
+              img: "/images/userImages/Termox.png",
+              roles: [{ t: "Translator", c: "#af5cca" }],
+              links: [],
+            },
+          ],
+        },
+        {
+          id: "TR",
+          name: "TURKISH TEAM",
+          members: [
+            {
+              name: "Octavio Silva",
+              img: "/images/userImages/OctavioSilva.png",
+              roles: [
+                { t: "Coordinator", c: "#7fc034" },
+                { t: "Translator", c: "#af5cca" },
+              ],
+              links: [
+                {
+                  type: "instagram",
+                  url: "https://www.instagram.com/octaviosilvaturk/",
+                },
+              ],
+            },
+            {
+              name: "Nyoom",
+              img: "/images/userImages/Nyoom.png",
+              roles: [
+                { t: "Kit artist", c: "#9d2c6c" },
+                { t: "Translator", c: "#af5cca" },
+              ],
+              links: [],
+            },
+            {
+              name: "Yagizalpersoy",
+              img: "/images/userImages/Yagizalpersoy.png",
+              roles: [{ t: "Translator", c: "#af5cca" }],
+              links: [],
+            },
+          ],
+        },
+        {
+          id: "SK",
+          name: "SLOVAK TEAM",
+          members: [
+            {
+              name: "Termox",
+              img: "/images/userImages/Termox.png",
+              roles: [{ t: "Translator", c: "#af5cca" }],
+              links: [],
+            },
+          ],
+        },
+        {
+          id: "FI",
+          name: "FINNISH TEAM",
+          members: [
+            {
+              name: "Spizium",
+              img: "/images/userImages/Spizium.png",
+              roles: [{ t: "Translator", c: "#af5cca" }],
+              links: [
+                {
+                  type: "modworkshop",
+                  url: "https://modworkshop.net/user/spizium_makes_stuff",
+                },
+              ],
+            },
+          ],
+        },
+        {
+          id: "PL",
+          name: "POLISH TEAM",
+          members: [
+            {
+              name: "KapKap",
+              img: "/images/userImages/KapKap.png",
+              roles: [{ t: "Translator", c: "#af5cca" }],
+              links: [
+                {
+                  type: "tumblr",
+                  url: "https://www.tumblr.com/moldingbun?source=share",
+                },
+              ],
+            },
+          ],
+        },
+        {
+          id: "PTbr",
+          name: "PORTUGUESE (BRAZIL) TEAM",
+          members: [
+            {
+              name: "NanDubs",
+              img: "/images/userImages/NanDubs.png",
+              roles: [{ t: "Translator", c: "#af5cca" }],
+              links: [
+                {
+                  type: "instagram",
+                  url: "https://www.instagram.com/nandubsofc/",
+                },
+                {
+                  type: "youtube",
+                  url: "https://youtube.com/@nandubsofc?si=4WnOXPfmmqVj6lqW",
+                },
+                { type: "twitch", url: "https://www.twitch.tv/nandit0u" },
+              ],
+            },
+          ],
+        },
+      ];
+
+      // Simple renderer
+      (function () {
+        const container = document.getElementById("members");
+        if (!container) return;
+
+        TEAMS.forEach((team) => {
+          // Team separator
+          container.innerHTML += `
+      <div class="sectionSeparatorContainer">
+        <div class="sectionSeparatorText" id="team${team.id}">${team.name}</div>
+        <div class="sectionSeparatorLine"></div>
+      </div>`;
+
+          // Members
+          team.members.forEach((m) => {
+            const roles = m.roles
+              .map(
+                (r) =>
+                  `<div class="teamRole" style="background:${r.c}">${r.t}</div>`
+              )
+              .join("");
+            const links = m.links
+              .map(
+                (l) =>
+                  `<a target="_blank" href="${l.url}" class="${l.type}"></a>`
+              )
+              .join("");
+
+            container.innerHTML += `
+        <div class="member">
+          <div class="polaroid"><img src="${m.img}" alt="avatar" /></div>
+          <h3>${m.name}</h3>
+          <div class="memberContainer">
+            <div class="teamRoles">${roles}</div>
+            <div class="memberLinks">${links}</div>
+          </div>
+        </div>`;
+          });
+        });
+      })();
+    </script>
+    <script src="https://cdn.jsdelivr.net/gh/MarketingPipeline/Markdown-Tag/markdown-tag.js"></script>
   </body>
-  <script src="https://cdn.jsdelivr.net/gh/MarketingPipeline/Markdown-Tag/markdown-tag.js"></script>
 </html>
