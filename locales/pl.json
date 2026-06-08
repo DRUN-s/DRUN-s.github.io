@@ -1,6 +1,7 @@
 {
   "404": "Error 404 ! This page ! Couldn't be found !",
   "notTranslatedYet": "Not added yet",
+  "notPlannedYet": "Not planned yet",
   "page": "Page",
   "blurbText": "Valve nigdy nie przetłumaczył komiksów tf2, społeczność próbowała to zrobić wiele razy, ale te próby były niezorganizowane i czasami leniwe. Prawie żadne nie skończyły się na pełnej translacji. Ten projekt to zjednoczenie najlepszej jakości fanowskiej translacji. Komiksy które zobaczysz zostały stworzone z zestawem tłumaczenia TF2 komiksów stworzonego przez DRUN'a żeby wyglądały jak najautentyczniej do oficjalnych komiksów. Z resztą przestań czytać ten nudny tekst ! Dalej idź przeczytać komiksy w twoim ulubionym języku albo naucz się jednego próbując !",
   "WIPText": "⚠️ TA STRONA JEST JESZCZE TWORZONA! ⚠️ CSS JEST TRUDNE PROSZE POMÓŻCIE",
@@ -146,7 +147,6 @@
   "languages": "",
   "mainComicsButton": "",
   "megabytes": "",
-  "notPlannedYet": "",
   "pages": "",
   "unavailableBadge": "",
   "updateComicsButton": ""
