@@ -31,7 +31,7 @@ p {
   justify-content: space-around;
   align-items: center;
   font-family: BigNoodleTitling;
-  width: 100%;
+  width: max-content;
 }
 
 #titleImage {
@@ -41,10 +41,6 @@ p {
   flex-shrink: 0;
   filter: drop-shadow(11px 18px 5px #000000);
   min-width: 350px;
-}
-
-#titleImageContainer {
-  width: max-content;
 }
 
 #titleText {
