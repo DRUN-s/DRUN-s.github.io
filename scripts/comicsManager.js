@@ -3,15 +3,14 @@ const ComicsManager = (() => {
   const COVERS_BASE = '/comics/covers/main';
   const COMICS_BASE = '/comics';
 
-  // Seuls les comics qui ont des covers localisées
   const LOCALIZED_COVERS = {
     tf00Cover: 'tf00',
     tf01Cover: 'tf01',
     tf02Cover: 'tf02',
   };
 
-  // Seuls les comics hébergés sur le site ont une vérification de dispo
-  // (les tfu avec liens externes teamfortress.com sont exclus)
+  //TODO: Gather these informations from a comics-data.json
+  // Only these comics will be checked
   const HOSTED_COMICS = [
     ['tf00', 'catchup-comic'],
     ['tf01', 'ring-of-fired'],
@@ -29,7 +28,7 @@ const ComicsManager = (() => {
       const img = document.getElementById(imgId);
       if (!img) { console.warn(`ComicsManager: image not found "${imgId}"`); continue; }
 
-      // tf07 a une cover aléatoire gérée par le script inline, on ne la touche pas
+      // Random cover handled by inline script, we don't touch
       if (imgId === 'tf07Cover') continue;
 
       const langSrc     = `${COVERS_BASE}/${comicId}/${comicId}${LANG}_cover.png`;

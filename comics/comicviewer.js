@@ -1,4 +1,5 @@
 $(function () {
+//TODO: Gather these informations from a comics-data.json
   const tomeData = [
     {
       key: "tf00",
@@ -336,10 +337,10 @@ $(function () {
     }
   }
 
-  // Clique sur le bouton
+  // Button clicked
   fullscreenToggle.addEventListener("click", toggleFullscreen);
 
-  // Appui sur F
+  // F Pressed
   document.addEventListener("keydown", (e) => {
     if (e.key.toLowerCase() === "f") {
       toggleFullscreen();
