@@ -11,7 +11,7 @@ const I18n = (() => {
     }
   
     async function load(lang) {
-      const res = await fetch(`/locales//${lang}.json`);
+      const res = await fetch(`/locales/${lang}.json`);
       if (!res.ok) return load('en');
       return res.json();
     }
