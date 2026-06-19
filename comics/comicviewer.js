@@ -54,9 +54,13 @@ $(async function () {
     return { lang, tomeKey, pageNum };
   }
 
+  // Construit le chemin vers le fichier image. Les clés de langue (lang) sont
+  // toujours manipulées en minuscule dans le reste du code (sélecteur, traductions,
+  // localStorage), mais les dossiers de comics sur disque sont en MAJUSCULE.
+  // C'est ICI, et uniquement ici, qu'on convertit pour matcher le système de fichiers.
   function buildPath({ lang, tomeKey, pageNum }) {
     const tome = findTome(tomeKey);
-    return `${tome.folder}/${lang}/${tome.baseName}-${pageNum}.jpg`;
+    return `${tome.folder}/${lang.toUpperCase()}/${tome.baseName}-${pageNum}.jpg`;
   }
 
   function updateHash(data) {
@@ -71,7 +75,7 @@ $(async function () {
     [-1, 1, 2, 3].forEach((offset) => {
       const targetPage = pageNum + offset;
       if (targetPage < 1 || targetPage > tome.pages) return;
-      new Image().src = `${tome.folder}/${lang}/${tome.baseName}-${targetPage}.jpg`;
+      new Image().src = `${tome.folder}/${lang.toUpperCase()}/${tome.baseName}-${targetPage}.jpg`;
       if (lang !== "en") {
         new Image().src = `${tome.folder}/EN/${tome.baseName}-${targetPage}.jpg`;
       }
@@ -92,7 +96,7 @@ $(async function () {
     if (await testImage(primary)) return { src: primary, langUsed: data.lang, fallback: false, notFound: false };
 
     if (data.lang !== "en") {
-      const fallbackEN = buildPath({ ...data, lang: "en" });
+      const fallbackEN = buildPath({ ...data, lang: "en" }); // buildPath applique déjà .toUpperCase()
       if (await testImage(fallbackEN)) return { src: fallbackEN, langUsed: "en", fallback: true, notFound: false };
     }
 
@@ -200,11 +204,11 @@ $(async function () {
   function toggleFullscreen() {
     if (!document.fullscreenElement) {
       clickableArea.requestFullscreen()
-        .then(() => { img.src = "/images/fullscreenOut.svg"; document.body.classList.add("fullscreen-active"); })
+        .then(() => { img.src = "../images/fullscreenOut.svg"; document.body.classList.add("fullscreen-active"); })
         .catch(err => console.error(err));
     } else {
       document.exitFullscreen()
-        .then(() => { img.src = "/images/fullscreenIn.svg"; document.body.classList.remove("fullscreen-active"); })
+        .then(() => { img.src = "../images/fullscreenIn.svg"; document.body.classList.remove("fullscreen-active"); })
         .catch(err => console.error(err));
     }
   }
