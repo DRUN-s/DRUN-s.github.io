@@ -4,11 +4,11 @@
   let trackList = [
     {
       name: "Upgrade Station",
-      path: "music/song01.mp3"
+      path: "sounds/song01.mp3"
     },
     {
       name: "Archimedes",
-      path: "music/Archimedes.mp3"
+      path: "sounds/Archimedes.mp3"
     }
   ];
   let isPlaying=false;
