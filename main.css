@@ -817,18 +817,22 @@ h5 {
 /*====================================================================================*/
 
 #language-container {
-  position: relative;
+  position: fixed;
   transition: all 0.3s ease;
   z-index: 999;
   top: 50px;
   left: 10px;
   height: 0;
+  width: 98%;
+  margin-top: 1rem;
 }
 
 #language-container.sticky {
   position: fixed;
   top: 20px;
   left: 10px;
+  width: 98%;
+  margin-top: 0px;
 }
 
 .dropdown {
@@ -1124,4 +1128,128 @@ h5 {
   #covers a {
     width: calc(100% - 30px);
   }
+}
+
+/*MUSIC PLAYER*/
+
+ #musicPlayer {
+  width: 100%;
+  max-width: 320px;
+  box-sizing: border-box;
+  height: 120px;
+  float: right;
+  background-color: #34302d;
+  width: max-content;
+  margin: none auto;
+  padding: 1rem;
+  padding-left: 40px;
+  margin-top: none;
+  margin-right: 0;
+  position: relative;
+  border-radius: 20px;
+}
+#musicPlayer > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+#musicPlayerTitle {
+width: 100%;
+  text-align: center;
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+  color: #eef2e5;
+  padding-left: 0.6rem;
+  padding-right: 1rem;
+  min-width: 200px;
+  margin-bottom: 0;
+  margin-top: 0.3rem;
+  text-wrap: wrap;
+}
+
+#volume {
+	position: absolute;
+	left: 25px;
+	margin: 0 auto;
+	height: 86px;
+	width: 10px;
+	background: #555;
+	border-radius: 15px;
+	writing-mode: vertical-rl;
+  direction: rtl;
+  display: flex;
+  
+}
+#buttonMinimize {
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  right: 8px;
+  padding: 0;
+  cursor: pointer;
+}
+#buttonPrev, #pauseMusicButton, #buttonNext {
+  background-color: #34302d;
+  border: none;
+  min-width: 48px;
+  padding: 0.3rem;
+}
+#prevMusicImg, #nextMusicImg {
+  width: 100%;
+  max-width: 70px;
+  height: auto;
+}
+#pauseMusicImg {
+height: auto;
+width: 100%;
+}
+#musicPlayerButtons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.2rem;
+}
+@media (max-width: 700px) {
+  #musicPlayer {
+    max-width: 59vw;
+    margin-right: 2%;
+    margin-left: 0;
+    height: fit-content;
+  }
+
+  #musicPlayerTitle {
+	min-width: 40vw;
+  margin-right: 0.7rem;
+  max-width: 7rem;
+  }
+
+  #musicPlayerButtons {
+    width: 100%;
+  }
+
+  #musicPlayerButtons button {
+    flex: 1 1 30%;
+  }
+}
+
+#minimizeMusicPlayer, #maximizeIcon img {
+  width: 30px;
+  height: 30px;
+  max-width: 30px;
+}
+#maximizeIcon {
+  display: none;
+  float: right;
+  width: 45px;
+  height: 45px;
+  border-radius: 15px;
+  background-color: #34302d;
+  padding: 0.3vw;
+  margin-right:0.5rem;
+  justify-content: center;
+  align-content: center;
+}
+#maximizeIcon button {
+  border: none;
+  background: transparent;
 }

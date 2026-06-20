@@ -75,6 +75,24 @@
           </div>
         </div>
       </div>
+      <div id="musicPlayer">
+        <div>
+            <p id="musicPlayerTitle"></p>
+            <div id="musicPlayerButtons">
+                <button id="buttonPrev">
+                    <img src="../images/prev.svg" alt="Select previous track" onclick="prevTrack()" id="prevMusicImg">
+                </button>
+                <button id="pauseMusicButton" onclick="playPauseMusic()">
+                    <img src="../images/pause.svg" alt="Pause the music" id="pauseMusicImg">
+                </button>
+                <button id="buttonNext">
+                    <img src="../images/next.svg" alt="Select next track" onclick="nextTrack()" id="nextMusicImg">
+                </button>
+            </div>
+            <input type="range" id="volume">
+        </div>
+    </div>
+      <script src="../scripts/music-player.js"></script>
       <div id="helpToggle" class="help-toggle" title="Afficher l'aide">
         <span>?</span>
       </div>

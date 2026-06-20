@@ -159,7 +159,6 @@ body {
   
   /* Bouton aide toggle */
 .help-toggle {
-	margin-top: 10px;
 	width: 36px;
 	height: 36px;
 	border-radius: 50%;
@@ -352,4 +351,91 @@ body {
 	border-radius: 8px;
 	background: #c2c9d2;
   }
+
+  /*MUSIC PLAYER*/
+
+ #musicPlayer {
+  width: 100%;
+  max-width: 320px;
+  box-sizing: border-box;
+  height: 120px;
+  background-color: #34302d;
+  width: max-content;
+  margin: none auto;
+  padding: 1rem;
+  padding-left: 40px;
+  margin-top: none;
+  margin-right: 0;
+  position: relative;
+  border-radius: 20px;
+}
+#musicPlayer > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+#musicPlayerTitle {
+width: 100%;
+  text-align: center;
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+  color: #eef2e5;
+  min-width: 200px;
+  margin-bottom: 0;
+  margin-top: 0.3rem;
+  text-wrap: wrap;
+}
+
+#volume {
+	position: absolute;
+	left: 25px;
+	margin: 0 auto;
+	height: 86px;
+	width: 10px;
+	background: #555;
+	border-radius: 15px;
+	writing-mode: vertical-rl;
+  direction: rtl;
+  display: flex;
   
+}
+#buttonPrev, #pauseMusicButton, #buttonNext {
+  background-color: #34302d;
+  border: none;
+  min-width: 48px;
+  padding: 0.3rem;
+}
+#prevMusicImg, #nextMusicImg {
+  width: 100%;
+  max-width: 70px;
+  height: auto;
+}
+#pauseMusicImg {
+height: auto;
+width: 100%;
+}
+#musicPlayerButtons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.2rem;
+}
+@media (max-width: 700px) {
+  #musicPlayer {
+    max-width: 59vw;
+    height: fit-content;
+  }
+
+  #musicPlayerTitle {
+	min-width: 40vw;
+  max-width: 7rem;
+  }
+
+  #musicPlayerButtons {
+    width: 100%;
+  }
+
+  #musicPlayerButtons button {
+    flex: 1 1 30%;
+  }
+}
