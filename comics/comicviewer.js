@@ -1,3 +1,10 @@
+(function syncSelectedLanguageFromHashEarly() {
+  const parts = window.location.hash.slice(1).split("-");
+  if (parts.length === 3 && parts[0]) {
+    localStorage.setItem("selectedLanguage", parts[0].toLowerCase());
+  }
+})();
+
 // Charge une langue, fallback EN si besoin
 async function loadTranslations(lang) {
   const load = (l) => fetch(`../locales/${l}.json`).then(r => r.ok ? r.json() : null);
@@ -45,11 +52,12 @@ $(async function () {
     const parts = hash.split("-");
     if (parts.length !== 3) {
       const savedLang = localStorage.getItem("selectedLanguage") || "en";
-      return { lang: savedLang, tomeKey: "tf00", pageNum: 1 };
+      return { lang: savedLang.toLowerCase(), tomeKey: "tf00", pageNum: 1 };
     }
-    const [lang, tomeKey, pageStr] = parts;
+    const [hashLang, tomeKey, pageStr] = parts;
     const pageNum = parseInt(pageStr, 10);
     if (!findTome(tomeKey) || isNaN(pageNum)) return null;
+    const lang = hashLang.toLowerCase();
     localStorage.setItem("selectedLanguage", lang);
     return { lang, tomeKey, pageNum };
   }
