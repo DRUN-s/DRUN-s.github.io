@@ -123,13 +123,27 @@ $(async function () {
     $("#langSelect").val(langUsed);
     document.title = `${title} – ${pageLabel} ${data.pageNum}`;
 
-    if (typeof window.setLanguage === "function") {
+    if (fallback) {
+      // Affichage uniquement : on montre la langue réellement utilisée pour
+      // CETTE page (EN), mais SANS écrire dans selectedLanguage — ce dernier
+      // doit rester le choix persistant de l'utilisateur (ex: "fr"), même si
+      // cette page précise n'existe pas dans cette langue.
+      syncSelectorDisplay(langUsed);
+    } else if (typeof window.setLanguage === "function") {
       window.setLanguage(langUsed, { skipHash: true });
     }
 
     if (fallback) {
       alert(`This page hasn't been translated in ${data.lang}. Fallback to English.`);
-      updateHash({ ...data, lang: langUsed });
+      // On reflète la langue réellement affichée dans l'URL, mais via
+      // history.replaceState (pas window.location.hash =), pour NE PAS
+      // déclencher l'event "hashchange" : celui-ci ferait repasser par
+      // parseHash(), qui écraserait selectedLanguage avec "en" alors qu'on
+      // veut préserver le choix original de l'utilisateur.
+      const newHash = `${langUsed}-${data.tomeKey}-${data.pageNum}`;
+      if (window.location.hash !== "#" + newHash) {
+        history.replaceState(null, "", "#" + newHash);
+      }
     } else if (notFound) {
       alert(`Page ${data.pageNum} from ${data.tomeKey} cannot be found.`);
     }
@@ -195,6 +209,20 @@ $(async function () {
     }
   }
   window.setLanguage = setLanguage;
+
+  // Met à jour uniquement l'affichage du sélecteur (bouton + image + texte),
+  // sans toucher à selectedLanguage ni au hash. Utilisé par loadPage() lors
+  // d'un fallback EN, pour ne pas écraser le choix persistant de l'utilisateur.
+  function syncSelectorDisplay(lang) {
+    const item = dropdownContent.filter(`[lang-selection='${lang}']`);
+    if (!item.length) return;
+
+    const imgSrc = item.find("img").attr("src");
+    const text = item.text().trim();
+    selectedItem.attr("lang-selection", lang);
+    selectedItem.html(`<img src="${imgSrc}" /> ${text} <span class="arrow-down"></span>`);
+    $("#langSelect").val(lang);
+  }
 
   // --- Fullscreen ---
   const fullscreenToggle = document.getElementById("fullscreenToggle");
