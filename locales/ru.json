@@ -69,7 +69,7 @@
   "saxtonSeries": "СЕРИИ ПРО САКСТОНА",
   "saxtonSeriesTitle": "Обложки серии комиксов про Сакстона Гейла",
   "saxtonSeriesDate": "2009",
-  "footerInfo": "Valve, the Valve logo, Steam, the Steam logo, Team Fortress, and the Team Fortress logo are trademarks and/or registered trademarks of <a target=\"_blank\" href=\"https://www.valvesoftware.com/\"   >Valve Corporation</a >. Team Fortress 2 Translation Project and Team Fortress 2 Translation Tool-Kit are fan creations and are not affiliated with Valve Corporation.",
+  "footerInfo": "Valve, логотип Valve, Steam, логотип Steam, Team Fortress и логотип Team Fortress являются торговыми марками и/или зарегистрированными торговыми марками <a target=\"_blank\" href=\"https://www.valvesoftware.com/\"   >Valve Corporation</a >. Team Fortress 2 Translation Project и Team Fortress 2 Translation Tool-Kit являются фанатскими и никак не связаны с Valve Corporation.",
   "contact": "Связаться",
   "privacy": "Конфиденциальность",
   "attributions": "Attributions",
@@ -126,7 +126,7 @@
   "comicSelectButtonNone": "✗ Очистить выделение",
   "comics": "комикс",
   "downloadBtnLabel": "Скачать выбранное как ZIP/CBZ",
-  "downloadButtonText": "Скачать",
+  "downloadButtonText": "Télécharger",
   "downloadInstructionDownload": "",
   "downloadInstructionSelect": "1. Выбрать комикс",
   "downloadText": "Выберите комикс, который хотите скачать нажав на обложку. Вы можете выбрать множество комиксов и скачать их разом!",
@@ -150,5 +150,6 @@
   "pages": "страницы",
   "format": "Формат",
   "unavailableBadge": "Недоступно",
-  "updateComicsButton": "Обновить комиксы"
+  "updateComicsButton": "Обновить комиксы",
+  "teamUK": "UKRAINIAN TEAM"
 }
