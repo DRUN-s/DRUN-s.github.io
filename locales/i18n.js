@@ -1,6 +1,6 @@
 // scripts/i18n.js
 const I18n = (() => {
-  const SUPPORTED = ['en','fr','es','de','it','pl','tr','fi','kr','sw','cs','ro','et','sk','ptbr'];
+  const SUPPORTED = ['en','fr','es','de','it','pl','tr','fi','kr','sw','cs','ro','et','sk','ptbr','ja'];
   const _defaults = {};
   function detectLang() {
     // selectedLanguage = choix utilisateur partagé avec comicviewer.js, prioritaire.
