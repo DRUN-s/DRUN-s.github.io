@@ -157,6 +157,8 @@ $(async function () {
     }
 
     preloadImages({ ...data, lang: langUsed });
+
+    getPageAmount();
   }
 
   function changePage(delta) {
@@ -167,12 +169,12 @@ $(async function () {
 
     if (newPage > currentTome.pages) {
       const nextTome = getNextTome(data.tomeKey);
-      if (nextTome) data = { lang: data.lang, tomeKey: nextTome.key, pageNum: 1 };
+      if (nextTome) {data = { lang: data.lang, tomeKey: nextTome.key, pageNum: 1 }; changeBackground();}
       else return;
     } else if (newPage < 1) {
       const index = tomeData.findIndex((t) => t.key === data.tomeKey);
       const prevTome = tomeData[index - 1];
-      if (prevTome) data = { lang: data.lang, tomeKey: prevTome.key, pageNum: prevTome.pages };
+      if (prevTome) {data = { lang: data.lang, tomeKey: prevTome.key, pageNum: prevTome.pages }; changeBackground();}
       else return;
     } else {
       data.pageNum = newPage;
@@ -232,6 +234,16 @@ $(async function () {
     $("#langSelect").val(lang);
   }
 
+  function changeBackground() {
+    const backgroundImages = ["/images/backgrounds/firstframe_cigs.png", "/images/backgrounds/firstframe_fan.png", "/images/backgrounds/firstframe_radar.png", "/images/backgrounds/firstframe_record.png"];
+    const body = document.querySelector("#body");
+    const randomImage = backgroundImages[Math.floor(Math.random() * backgroundImages.length)];
+    body.style.background = `url("${randomImage}")`;
+    body.style.backgroundSize = "cover";
+    body.style.backgroundPosition = "center";
+    body.style.backgroundRepeat = "no-repeat";
+  }
+
   // --- Fullscreen ---
   const fullscreenToggle = document.getElementById("fullscreenToggle");
   const img = fullscreenToggle.querySelector("img");
@@ -281,4 +293,99 @@ $(async function () {
 
   if (initialData) loadPage(initialData);
   else updateHash({ lang: currentLang, tomeKey: "tf00", pageNum: 1 });
+
+  // getting total and current page for pageNumberDiv
+  function getPageAmount() {
+  const data = parseHash();
+  if (!data) return;
+
+  const tome = findTome(data.tomeKey);
+
+  if (tome) {
+    document.getElementById("totalPages").textContent = `/ ${tome.pages}`;
+  }
+  const currPage = document.getElementById("pageNumberChooser");
+  currPage.max = tome.pages;
+  currPage.value = data.pageNum;
+
+  }
+
+  function setDesiredPage() {
+    const data = parseHash();
+    if (!data) return;
+
+    let desiredPage=document.getElementById("pageNumberChooser");
+    let desiredPageMax=desiredPage.max;
+    let desiredPageValue=desiredPage.value;
+    if(desiredPageValue>desiredPageMax) {alert("This page does not exist"); getPageAmount(); return;};
+
+    let desiredChange=desiredPageValue-data.pageNum;
+    changePage(desiredChange);
+  }
+
+  document.querySelector("#pageNumberChooser")
+  .addEventListener("change", setDesiredPage);
+
+  document.querySelector("#prevPageButton")
+  .addEventListener("click", () => changePage(-1));
+  
+  document.querySelector("#nextPageButton")
+  .addEventListener("click", () => changePage(1));
+
+  getPageAmount();
 });
+
+
+// sticky script for mobile
+const leftArea = document.getElementById("leftAreaId");
+let menuHidden = false;
+let animStyle = 'quick';
+
+function updateMenu() { // keeps the leftArea fixed to the left of the screen
+    if(window.outerWidth>700) {return}; // doesn't if window is wider than 700px
+    const panX = visualViewport.offsetLeft;
+    const hideX = menuHidden ? -leftArea.offsetWidth : 0;
+
+    leftArea.style.transform =
+        `translate3d(${panX + hideX}px, 0, 0)`;
+
+    requestAnimationFrame(updateMenu);
+}
+
+updateMenu();
+
+function leftMenuToggle() { // hides leftArea and changes anim
+    menuHidden = !menuHidden;
+    toggleAnim(); // turns on smooth anims for hiding the left area
+    setTimeout(toggleAnim, 300); // turns off smooth anim after anim is completed (so leftArea doesn't lag behind)
+}
+
+function toggleAnim() {
+  if(animStyle=='quick') {
+    leftArea.style.transition="ease-in-out 0.3s";
+    animStyle="smooth";
+    return;
+  }
+  if(animStyle=="smooth") {
+    leftArea.style.transition="ease-in 0s";
+    animStyle="quick";
+    return;
+  }
+}
+
+window.onorientationchange = function() {
+  window.location.reload(); //reloads site when going into landscape mode
+};
+
+const pageNumberDiv = document.getElementById("pageNumberDiv");
+function updatePageDiv() { // keeps the pageNumberChooser fixed to the left of the screen
+    if(window.outerWidth>700) {return}; // doesn't if window is wider than 700px
+    const panX = visualViewport.offsetLeft;
+
+    pageNumberDiv.style.transform =
+        `translate3d(${panX}px, 0, 0)`;
+
+    requestAnimationFrame(updatePageDiv);
+}
+
+updatePageDiv();

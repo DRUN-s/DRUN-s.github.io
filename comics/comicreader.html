@@ -15,11 +15,12 @@
 
 </head>
 
-<body>
-    <div class="leftArea">
+<body id="body">
+    <div class="leftArea" id="leftAreaId">
       <div id="menuButton">
         <a href="/index.html"><img src="/images/Logo_TF2_flat.svg"/></a>
       </div>
+      
       
       <div id="language-container">
         <div class="dropdown" id="language-dropdown">
@@ -96,6 +97,9 @@
       <div id="helpToggle" class="help-toggle" title="Afficher l'aide">
         <span>?</span>
       </div>
+      <div id="sideMenuDiv" onclick="leftMenuToggle()">
+        <img src="../images/menu.svg" alt="Show side menu" id="sideMenuImg">
+      </div>
     </div>
 
     <div id="clickableArea">
@@ -116,6 +120,15 @@
       <img style="height:70%; width:auto;" src="/images/download.svg">
       </div>
       </a>
+  </div>
+
+  <div id="pageNumberDiv">
+    <img src="/images/prev.svg" alt="Previous Page" id="prevPageButton">
+    <div id="pagesUI">
+      <input type="number" name="" id="pageNumberChooser">
+      <div id="totalPages"></div> <!--set it to display: none if you want it gone, commenting it might break some onEventListeners-->
+    </div>
+    <img src="/images/next.svg" alt="Next Page" id="nextPageButton">
   </div>
 </body>
 

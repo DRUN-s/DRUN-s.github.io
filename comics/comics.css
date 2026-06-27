@@ -7,10 +7,14 @@ body {
 	display: grid;
 	grid-template-columns: 1fr 2fr 1fr; /* 3 col */
 	grid-template-rows: 100%;
+	overflow: hidden;
+  background-color: #262323;
+  background: url(/images/backgrounds/firstframe_cigs.png);
   }
   
   .leftArea {
 	display: flex;
+	position: relative;
 	flex-direction: column;
 	align-items: flex-end;
 	gap: 20px;
@@ -402,7 +406,7 @@ width: 100%;
 #buttonPrev, #pauseMusicButton, #buttonNext {
   background-color: #34302d;
   border: none;
-  min-width: 48px;
+  width: 48px;
   padding: 0.3rem;
 }
 #prevMusicImg, #nextMusicImg {
@@ -420,7 +424,39 @@ width: 100%;
   justify-content: center;
   gap: 0.2rem;
 }
-@media (max-width: 700px) {
+#sideMenuDiv {
+	display: none;
+}
+@media (min-width: 700px) { /*Desktop styling*/
+#pageNumberDiv {
+  position: absolute;
+  display: flex;
+  max-width: 256px;
+  width: 100%;
+  align-items: center;
+  top: 37vh;
+  margin-left: 5vw;
+  justify-items: center;
+}
+#nextPageButton, #prevPageButton, #pageNumberChooser {
+  float: left;
+  width: 80px;
+}
+#pageNumberChooser {
+  width: 20px;
+}
+#pagesUI {
+  height: max-content;
+  float: left;
+  width: 80px;
+  justify-content: center;
+  display: flex;
+}
+}
+
+
+
+@media (max-width: 700px) { /* vertical phone styling */
   #musicPlayer {
     max-width: 59vw;
     height: fit-content;
@@ -438,4 +474,173 @@ width: 100%;
   #musicPlayerButtons button {
     flex: 1 1 30%;
   }
+
+  /* mobile comic reader */
+
+  .leftArea {
+	display: flex;
+	position: fixed;
+	left: 0;
+	height: 100vh;
+	z-index: 600;
+	background: #262323; 
+	width: 55vw;
+	transform: translateX(0);
+	padding-top: 5vh;
+	border-right: 3px solid #34302D;
+  }
+  #sideMenuDiv {
+	display: flex;
+	position: absolute;
+	right: -13.7vw;
+	background-color: #262323;
+	border-top-right-radius: 8px;
+	border-bottom-right-radius: 8px;
+	align-items: center;
+	justify-content: center;
+	z-index: 999;
+	border-right: 3px solid #34302D;
+	border-bottom: 3px solid #34302D;
+	border-top: 3px solid #34302D;
+  }
+  #sideMenuImg {
+	width: 13vw;
+	height: 13vw;
+  }
+  .leftArea {
+    will-change: transform;
+    transform: translateZ(0);
+	transition: ease-in 0s;
+  }
+  .leftArea.hidden {
+	transform: translateX(calc(-100% + 13vw));
+  }
+  #comicPage {
+	width: 160vw;
+	height: 100vh;
+  }
+  #clickableArea {
+	position: relative;
+    top: -7vh;
+    width: 100%;
+    height: 80dvh;
+  }
+  body {
+    width: 100vw;
+    height: 100dvh;
+    margin: 0;
+	padding: 0;
+    overflow: hidden;
+    touch-action: pan-x;
+    }
+  #fullscreenToggle  {
+	top:12vh;
+	right:5vh;
+	width: 70PX;
+	height: 70px;
+  }
+  .rightArea {
+	max-height: 90vh;
+  }
+  #pageNumberDiv {
+	width: 75vw;
+	position: fixed;
+	bottom:72vh;
+	left: 8.4vw;
+	will-change: transform;
+    transform: translateZ(0);
+	transition: ease-in 0s;
+	justify-items: center;
+  	display: flex;
+	align-items: center;
+	border: 1px #4a4643 solid;
+	border-top-right-radius: 40px;
+	border-top-left-radius: 40px;
+	padding: 15px;
+	padding-bottom: 100px;
+	background-color: #262323;
+  }
+  #pageNumberChooser {
+	width: 10vw;
+	border: none;
+	background-color: #262323;
+	color: white;
+	text-align: center;
+	border: 2px solid #111;
+	margin-right: 1vw;
+	border-radius: 10px;
+  }
+  #pageNumberDiv img {
+	width: 26vw;
+  }
+  #prevPageButton, #nextPageButton, #pageNumberChooser, #totalPages, #pagesUI {
+	float: left;
+  }
+  #pagesUI {
+	display: flex;
+  }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type=number] {
+    -moz-appearance:textfield; /* Firefox */
+}
+
+@media (max-height: 500px) { /* horizontal phone styling */
+  #fullscreenToggle img{
+	width: 100%;
+	height: 100%;
+	display: block;
+  }
+  #fullscreenToggle {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 60px;
+	height: 50px;
+	left: 55vw;
+	position: absolute;
+  }
+  .leftArea {
+	gap: 12px;
+	padding: none;
+	padding-left: 20px;
+	padding-right: 20px;
+  }
+  #musicPlayer {
+	width: 28vw;
+	height: 32vh;
+  }
+  #pageNumberDiv {
+	position: absolute;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  top: 67vh;
+  height: 17vh;
+  left: 2vw;
+  width: 30vw;
+  margin-left: 0px;
+  }
+  #pagesUI {
+    width: fit-content;
+    height: 1.5rem;
+  }
+  #pageNumberChooser {
+   width: 1.5rem;
+  }
+  #prevPageButton, #nextPageButton {
+	width: 10vw;
+  }
+  #helpToggle {
+	position: relative;
+	top: 14vh
+  }
+
 }
