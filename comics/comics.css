@@ -9,10 +9,28 @@ body {
 	grid-template-rows: 100%;
 	overflow: hidden;
   background-color: #262323;
-  background: url(/images/backgrounds/firstframe_cigs.png);
+  /*background: url(/images/backgrounds/firstframe_cigs.png);*/
   }
-  
-  .leftArea {
+
+#body {
+  position: relative;
+}
+
+.bg-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  object-fit: cover;
+  transition: opacity 0.5s ease-in-out;
+  opacity: 0;
+  pointer-events: none; /* avoid clics, right clics, drag, focus */
+  user-select: none;
+}
+
+.leftArea {
 	display: flex;
 	position: relative;
 	flex-direction: column;
@@ -20,8 +38,8 @@ body {
 	gap: 20px;
 	padding: 20px;
   }
-  
-  .rightArea {
+
+.rightArea {
 	display: flex;
 	flex-direction: column-reverse;
 	align-items: flex-start;

@@ -234,15 +234,75 @@ $(async function () {
     $("#langSelect").val(lang);
   }
 
-  function changeBackground() {
-    const backgroundImages = ["/images/backgrounds/firstframe_cigs.png", "/images/backgrounds/firstframe_fan.png", "/images/backgrounds/firstframe_radar.png", "/images/backgrounds/firstframe_record.png"];
-    const body = document.querySelector("#body");
-    const randomImage = backgroundImages[Math.floor(Math.random() * backgroundImages.length)];
-    body.style.background = `url("${randomImage}")`;
-    body.style.backgroundSize = "cover";
-    body.style.backgroundPosition = "center";
-    body.style.backgroundRepeat = "no-repeat";
+  let activeBg = 1;
+let currentBgSrc = null;
+let bgMode = "image"; // "image" ou "video" — switchable à la volée
+
+const backgroundImages = [
+  "/images/backgrounds/images/firstframe_cigs.png",
+  "/images/backgrounds/images/firstframe_fan.png",
+  "/images/backgrounds/images/firstframe_radar.png",
+  "/images/backgrounds/images/firstframe_record.png"
+];
+
+const backgroundVideos = [
+  "/images/backgrounds/video/cigs.webm",
+  "/images/backgrounds/video/fan.webm",
+  "/images/backgrounds/video/radar.webm",
+  "/images/backgrounds/video/record.webm"
+];
+
+function pickRandomSrc(exclude) {
+  const pool = (bgMode === "video" ? backgroundVideos : backgroundImages).filter((src) => src !== exclude);
+  return pool[Math.floor(Math.random() * pool.length)];
+}
+
+function applyToLayer(layer, src) {
+  if (bgMode === "video") {
+    layer.src = src;
+    layer.load();
+    layer.play().catch(() => {});
+  } else {
+    layer.style.backgroundImage = `url("${src}")`;
   }
+}
+
+function changeBackground() {
+  const randomSrc = pickRandomSrc(currentBgSrc);
+
+  const currentLayer = document.querySelector(activeBg === 1 ? "#bg1" : "#bg2");
+  const nextLayer = document.querySelector(activeBg === 1 ? "#bg2" : "#bg1");
+
+  applyToLayer(nextLayer, randomSrc);
+
+  nextLayer.style.opacity = "1";
+  currentLayer.style.opacity = "0";
+
+  setTimeout(() => {
+    if (bgMode === "video") currentLayer.pause();
+  }, 500); // Must correlate with CSS transition duration.
+
+  currentBgSrc = randomSrc;
+  activeBg = activeBg === 1 ? 2 : 1;
+}
+window.changeBackground = changeBackground;
+
+// Function to switch between image mode and video mode
+function setBgMode(mode) {
+  if (mode !== "image" && mode !== "video") return;
+  bgMode = mode;
+  currentBgSrc = null; // Avoid excluding SRC
+  changeBackground(); // Uses image mode immediately
+}
+window.setBgMode = setBgMode;
+
+// BG init
+setBgMode("video");
+currentBgSrc = pickRandomSrc(null);
+const bg1 = document.querySelector("#bg1");
+applyToLayer(bg1, currentBgSrc);
+bg1.style.opacity = "1";
+activeBg = 1;
 
   // --- Fullscreen ---
   const fullscreenToggle = document.getElementById("fullscreenToggle");
