@@ -427,14 +427,15 @@ h5 {
   align-content: center;
   line-height: 20px;
   padding: 20px;
+  flex-flow: row;
+  align-items: center;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 #blurbText {
-  margin-left: 45px;
-  width: 60%;
   font-family: Host Grotesk;
-  font-weight: 400;
-  align-content: center;
+  padding-left: 40px;
 }
 
 #blurb img {
@@ -443,6 +444,7 @@ h5 {
   max-width: 250px;
   margin-top: auto;
   margin-bottom: auto;
+  min-width: 220px;
 }
 
 #centerColContent {
@@ -1130,6 +1132,19 @@ h5 {
   }
 }
 
+@media (max-width: 700px) {
+
+#blurb {
+  flex-direction: column;
+}
+
+#blurbText {
+  padding-left: 0;
+}
+
+}
+
+
 /*MUSIC PLAYER*/
 
  #musicPlayer {
@@ -1253,3 +1268,5 @@ width: 100%;
   border: none;
   background: transparent;
 }
+
+
